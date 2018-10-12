@@ -20,7 +20,7 @@ The files are organized in three files:
  
     
     ID                          Action
-    singInGoogle                Button to sign in with Google
+    signInGoogle                Button to sign in with Google
     signInFacebook              Button to sign in with Facebook
     fName                       Text Input to record the Name.
     
