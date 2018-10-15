@@ -1,0 +1,66 @@
+#feed-container{
+    background-color: beige;
+    width: 70%;
+    margin: 0% 15%;
+    padding: 10px;
+}
+
+.feed{
+    border-radius: 10px;
+    width: 90%;
+    margin: 5%;
+    background-color: darksalmon;
+    padding: 30px;
+    font-family: "Andale Mono";
+    font-size: large;
+}
+
+#upload{
+    width: 90%;
+    margin: 5%;
+    height: 40px;
+    border-radius: 10px;
+    font-size: x-large;
+    font-family: "American Typewriter";
+}
+
+.question{
+    border-radius: 30px;
+    width: 98%;
+    margin: 0% 1%;
+    padding: 10px 10px;
+    text-align: center;
+}
+
+.option{
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.answers{
+    border-radius: 1px;
+    width: 100%;
+}
+
+.not_selected{
+    background-color: floralwhite;
+}
+
+.selected{
+    background-color: cadetblue;
+}
+
+.posting-user-img{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    border-width: 1px;
+}
+
+.posting-user-name{
+    display: inline-block;
+    font-style: normal;
+    font-size: medium;
+    margin-left: 10px;
+}

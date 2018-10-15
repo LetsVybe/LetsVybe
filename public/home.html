@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./styles/home.css" >
+
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.5.4/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.5.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.5.4/firebase-firestore.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+</head>
+<body>
+    <div id="feed-container">
+        <div class="feed">
+            <div class="question">
+                <input id="upload" type="text"/>
+            </div>
+            <div class="answers">
+                <p>Options:</p>
+                <input type="text" id="option0">
+                <input type="text" id="option1">
+                <input type="text" id="option2">
+                <input type="text" id="option3">
+                <p>Correct Answer:</p>
+                <select id="answer">
+                    <option value="NAN">Select Answer</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <p>Privacy</p>
+                <select>
+                    <option value="friends">Only Friends</option>
+                    <option value="global" selected>Global</option>
+                </select>
+                <button id="submit-question">Submit</button>
+            </div>
+        </div>
+        <div class="feed">
+            <div class="posting-user-info">
+
+                <img class="posting-user-img" src="#">
+                <p class="posting-user-name">User name</p>
+            </div>
+            <div class="question"> What is your favorite food</div>
+
+            <div class="answers">
+                <p class="option selected">Option 1</p>
+                <p class="option not_selected">Option 2</p>
+                <p class="option not_selected">Option 3</p>
+                <p class="option not_selected">Option 4</p>
+            </div>
+        </div>
+
+    </div>
+    <script src="scripts/home.js"></script>
+</body>
+</html>

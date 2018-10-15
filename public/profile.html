@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.5.4/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.5.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.5.4/firebase-firestore.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <link rel="stylesheet" href="./styles/profile.css">
+</head>
+<body>
+    <img id="profile-img">
+    <div id="friends">
+        <h2>Friend's List</h2>
+    </div>
+
+
+    <div id="modal" class="modal">
+        <div id="modal-question" class="modal-content" style="text-align:center;">
+            <p>Who is your favorite singer?</p>
+            <form action="" id="form-answers">
+                <input type="radio" value="0" name="option">
+                <input type="text" id="option0"><br>
+
+                <input type="radio" value="1" name="option">
+                <input type="text"  id="option1"><br>
+
+                <input type="radio" value="2" name="option">
+                <input type="text" id="option2"><br>
+
+                <input type="radio" value="3" name="option">
+                <input type="text" id="option3"><br>
+
+                <button type="button" id="submit-modal-question">Submit</button>
+            </form>
+
+
+        </div>
+
+
+        <div id="modal-info" class="modal-content">
+            <div class="info">
+                <p>Name: </p>
+                <input type="text" name="name", id="name">
+            </div>
+
+            <div class="info">
+                <p>Age: </p>
+                <input type="text" name="name", id="age">
+            </div>
+            <div class="info"></div>
+            <button type="button" id="submit-modal-info">Submit</button>
+        </div>
+
+    </div>
+    <script src="scripts/profile.js"></script>
+</body>
+</html>
