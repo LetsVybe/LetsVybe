@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "letsvybe-e4796"
+    "default": "letsvybe-e4796",
+    "LetsVybe": "letsvybe-e4796"
   }
 }

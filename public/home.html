@@ -14,13 +14,20 @@
     <script defer src="/__/firebase/init.js"></script>
 </head>
 <body>
+    <nav id="nav-top">
+
+          Here are some nav things.
+    </nav>
+    <nav id="nav-left">
+      Here are some more nav things.
+    </nav>
     <div id="feed-container">
-        <div class="feed">
-            <div class="question">
+        <form id="add_challenge">
+            <div class="add_question">
                 <input id="upload" type="text"/>
             </div>
-            <div class="answers">
-                <p>Options:</p>
+            <div class="add_answers">
+            <p>Options:</p>
                 <input type="text" id="option0">
                 <input type="text" id="option1">
                 <input type="text" id="option2">
@@ -40,23 +47,22 @@
                 </select>
                 <button id="submit-question">Submit</button>
             </div>
+        </form>
+    </div>
+    <div class="feed">
+        <div class="posting-user-info">
+
+            <img class="posting-user-img" src="#">
+            <p class="posting-user-name">User name</p>
         </div>
-        <div class="feed">
-            <div class="posting-user-info">
+        <div class="question"> What is your favorite food</div>
 
-                <img class="posting-user-img" src="#">
-                <p class="posting-user-name">User name</p>
-            </div>
-            <div class="question"> What is your favorite food</div>
-
-            <div class="answers">
-                <p class="option selected">Option 1</p>
-                <p class="option not_selected">Option 2</p>
-                <p class="option not_selected">Option 3</p>
-                <p class="option not_selected">Option 4</p>
-            </div>
+        <div class="answers">
+            <p class="option selected">Option 1</p>
+            <p class="option not_selected">Option 2</p>
+            <p class="option not_selected">Option 3</p>
+            <p class="option not_selected">Option 4</p>
         </div>
-
     </div>
     <script src="scripts/home.js"></script>
 </body>
