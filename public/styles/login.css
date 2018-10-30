@@ -108,20 +108,21 @@ a {
 }
 .content label {
   display: inline-block;
+  background-color: #FFFFFF;
   width: 20px;
   height: 20px;
   cursor: pointer;
   position: relative;
-  margin-left: 5px;
-  margin-right: 10px;
-  top: 5px;
+  margin-left: 2px;
+  margin-right: 9px;
+  top: 10px;
 }
 
 .content input[type=checkbox]:checked + label:before {
   content:"\2713";
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   font-size: 20px;
-  color: Black;
+  color: whitergb(190, 22, 210);
   text-align: center;
   line-height: 20px;
 }
