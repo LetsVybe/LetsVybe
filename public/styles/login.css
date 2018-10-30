@@ -5,11 +5,9 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-html {
-  background: white;
-}
+
 h1 {
-  color: white;
+  color: #FFFFFF;
 }
 .bg-image {
   background-color: black;
@@ -28,15 +26,16 @@ body {
   font-size: 16px;
   font-smoothing: antialiased;
   font-weight: 600;
+  height:100vh;
 }
 a {
-  color: #BBB;
+  color: #0e00ff;
 }
 .blinking {
   animation:blinkingText 1.8s infinite;
   text-align: center;
   font-size: 125px;
-  color: white;
+  color: #FFFFFF;
 }
 @keyframes blinkingText {
   0% {
@@ -88,6 +87,9 @@ a {
   font-size: 2.0rem;
   font-weight: 600;
   padding-bottom: 30px;
+  color: #FFFFFF;
+}
+.content .noaccount {
   color: white;
 }
 .content input {
@@ -114,22 +116,7 @@ a {
   margin-right: 10px;
   top: 5px;
 }
-/* .content label:before {
-  content:"";
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  position: absolute;
-  left: 0;
-  bottom: 1px;
-  background-color: #aaa;
-  -moz-box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 1px 0px 0px rgba(255, 255, 255, 0.8);
-  -webkit-box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 1px 0px 0px rgba(255, 255, 255, 0.8);
-  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 1px 0px 0px rgba(255, 255, 255, 0.8);
-} */
+
 .content input[type=checkbox]:checked + label:before {
   content:"\2713";
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
@@ -140,7 +127,7 @@ a {
 }
 .content span {
   font-size: 0.9rem;
-  color: white;
+  color: #FFFFFF;
 }
 .content button {
   width: 100%;
@@ -148,7 +135,7 @@ a {
   padding: 10px;
   margin: 20px 0px;
   background-color: #66A756;
-  color: White;
+  color: #FFFFFF;
   border: none;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -193,6 +180,7 @@ a {
 }
 .content .buttons button.facebook {
   background-color: #4464B2;
+  /* background-color: #5C5CFF; */
 }
 .content .buttons button.twitter {
   background-color: #28A9E0;
@@ -200,12 +188,3 @@ a {
 .content .buttons button.google {
   background-color: #DA4735;
 }
-/* .content .buttons:after {
-  content:"";
-  display: block;
-  clear: both;
-}
-.content .already {
-  text-align: center;
-  font-size: 0.9rem;
-} */
