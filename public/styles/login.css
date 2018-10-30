@@ -31,6 +31,7 @@ body {
 a {
   color: #0e00ff;
 }
+
 .blinking {
   animation:blinkingText 1.8s infinite;
   text-align: center;
@@ -84,9 +85,9 @@ a {
 }
 .content .title {
   text-align: center;
-  font-size: 2.0rem;
+  font-size: 45px;
   font-weight: 600;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   color: #FFFFFF;
 }
 .content .noaccount {
