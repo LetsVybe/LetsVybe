@@ -1,0 +1,242 @@
+.logo{
+    height: 3.25rem;
+    margin-left: 3rem;
+}
+
+.search {
+    flex: 0 0 40%;
+
+    display: flex;
+
+    &__input{
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+        background-color:lightgrey;
+        border: none;
+        padding: .7rem 2rem;
+        border-radius:100px;
+        width: 90%;
+        transition: all .2s;
+        margin-right: -3.25rem;
+        &:focus{
+            outline: none;
+            width: 100%;
+        }
+        
+    }
+
+    &__button{
+        border: none;
+        background-color:lightgrey;
+        &:focus{
+            outline: none;
+        }
+        &:active {
+            transform: translateY(2px);
+        }
+    }
+
+    &__icon{
+        height: 2.25rem;
+        width: 2.25rem;
+    }
+}
+
+.user-nav{
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    fill: #fff;
+    
+    & > * {  // all their children
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    & > *:hover{
+        background: var(--color-primary-light);
+    }
+
+    
+    &__icon-box{
+        position: relative;
+    }
+
+    &__icon{
+        display: block;
+         margin: auto;
+        height: 2rem;
+        width: 2rem;
+    }
+
+    &__notification{
+        font-size: .8rem;
+        height: 1.75rem;
+        width: 1.75rem;
+        border-radius: 125px;
+        background-color: red;
+        position: absolute;
+        top: 1.5rem;
+        right: 1rem;
+
+        display: flex;
+        justify-content: center;
+    }
+    &__user{
+
+    }
+
+
+    &__user-photo{
+        height: 54px;
+        width: 54px;
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+
+    &__user-name{
+
+    }
+}
+
+.feed{
+    // background-color:#fff;
+    height: 50vh;
+    width: 100%;
+    
+}
+
+.news{
+    display: grid;
+
+    width: 530px;
+    // margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.1);
+    // margin: 20px auto;
+    border-radius: 2.5px;
+    background-color: #fff;
+    margin: 2.5rem auto;
+    grid-column-gap: 100px;
+
+
+    grid-template-rows: 75px 75px 50px;
+
+    // grid-template-columns: 530px;
+
+    grid-row-gap: 25px;
+
+    &__header{
+        border-bottom: 1px solid lightgrey;
+        margin: 0 1rem;
+        display: grid;
+        grid-template-rows: 75px; 
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+
+        &--img{
+           margin: 4rem auto;
+        }
+
+        &--title{
+            color: #000;
+        }
+
+        &__line{
+            height: 2px;
+            width: 100%;
+            margin: 2px auto;
+
+        }
+    }
+
+
+    &__userContent{
+        margin: 1rem 4rem;
+    }
+
+    &__activity{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    &--icon{
+       display: block;
+       margin: auto;
+
+    }
+    }
+
+}
+
+.post{
+    display: grid;
+    grid-template-rows: 25px 100px 25px;
+    width: 530px;
+    // margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.1);
+    // margin: 20px auto;
+    border-radius: 2.5px;
+    background-color: #fff;
+    margin: 2.5rem auto;
+    &--title{
+        height: 25px;
+    }
+
+}
+
+.postarea{
+    display: flex;
+
+    &__img{
+        flex-basis: 25%;
+        margin:2rem;
+        &--pic{
+            border-radius: 50%;
+        }
+    }
+    &__textField{
+        flex-basis: 75%;
+
+    }
+}
+.pic{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.sidebar{
+        margin: 9rem auto;
+        // border: 3px solid red;
+        background: white;
+        display: grid;
+        grid-template-rows: 5% 95%;
+        // background: green;
+        grid-row-gap: 20px;
+        overflow:hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,.1);
+        .stories{
+            display: grid;
+            grid-row-gap: 10px;
+        }
+        &__side{
+            grid-template-rows: 50px;
+            // border: 3px solid blue;  
+            .sidebar__side:last-child{
+                margin-bottom: 100px;
+            }
+
+        }
+    }
+
+.submitButton{
+
+    width: 40%;
+    margin: 2.5px auto;
+    height: 20px;
+    background: green;
+    border-radius: 5px;
+}

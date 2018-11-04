@@ -1,0 +1,49 @@
+.container{
+   width: 100%;
+    margin: 0 auto;
+    background-color: #ededed;
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+    height: 200vh;
+}
+
+
+.header{
+    height: 7.5rem;
+    background-color:#1E2749 ;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.sidebar{
+    flex:0 0 20%;
+}
+.content {
+    display: flex;
+    // background: yellow;
+}
+
+.vybeView{
+    background-color:  #ededed;
+    // background: red;
+    margin: 2.5rem auto;
+    flex:0 0 60%;
+    height: 100vmax;
+    justify-content:space-between;
+}
+
+.container-title{
+    color: black;
+    font-family: 'Open-Sans' ,sans-serif;
+    margin: 1rem auto;
+    display: inline;
+    position: relative;
+    left: 100px;
+
+
+}
+
+img{
+    width: 64px;
+    height: 64px;
+}
