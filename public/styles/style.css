@@ -19,6 +19,9 @@ body {
   line-height: 1.6;
   height: 100vh;
 }
+span{
+  background-color: #FFFFFF;
+}
 li {
   list-style: none;
 }
@@ -27,6 +30,9 @@ li {
   margin-right: 5px;
   margin-left: 0px;
   color:white;
+}
+h2 {
+  font-size: 26px;
 }
 /* Code from home.css in test users - github */
  #feed-container {
@@ -65,7 +71,7 @@ li {
   border-radius: 10px;
   width: 90%;
   margin: 0%;
-  padding: 0px;
+  padding: 20px;
   font-family:"Andale Mono";
   font-size: large;
 }
@@ -159,11 +165,12 @@ p {
 .sidebar {
   flex: 0 0 20%;
   background-color: #FFFFFF;
-  border-right: rgb(188, 181, 191);
+  border: rgb(72, 10, 173);
   border-style: solid;
+  margin: 16px;
   /* background-color: #fff;
   border-style: solid; */
-  border-color: rergb(153, 16, 217);
+  ?
 }
 .content {
   display: flex;
@@ -257,11 +264,11 @@ img {
   width: 2rem;
 }
 .user-nav__notification {
-  font-size: .8rem;
+  font-size: 1.0rem;
   height: 1.75rem;
   width: 1.75rem;
   border-radius: 125px;
-  background-color: red;
+  background-color: rgb(255, 255, 255);
   position: absolute;
   top: 1.5rem;
   right: 1rem;
@@ -375,6 +382,7 @@ img {
 /* border:100px solid rgb(96, 0, 219);  } */
  .sidebar__side {
   grid-template-rows: 50px;
+  padding-left: 15px;
 }
 .sidebar__side .sidebar__side:last-child {
   margin-bottom: 50px;
@@ -404,6 +412,7 @@ img {
   background-color: #311B92;
   color: #FFFFFF;
   width:90%;
+  height: 80px;
   margin-bottom: 30px;
   margin-top: 10px;
 }
@@ -411,18 +420,21 @@ img {
   background-color: #311B92;
   color: #FFFFFF;
   width:90%;
+  height: 80px;
   margin-bottom: 30px;
 }
 .groups {
   background-color: #311B92;
   color: #FFFFFF;
   width:90%;
+  height: 80px;
   margin-bottom: 30px;
 }
 .mySettings {
   background-color: #311B92;
   color: #FFFFFF;
   width:90%;
+  height: 80px;
   margin-bottom: 30px;
 }
 .btn {
