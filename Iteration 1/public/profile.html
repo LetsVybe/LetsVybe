@@ -1,65 +1,196 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/5.5.4/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/5.5.4/firebase-auth.js"></script>
-    <script defer src="/__/firebase/5.5.4/firebase-database.js"></script>
-    <script defer src="/__/firebase/5.5.4/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/5.5.4/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+    <!--         Google Foonts Open Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/style.css">
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
+    <title>Vybe</title>
   </head>
+
   <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+
+    <div class="container">
+      <header class="header">
+        <div class="user-nav">
+
+          <div class="user-nav__icon-box">
+            <div class="letsvybelogo">
+              LETSVYBE
+            </div>
+
+            <!-- <span class="user-nav__user-name">Jorde</span> -->
+          </div>
+        </div>
+        <!-- <img src="img/pulse.svg" class="logo"> -->
+
+        <nav class="user-nav">
+          <div class="user-nav__icon-box">
+            <div class="profilePic">
+              <img src="../img/userjorde.png" class="user-nav__user-photo" alt="Your Profile Picture">
+            </div>
+
+            <div class="firstName">
+              First Name
+            </div>
+            <div class="lastName">
+              Last Name
+            </div>
+
+            <svg class="user-nav__icon">
+              <use href="img/menu.svg#Capa_1"></use>
+            </svg>
+            <!-- <img class="user-nav__icon"  src="img/menu.svg"> -->
+            <img class="friends" src="../img/message.png">
+            <span class="user-nav__notification">7</span>
+          </div>
+
+          <div class="user-nav">
+            <div class="user-nav__icon-box">
+              <svg class="user-nav__icon">
+                <use xlink:href="../img/friends.jpg"></use>
+                <img class="friends" src="../img/friends.png">
+              </svg>
+              <span class="user-nav__notification">13</span>
+
+            </div>
+
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn"></button>
+            <img class="searchbtn" src="../img/search.png" width="10" height="10" />
+            <div class="dropdown-content">
+              <a href="#">Home</a>
+              <a href="#">My Settings</a>
+              <a href="#">Vybe Challenges</a>
+              <a href="#">Vybe Groups</a>
+              <a href="#">Log Out</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <!--
+    <form action="#" class="search">
+      <input type="text" class="search__input">
+      <button class="search__button">
+        <svg class="search__icon">
+          <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+        </svg>
+      </button>
+    </form> -->
+
+
+      <!-- <div class="content">
+      <div class="sidebar">
+        <div class="title">
+          <br>
+          <br>
+
+
+        </div>
+        <div class="stories">
+          <div class="sidebar__side">
+              <button class="btn logOut">Log Out</button>
+
+            <button class="btn mySettings">My Settings</button>
+
+            <button class="btn challenges">Vybe Challenges</button>
+
+            <button class="btn groups">Vybe Groups</button>
+
+          </div>
+          <div class="sidebar__side">2</div>
+          <div class="sidebar__side">
+
+          </div>
+        </div>
+      </div>
+ -->
+
+
+
+      <main class="vybeView">
+        <!-- <div class="post"> -->
+        <!-- <span class="post--title">Comment</span>
+
+          <div class="postarea">x
+            <a class="postarea__img">
+              <img src="" class="postarea__img--pic">
+            </a>
+            <textarea class="postarea__textField" type="text" id="change" placeholder="I have a good question"></textarea>
+          </div> -->
+
+        <!-- <button name="submitPost" class="submitButton">Post</button> -->
+        <!-- </div> -->
+
+        <div class="center-screen">
+          <h2>Vyber Feed</h2>
+        </div>
+
+        <div class="feed">
+          <p>
+            Vyber Question :
+          </p>
+          <div class="questionBefore">
+            <input id="upload" type="text" />
+          </div>
+          <div class="answers">
+            <p>Options:</p>
+            <input type="text" id="option0" placeholder="Option 1">
+            <input type="text" id="option1" placeholder="Option 2">
+            <input type="text" id="option2" placeholder="Option 3">
+            <input type="text" id="option3" placeholder="Option 4">
+            <p>Correct Answer:</p>
+            <select id="answer">
+              <option value="NAN">Select Answer</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+            <p>Privacy</p>
+            <select>
+              <option value="friends">Only Friends</option>
+              <option value="global" selected>Global</option>
+            </select>
+            <button class="btn submitQuestion">Submit</button>
+          </div>
+        </div>
+        <div class="feed">
+          <div class="posting-user-info">
+
+            <img class="posting-user-img" src="#">
+            <p class="posting-user-name">User name</p>
+          </div>
+          <div class="questionAfter">What is your favorite food?</div>
+
+          <div class="answers">
+            <p class="option selected">Option 1</p>
+            <p class="option not_selected">Option 2</p>
+            <p class="option not_selected">Option 3</p>
+            <p class="option not_selected">Option 4</p>
+          </div>
+          <ul>
+            <li>
+        </div>
+
+        </ul>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+    </main>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
+    <!-- <nav> class="sidebar">
+                    Navigator
+                </nav> -->
+    </div>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
   </body>
+
 </html>
