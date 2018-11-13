@@ -8,6 +8,24 @@ let users_ref;
 let firestore;
 
 // LetsVybe Prototypes
+/**
+ * VybeChallenge
+ * @param questions: an empty array to be filled with question objects
+ * @param date: the real-time date grabbed as the object is created
+ * @param dislikes: integer of people who selected dislike
+ * @param likes: integer of people who selected like
+ * @param private: a boolean to determine if vybechallenge is private or not
+ * @param tags: an empty array to be filled with tag objects
+ * @param uid: the user id who created the VybeChallenge object.
+ * @constructor
+ *   - assumes uid is already grabbed from firestore
+ * @addQuestion
+ *   - pushes a question to the VybeChallenge questions array
+ * @addTag
+ *   - pushes a tag to the VybeChallenge tags array
+ * @uploadChallenge
+ *   - uploads the VybeChallenge object to firestore
+ */
 function VybeChallenge(){
     this.questions = [];
     this.date = Date.now();
@@ -48,9 +66,24 @@ VybeChallenge.prototype.uploadChallenge = function(){
     }).then(result => {console.log('successfully uploaded challenge')}).catch(error => {console.log(error.message)});
 }
 
+/**
+ * Question
+ * @param question: a user input string
+ * @param answerSet: a list of user input strings represent possible answers to a question
+ * @param answerCorrect: an integer in {0, 1, 2, 3}
+ * @param answerCount = an array representing the integer count of people who answered each question
+ * @param answerUsersn = an array of users who answered answern where n is in {0, 1, 2, 3}
+ * @param uid: the id of the user who created the question object
+ * @constructor
+ *   - input: question, answer0, answer1, answer2, answer3, answerCorrect, uid from forms on feed.html
+ *   - output: Question object
+ *@uploadQuestion
+ *   - inputs a vybeChallenge object and an upload indicator
+ */
 function Question(question, answer0, answer1, answer2, answer3, answerCorrect, uid){
     this.question = question;
     this.answerSet = [answer0, answer1, answer2, answer3];
+    this.answerCorrect = answerCorrect;
     this.answerCount = [0, 0, 0, 0];
     this.answerUsers0 = [];
     this.answerUsers1 = [];
@@ -58,11 +91,7 @@ function Question(question, answer0, answer1, answer2, answer3, answerCorrect, u
     this.answerUsers3 = [];
 }
 
-Question.prototype.getObject = function(){
-    return this;
-}
-
-Question.prototype.uploadQuestion = function(challenge, upload){
+Question.prototype.uploadQuestion = function(vybeChallenge, upload){
     questionsRef.add({
         question: this.question,
         answerSet: this.answerSet,
@@ -76,9 +105,9 @@ Question.prototype.uploadQuestion = function(challenge, upload){
         console.log(result);
         // get the id of the question object from result and call the function to update the question id in the challenge
         console.log(result.id);
-        challenge.addQuestion(result.id, true);
+        vybeChallenge.addQuestion(result.id, true);
         if (upload){
-            challenge.uploadChallenge();
+            vybeChallenge.uploadChallenge();
         }
     }).catch(error => {
         console.log(error.message);
@@ -197,23 +226,50 @@ window.onload = function(){
 
     // 1. Grab All Vybe Challenges
     console.log("START:  grab all vybe challenges");
+
     // To grab all global vybe challenges, we can go to our vybe challenges collection (vybeChallengesRef) and
     // find the set of vybe challenges where for each vybe challenge, the privacy is set to global.
     // querySnapshot is then used to...
 
+
     let allGlobalVybeChallenges = getGlobalVybeChallenges(vybeChallengesRef);
     console.log("END:  grab all vybe challenges");
+
+    // REST OF CODE NOT GONE OVER YET; hence, commented out
+    // questions_ref = firestore.collection('questions');
+    // console.log(questions_ref);
+    // users_ref = firestore.collection('users');
+    //
+    // // Change listener.  Anytime something changes in the db we get that change back.
+    // //
+    // questions_ref.onSnapshot(snapshot => {
+    //     let changes = snapshot.docChanges();
+    //     changes.forEach(change => {
+    //         if(change.type === 'added'){
+    //             get_answer_and_make_post(change.doc);
+    //         }
+    //     });
+    // });
 
 }
 
 function getGlobalVybeChallenges(vybeChallengesRef){
-    let allGlobalVybeChallenges = vybeChallengesRef.where("privacy", "==", "global")
+    let allGlobalVybeChallenges = vybeChallengesRef.where("private", "==", false)
         .get()
         .then(function(querySnapshot){
-            querySnapshot.forEach(function (doc) {
-                // doc.data() is never undefined for query doc snapshots
+            console.log("... grabbing global challenges ...");
+            // if (doc.exists) {
+            //     console.log("Document data:", doc.data());
+            // } else {
+            //     // doc.data() will be undefined in this case
+            //     console.log("No global challenges in database or an error");
+            // }
+
+            querySnapshot.forEach(function(doc) {
+                // doc.data() is never undefined for query doc snapshot
                 console.log(doc.id, '=>', doc.data());
             });
+            console.log("... done grabbing global challenges ...")
         })
         .catch(function(error){
             console.log("Error getting global vybe challenge: ", error);
