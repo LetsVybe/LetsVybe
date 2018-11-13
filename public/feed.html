@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./styles/home.css" >
+
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.5.4/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.5.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.5.4/firebase-firestore.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+</head>
+<body>
+<nav id="nav-top">
+
+    Here are some nav things.
+</nav>
+<nav id="nav-left">
+    Here are some more nav things.
+</nav>
+<div id="feed-container">
+    <form class="add-vybe-challenge"><!-- Class used for: styling, logic -->
+        <div class="add-question"> <!-- Class used for: styling IF NOT DELETE CLASS -->
+            <p>Enter Question:</p>
+            <input id="upload" type="text"/>
+        </div>
+        <div class="add-answer-set"><!-- Class used for: styling IF NOT DELETE CLASS -->
+            <p>Enter Possible Answers:</p>
+            <input type="text" id="add-answer0"><!-- ID used for: logic -->
+            <input type="text" id="add-answer1"><!-- ID used for: logic -->
+            <input type="text" id="add-answer2"><!-- ID used for: logic -->
+            <input type="text" id="add-answer3"><!-- ID used for: logic -->
+            <p>Choose Correct Answer:</p>
+            <select id="add-answer-correct">
+                <option value="NAN">Select Answer</option>
+                <option value="1">1</option><!-- IS VALUE NECESSARY HERE? -->
+                <option value="2">2</option><!-- IS VALUE NECESSARY HERE? -->
+                <option value="3">3</option><!-- IS VALUE NECESSARY HERE? -->
+                <option value="4">4</option><!-- IS VALUE NECESSARY HERE? -->
+            </select>
+            <p>Select Privacy Type:</p>
+            <select>
+                <option value="vybees">Only Who I'm Vybing With</option>
+                <option value="global" selected>Global</option>
+            </select>
+            <p>Tag challenge</p>
+            <input type="text" id="add-tags"><!-- ID used for: logic -->
+            <button type="button" id="create-vybe-challenge">Create Vybe Challenge</button><!-- Class used for: styling, logic -->
+        </div>
+    </form>
+</div>
+<div class="feed">
+    <div class="posting-user-info">
+
+        <img class="posting-user-img" src="#">
+        <p class="posting-user-name">User name</p>
+    </div>
+    <div class="question"> What is your favorite food</div>
+
+    <div class="answers">
+        <p class="option selected">Option 1</p>
+        <p class="option not_selected">Option 2</p>
+        <p class="option not_selected">Option 3</p>
+        <p class="option not_selected">Option 4</p>
+    </div>
+</div>
+<script src="scripts/feed.js"></script>
+</body>
+</html>
