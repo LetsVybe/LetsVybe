@@ -252,6 +252,10 @@ window.onload = function(){
     // });
 
 }
+function getQuestion(questionsRef, qid){
+    let question = questionsRef.doc(qid).get();
+    return question
+}
 
 function getGlobalVybeChallenges(vybeChallengesRef){
     let allGlobalVybeChallenges = vybeChallengesRef.where("private", "==", false)
@@ -268,17 +272,14 @@ function getGlobalVybeChallenges(vybeChallengesRef){
             querySnapshot.forEach(function(doc) {
                 // doc.data() is never undefined for query doc snapshot
                 console.log(doc.id, '=>', doc.data());
+                console.log(" - creating challenge div");
+                createChallengeDiv(doc);
             });
             console.log("... done grabbing global challenges ...")
         })
         .catch(function(error){
             console.log("Error getting global vybe challenge: ", error);
         });
-    for (vybeChallenge in allGlobalVybeChallenges){
-        console.log(vybeChallenge.id);
-    }
-    return allGlobalVybeChallenges
-
 }
 
 function setChallengeVyberInfo(uid){
@@ -300,37 +301,50 @@ function setChallengeVyberInfo(uid){
     return challenge_vyber_div
 }
 
-function createChallengeDiv(question, answer){
-    console.log(question.data());
+function createChallengeDiv(vybeChallenge) {
+    questions_array = vybeChallenge.get("questions");
+    console.log("questions array: ", vybeChallenge.get("questions"));
 
-    // Create a div to house the challenge
-    let challenge_div = document.createElement('div');
-    challenge_div.setAttribute('class', 'challenge');
+    for (question in questions_array){
+        console.log("question exists: ", questions_array[question]);
+        // now that we know the question exists we must grab it from our database
+        question = getQuestion(questionsRef, questions_array[question])
+            .then(q => {
+            console.log(q);
+        });
 
-    // Create a div to house the image and name of the vyber whose challenge it is
-    let challenge_vyber_div = set_challenge_vyber_info(question.uid);
-    challenge_div.appendChild(challenge_vyber_div);
-
-    // Create a div to house the question
-    let question_div = set_challenge_question(question.uid);
-
-    // Create a div to house the answer set and create answers within
-    //    Note:  answer_set_div has answer_div children
-    let answer_set_div = set_challenge_answer_set(question.uid);
-
-    // Add a listener
-    option.addEventListener('click', function(){
-        let curr_num = this.getAttribute('id').slice(-1);
-        let curr_post_id = this.parentElement.parentElement.getAttribute('id');
-        for (let j = 0; j < 4; j++){
-            document.getElementById(curr_post_id +j).classList.remove('selected');
-            document.getElementById(curr_post_id +j).classList.add('not_selected');
-        }
-        option.classList.add('selected');
-        answers_ref.doc(post_id).set({answer: curr_num}, {merge: true});
-    })
-
-
+    }
+    //
+    // console.log(question.data());
+    //
+    // // Create a div to house the challenge
+    // let challenge_div = document.createElement('div');
+    // challenge_div.setAttribute('class', 'challenge');
+    //
+    // // Create a div to house the image and name of the vyber whose challenge it is
+    // let challenge_vyber_div = set_challenge_vyber_info(question.uid);
+    // challenge_div.appendChild(challenge_vyber_div);
+    //
+    // // Create a div to house the question
+    // let question_div = set_challenge_question(question.uid);
+    //
+    // // Create a div to house the answer set and create answers within
+    // //    Note:  answer_set_div has answer_div children
+    // let answer_set_div = set_challenge_answer_set(question.uid);
+    //
+    // // Add a listener
+    // option.addEventListener('click', function(){
+    //     let curr_num = this.getAttribute('id').slice(-1);
+    //     let curr_post_id = this.parentElement.parentElement.getAttribute('id');
+    //     for (let j = 0; j < 4; j++){
+    //         document.getElementById(curr_post_id +j).classList.remove('selected');
+    //         document.getElementById(curr_post_id +j).classList.add('not_selected');
+    //     }
+    //     option.classList.add('selected');
+    //     answers_ref.doc(post_id).set({answer: curr_num}, {merge: true});
+    // })
+    //
+    //
 
 }
 function set_challenge_question(question){
