@@ -4,7 +4,6 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
     <!--         Google Foonts Open Sans -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -15,16 +14,13 @@
   </head>
 
   <body>
-
     <div class="container">
       <header class="header">
         <div class="user-nav">
-
           <div class="user-nav__icon-box">
             <div class="letsvybelogo">
               LETSVYBE
             </div>
-
             <!-- <span class="user-nav__user-name">Jorde</span> -->
           </div>
         </div>
@@ -38,18 +34,11 @@
         </form>
         <!--
     @@@@@@@@@@@@@@@@@@@@@@@@@@@@ THIS IS NAV BAR @@@@@@@@@@@@@@@@@@@@@@@@@ -->
-
         <header class="header">
-
           <!-- <img src="img/pulse.svg" class="logo"> -->
-
           <nav class="user-nav">
-            <!-- <div class="profilePic">
-            <img src="../img/userjorde.png" class="user-nav__user-photo" alt="Your Profile Picture">
-          </div> -->
 
             <div class="user-nav__icon-box">
-
               <div class="firstName">
                 First Name
               </div>
@@ -64,7 +53,6 @@
             <div class="messages">
               <svg class="user-nav__icon">
                 <img class="messagesIcon" src="../img/message.png">
-
               </svg>
               <span class="user-nav__notification">17</span>
             </div>
@@ -91,7 +79,6 @@
             </div>
           </nav>
         </header>
-
         <!--  @@@@@@@@@@@@@@@@@@@@@@@@@@@THIS IS END OF  NAVBAR @@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
       </header>
 
@@ -100,7 +87,6 @@
           <div class="profileFeed">
             <div class="circularProfileImage">
             </div>
-
           </div>
           <div class="firstName">
             <center>
@@ -114,29 +100,95 @@
             <center>
               Vybe challenges
             </center>
-
           </div>
           <line />
           <div class="viewProfile">
             <center>
               <a href="#"> View Profile</a>
-
             </center>
-
           </div>
-
         </div>
-
-
       </div>
       <!-- ********** DIV ELEMENT TO POST CHALLENGE -->
       <div class="postChallenge">
+        <div class="circularProfileImage">
+        </div><textarea rows="5" cols="82" placeholder="How are you feeling today?">
+          </textarea>
+        <button class="postChallengeBtn"> Post Challenge</button>
+        <div class="center-screen">
+        </div>
+        <div class="vyberFeed">
+          <div class="dynamicChallenge">
 
+          </div>
+          <div class="circularProfileImage">
+            <div class="firstName">FName </div>
+            <div class="lastName"> LName </div>
+          </div>
+          <p>
+            Vyber Question :
+          </p>
+          <div class="questionBefore">
+            <input id="upload" type="text" />
+          </div>
+          <div class="answers">
+            <p>Options:</p>
+            <input type="text" id="option0" placeholder="Option 1">
+            <input type="text" id="option1" placeholder="Option 2">
+            <input type="text" id="option2" placeholder="Option 3">
+            <input type="text" id="option3" placeholder="Option 4">
+            <p>Correct Answer:</p>
+            <select id="answer">
+              <option value="NAN">Select Answer</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+            <p>Privacy</p>
+            <select>
+              <option value="friends">Only Friends</option>
+              <option value="global" selected>Global</option>
+            </select>
+            <button class="btn submitQuestion">Submit</button>
+          </div>
+          <div class="vybeWithMe">
+            <center>
+              Vybe
+            </center>
+          </div>
+          <div class="commentPost">
+            <center>
+              Comment
+            </center>
+          </div>
+          <!-- ********** DIV ELEMENT TO CREATE CHALLENGE -->
+          <div class="createChallenge">
+            <!-- ********** DIV ELEMENT TO DYNAMICALLY POST CHALLENGE -->
+            <div class="feed">
+              <div class="posting-user-info">
+                <div class="circularProfileImage" src="#">
+                  <div class="firstName">FName </div>
+                  <div class="lastName"> LName </div>
+                </div>
+              </div>
+              <div class="questionAfter">Question 1</div>
+              <div class="answers">
+                <p class="optionSelected">Option 1</p>
+                <p class="optionNotSelected">Option 2</p>
+                <p class="optionNotSelected">Option 3</p>
+                <p class="optionNotSelected">Option 4</p>
+              </div>
+              <ul>
+                <li>
+            </div>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+    </script>
     <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
 
@@ -145,8 +197,6 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-functions.js"></script>
-
-
     <script>
       // Initialize Firebase
       // TODO: Replace with your project's customized code snippet
