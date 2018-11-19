@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+    <!--         Google Foonts Open Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="revisedSettingsPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <title>Vybe</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="user-nav">
+          <div class="user-nav__icon-box">
+            <div class="letsvybelogo">
+              LETSVYBE
+            </div>
+            <!-- <span class="user-nav__user-name">Jorde</span> -->
+          </div>
+        </div>
+        <form action="#" class="search">
+          <input type="text" class="search__input">
+          <button class="search__button">
+            <svg class="search__icon">
+              <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+            </svg>
+          </button>
+        </form>
+        <!--
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@ THIS IS NAV BAR @@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <header class="header">
+          <!-- <img src="img/pulse.svg" class="logo"> -->
+          <nav class="user-nav">
+
+            <div class="user-nav__icon-box">
+              <div class="firstName">
+                First Name
+              </div>
+              <div class="lastName">
+                Last Name
+              </div>
+              <svg class="user-nav__icon">
+                <use href="img/menu.svg#Capa_1"></use>
+              </svg>
+              <!-- <img class="user-nav__icon"  src="img/menu.svg"> -->
+            </div>
+            <div class="messages">
+              <svg class="user-nav__icon">
+                <img class="messagesIcon" src="img/message.png">
+              </svg>
+              <span class="user-nav__notification">17</span>
+            </div>
+
+            <div class="user-nav">
+              <div class="user-nav__icon-box">
+                <svg class="user-nav__icon">
+                  <use xlink:href="img/friends.png"></use>
+                  <img src="img/friends.png" class="friendsIcon">
+                </svg>
+                <span class="user-nav__notification">13</span>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="dropbtn"></button>
+              <img src="img/search1.png" class="searchbtn" width="5" height="10" />
+              <div class="dropdown-content">
+                <a href="#">Home</a>
+                <a href="#">My Settings</a>
+                <a href="#">Vybe Challenges</a>
+                <a href="#">Vybe Groups</a>
+                <a href="#">Log Out</a>
+              </div>
+            </div>
+          </nav>
+        </header>
+        <!--  @@@@@@@@@@@@@@@@@@@@@@@@@@@THIS IS END OF  NAVBAR @@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+
+        <!-- Add font awesome icons to buttons  -->
+
+      </header>
+      <div class="middleBox">
+        <div class="Setting">
+          <center>
+            Settings
+          </center>
+        </div>
+        <div class="General" tabindex="3">
+
+          <img src="img/home.png" class="icon" />
+          General
+        </div>
+        <div class="Home" tabindex="1">
+          <img src="img/list.png" class="icon" />
+          Home
+        </div>
+        <div class="vybeChallenges" tabindex="2">
+          <img src="img/general.png" class="icon" />
+          Vybe Challenges
+        </div>
+        <div class="createChallenge" tabindex="4">
+          <img src="img/clipboard.png" class="icon" />
+          Create Challenges
+        </div>
+
+      </div>
+
+
+      <script src=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+      </script>
+      <!-- Firebase App is always required and must be first -->
+      <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
+
+      <!-- Add additional services that you want to use -->
+      <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-messaging.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-functions.js"></script>
+      <script>
+        // Initialize Firebase
+        // TODO: Replace with your project's customized code snippet
+        var config = {
+          apiKey: "AIzaSyAsZbv82yxR0vDFrCZnzXWA4sW65n1L4uM",
+          authDomain: "letsvybe-e4796.firebaseapp.com",
+          databaseURL: "https://letsvybe-e4796.firebaseio.com",
+          projectId: "letsvybe-e4796",
+          storageBucket: "letsvybe-e4796.appspot.com",
+          messagingSenderId: "527312988709"
+        };
+        firebase.initializeApp(config);
+
+      </script>
+      <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+      <script src="home.js"></script>
+      <script src="home-front.js"></script>
+  </body>
+
+</html>
