@@ -6,10 +6,6 @@
   margin: 0;
   padding: 0; }
 
-/* *,
-*::before,
-*::after {
-  box-sizing: inherit; } */
 
 html {
   box-sizing: border-box;
@@ -157,8 +153,7 @@ img {
 .vyberFeed
 {
   background-color: #f2edf6;
-  height: 300px;
-  margin-top: 40px;
+  margin-top: 90px;
   border: solid 2px rgb(229, 211, 233);
 }
 .search {
@@ -236,7 +231,7 @@ img {
     }
 .feed {
 height:15%;
-width:560px;
+width:550px;
 background-color:#f2edf6;
 display:inline-block;
 float: right;
@@ -280,7 +275,7 @@ border: solid 2px rgb(229, 211, 233);
       margin: auto; }
 
 .postChallenge{
-  height:190px;
+  height:140px;
   width:570px;
   background-color: #f2edf6;
   margin: 20px;
@@ -288,6 +283,7 @@ border: solid 2px rgb(229, 211, 233);
   display:inline-block;
   float: right;
   padding: 5px;
+  border: solid 2px rgb(229, 211, 233);
 
 }
 
@@ -331,17 +327,7 @@ border: solid 2px rgb(229, 211, 233);
 {
     border: solid 2px rgb(229, 211, 233);;
 }
-/* .createChallenge {
-  height:15%;
-  width:550px;
-  background-color:  rgb(125, 33, 175);
-  margin: 20px;
-  margin-right: 240px;
-  display:inline-block;
-  float: right;
-  margin-top: 150px;
-  padding: 50px;
-} */
+
 .post {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -405,23 +391,31 @@ border: solid 2px rgb(229, 211, 233);
   background-color: #4a148c;
   color: #fff;
   margin-left: 440px;
+}
 
+textarea
+{
+  margin-left: 80px;
 }
 /* PlaceHolder Color */
 .postChallenge textarea::-webkit-input-placeholder {
-color: #6900ff;
+color: #f09ce2;
+padding:5px 0 0 5px;
 }
 
 .postChallenge textarea:-moz-placeholder { /* Firefox 18- */
-color: #6900ff;
+color: #f09ce2;
+padding:5px 0 0 5px;
 }
 
 .postChallenge textarea::-moz-placeholder {  /* Firefox 19+ */
-color: #6900ff;
+color: #f09ce2;
+padding:5px 0 0 5px;
 }
 
 .postChallenge textarea:-ms-input-placeholder {
-color: #6900ff;
+color: #f09ce2;
+padding:5px 0 0 5px;
 }
   /* The container <div> - needed to position the dropdown content */
   .dropdown {
@@ -440,6 +434,14 @@ color: #6900ff;
   .optionSelected, .optionNotSelected
   {
     font-size: 14px;
+  }
+  .vybeBtn, .commentBtn {
+    width:100%;
+  }
+
+  .vybeBtn:active, .commentBtn:active {
+    background:rgb(110, 0, 250);
+    color: white;
   }
 
 
