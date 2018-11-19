@@ -112,9 +112,11 @@
       <!-- ********** DIV ELEMENT TO POST CHALLENGE -->
       <div class="postChallenge">
         <div class="circularProfileImage">
-        </div><textarea rows="5" cols="82" placeholder="How are you feeling today?">
-          </textarea>
-        <button class="postChallengeBtn"> Post Challenge</button>
+          <textarea rows="7" cols="65" placeholder="How are you feeling today?">
+            </textarea>
+          <button class="postChallengeBtn"> Post Challenge</button>
+        </div>
+
         <div class="center-screen">
         </div>
         <div class="vyberFeed">
@@ -152,16 +154,20 @@
             </select>
             <button class="btn submitQuestion">Submit</button>
           </div>
-          <div class="vybeWithMe">
-            <center>
-              Vybe
-            </center>
-          </div>
-          <div class="commentPost">
-            <center>
-              Comment
-            </center>
-          </div>
+          <button class="vybeBtn">
+            <div class="vybeWithMe">
+              <center>
+                Vybe
+              </center>
+            </div>
+          </button>
+          <button class="commentBtn">
+            <div class="commentPost">
+              <center>
+                Comment
+              </center>
+            </div>
+          </button>
           <!-- ********** DIV ELEMENT TO CREATE CHALLENGE -->
           <div class="createChallenge">
             <!-- ********** DIV ELEMENT TO DYNAMICALLY POST CHALLENGE -->
@@ -209,6 +215,7 @@
         messagingSenderId: "527312988709"
       };
       firebase.initializeApp(config);
+
     </script>
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
     <script src="home.js"></script>
