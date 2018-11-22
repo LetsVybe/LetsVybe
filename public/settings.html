@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Settings</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+      <!--         Google Foonts Open Sans -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+      <!-- Firebase scripts needed to run api calls-->
+      <script defer src="/__/firebase/5.5.8/firebase-app.js"></script>
+      <!-- include only the Firebase features as you need -->
+      <script defer src="/__/firebase/5.5.8/firebase-auth.js"></script>
+      <script defer src="/__/firebase/5.5.8/firebase-firestore.js"></script>
+      <script defer src="/__/firebase/5.5.8/firebase-storage.js"></script>
+
+      <!-- initialize the SDK after all desired features are loaded -->
+      <script defer src="/__/firebase/init.js"></script>
+  </head>
+  <body>
+      <!-- Update the display picture. -->
+      <h3>Change the display picture</h3>
+          <p>Current Pic:<img id="photoField" src='#'></p>
+          <p>New Pic:</p>
+          <input id="photoInput" type="file" accept="image/*">
+          <button id="updatePhoto-btn">Update Display Picture</button>
+
+      <!-- Update the username. -->
+      <h3>Change the username</h3>
+          <p>Current username:<p id="usernameField"></p></p>
+          <p>New username:</p>
+          <input id="usernameInput" type="input">
+          <button id="updateUsername-btn">Update Username</button>
+
+      <!-- Update the display name. -->
+      <h3>Change the display name</h3>
+          <p>Current display name:<p id="displayNameField"></p></p>
+          <p>New display name:</p>
+          <input id="displayNameInput" type="input">
+          <button id="updateDisplayName-btn">Update Display Name</button>
+
+      <!-- Update the password -->
+      <h3>Change the password</h3>
+          <p>Current Password:<p id="passwordField"></p></p>
+          <p>New password:</p>
+          <input id="passwordInput" type="password">
+          <button id="updatePassword-btn">Update Password</button>
+
+      <!-- TODO: Bijesh <h3>Select and change the questions</h3> -->
+
+      <!-- Update the age. -->
+      <h3>Change age</h3>
+          <p>Current age:<p id="ageField"></p></p>
+          <p>New age:</p>
+          <<input id="ageInput" type="input">
+          <button id="updateAge-btn">Update Age</button> 
+
+      <!-- Update the phone number. -->
+      <h3>Change the phone number</h3>
+          <p>Current phone number:<p id="phoneField"></p></p>
+          <p>New phone number:</p>
+          <input id="phoneInput" type="input">
+          <button id="updatePhone-btn">Update Phone</button>
+
+      <!-- Update the email. -->
+      <h3>Update email</h3>
+          <p>Current email:<p id="emailField"></p></p>
+          <p>New email:</p>
+          <input id="emailInput" type="input">
+          <button id="updateEmail-btn">Update Email</button>
+
+      <!-- Update the email. -->
+      <h3>Update gender</h3>
+          <p>Current gender:<p id="genderField"></p></p>
+          <p>New gender:</p>
+          <input id="genderInput" type="input">
+          <button id="updateGender-btn">Update Gender</button>
+
+      <!-- Javascript file incorporating all the functionalities.-->
+      <script src="scripts/userPrototype.js"></script>
+      <script src="scripts/SettingsDomElements.js"></script>
+      <script src="scripts/settings.js"></script>
+  </body>
+</html>
