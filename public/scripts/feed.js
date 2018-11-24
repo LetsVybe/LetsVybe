@@ -392,6 +392,12 @@ function renderFeed(user, questions){
     playSpan.appendChild(playImage)
     playButton.appendChild(playSpan)
 
+
+    //prevents playSpan HTML Element from firing events from Parent playButton
+    playSpan.onclick = function(event) {
+        event.stopPropagation();
+    }
+
     //replaces DOM with question and possible answers when the playButton is clicked
     playButton.onclick = function (event ){
         console.log(event)
