@@ -157,14 +157,13 @@ function createVybeChallengePrototype(){
     var vybeChallenge = new VybeChallenge();
     var question = new Question(question, answer0, answer1, answer2, answer3, correctAnswer);
     question.uploadQuestion(vybeChallenge, true);
-    // var correctAnswer = document.getElementById('')
    var modalId = 'myModal'
 //    console.log(modalId)
 //    closeOneModal(modalId)
    //function to clear data here
     
    //reload pages but need a better solution 
-//    location.reload(true);
+
 
 }
 
@@ -276,18 +275,6 @@ window.onload = function(){
     //     });
     // });
     window.alert("everything loaded")
-
-    // TODO: Jorde Integrate this into the front end.
-    // An example of getting the location data.
-    tempUser = { zipCode: '95134' }; // User object should be constructed with the zipCode.
-    getWeatherInformation(tempUser)
-        .then(weather => {
-            // When the weather information is extracted this function is called
-            // with the information about weather in the variable 'weather'.
-
-            console.log('Weather json', weather);
-
-        })
 }
 
 function parseChallenge(querySnapshot){
@@ -306,14 +293,6 @@ function getGlobalVybeChallenges(vybeChallengesRef){
         .get()
         .then(function(querySnapshot){
             console.log("... grabbing global challenges ...");
-            // console.log(querySnapshot)
-            // if (doc.exists) {
-            //     console.log("Document data:", doc.data());
-            // } else {
-            //     // doc.data() will be undefined in this case
-            //     console.log("No global challenges in database or an error");
-            // }
-        
 
             querySnapshot.forEach(function(doc) {
                 // doc.data() is never undefined for query doc snapshot
@@ -365,13 +344,13 @@ async function  createFeedPost(vybechallenge) {
 
 function renderFeed(user, questions){
     console.log('in  create object is : ')
-    console.log(user.displayName)
+    console.log(user.name)
     var ul = document.getElementById('feed-list')
     var li = document.createElement('li');
 
     var label = document.createElement('label')
     label.setAttribute('class', 'name-title  news__header--title')
-    label.innerHTML = user.displayName;
+    label.innerHTML = user.name;
 
 
     var containerDiv = document.createElement('div')
@@ -380,29 +359,20 @@ function renderFeed(user, questions){
     feed.setAttribute('class', 'news__header')
     var profileImage = document.createElement('img')
     profileImage.setAttribute('src', user.photoURL)
-    /*
-    Having some trouble creating SVGs with use dynamically with JS 
 
-    // var svgElem = document.createElementNS('../images/flash.svg#Capa_1"', 'svg'),
-    // var useElem = document.createElementNS('../images/flash.svg#Capa_1"', 'use');
-
-    // useElem.setAttributeNS('../images/flash.svg#Capa_1"', 'xlink:href', '#down-arrow');
-
-    // svgElem.appendChild(useElem);
-    */
     profileImage.setAttribute('class', 'user-nav__user-photo news__header--img')
     var userContent = document.createElement('div');
     userContent.setAttribute('class', 'news__userContent')
     console.log(typeof questions, questions)
     userContent.innerHTML = '<p> ' + questions[0].question + '</p>'
     var vybeButton = document.createElement("button")
-    vybeButton.setAttribute('class', 'news__activity__btn')
+    vybeButton.setAttribute('class', 'news__activity__btn vybe-btn')
     // var span = document.createElement('span')
     // span.setAttribute('class', 'news__activity--icon')
     var playButton = document.createElement("button")
-    playButton.setAttribute('class', 'news__activity__btn')
+    playButton.setAttribute('class', 'news__activity__btn play-btn')
     var optionButton = document.createElement("button")
-    optionButton.setAttribute('class', 'news__activity__btn')
+    optionButton.setAttribute('class', 'news__activity__btn option-btn')
     var newsActivity = document.createElement('div')
     newsActivity.setAttribute('class', 'news__activity');   
     
@@ -422,6 +392,19 @@ function renderFeed(user, questions){
     playSpan.appendChild(playImage)
     playButton.appendChild(playSpan)
 
+    //replaces DOM with question and possible answers when the playButton is clicked
+    playButton.onclick = function (event ){
+        console.log(event)
+        var currentElement = event.target;
+        var parentElement = currentElement.parentElement;
+
+        var postContainer = parentElement.parentElement;
+        var postContainerList = postContainer.children;
+        var oldElement = postContainerList[1];
+    
+        var newElement = renderQuestions(questions);
+        postContainer.replaceChild(newElement,oldElement);
+    }
 
     var optionSpan = document.createElement('span')
     optionSpan.setAttribute('class','news__activity--icon')
@@ -430,9 +413,6 @@ function renderFeed(user, questions){
     optionImage.setAttribute('class','user-nav__icon')
     optionSpan.appendChild(optionImage)
     optionButton.appendChild(optionSpan)
-
-
-
 
     newsActivity.appendChild(vybeButton)
     newsActivity.appendChild(playButton)
@@ -445,143 +425,7 @@ function renderFeed(user, questions){
 
     li.appendChild(containerDiv)
     ul.insertBefore(li, ul.firstChild)
-    
 }
-
-
-function setChallengeVyberInfo(uid){
-    let challenge_vyber_div = document.createElement('div');
-    challenge_vyber_div.setAttribute('class', 'challenge-vyber');
-    let challenge_vyber_img = document.createElement('img');
-    challenge_vyber_img.setAttribute('class', 'challenge-vyber-img');
-    let challenge_vyber_name = document.createElement('p');
-    challenge_vyber_name.setAttribute('class', 'challenge-vyber-name')
-    challenge_vyber_div.appendChild(challenge_vyber_img);
-    challenge_vyber_div.appendChild(challenge_vyber_name);
-    users_ref.doc(uid).get()
-        .then(result => {
-            challenge_vyber_img.src = result.data().photoURL;
-            challenge_vyber_name.innerHTML = result.data().name;
-        }).catch(error => {
-        console.log(error.message);
-    })
-    return challenge_vyber_div
-}
-
-function createChallengeDiv(vybeChallenge) {
-    questions_array = vybeChallenge.get("questions");
-    console.log("questions array: ", vybeChallenge.get("questions"));
-
-    for (question in questions_array){
-        console.log("question exists: ", questions_array[question]);
-        // now that we know the question exists we must grab it from our database
-        question = getQuestion(questionsRef, questions_array[question])
-            .then(q => {
-            console.log(q);
-        });
-
-    }
-    //
-    // console.log(question.data());
-    //
-    // // Create a div to house the challenge
-    // let challenge_div = document.createElement('div');
-    // challenge_div.setAttribute('class', 'challenge');
-    //
-    // // Create a div to house the image and name of the vyber whose challenge it is
-    // let challenge_vyber_div = set_challenge_vyber_info(question.uid);
-    // challenge_div.appendChild(challenge_vyber_div);
-    //
-    // // Create a div to house the question
-    // let question_div = set_challenge_question(question.uid);
-    //
-    // // Create a div to house the answer set and create answers within
-    // //    Note:  answer_set_div has answer_div children
-    // let answer_set_div = set_challenge_answer_set(question.uid);
-    //
-    // // Add a listener
-    // option.addEventListener('click', function(){
-    //     let curr_num = this.getAttribute('id').slice(-1);
-    //     let curr_post_id = this.parentElement.parentElement.getAttribute('id');
-    //     for (let j = 0; j < 4; j++){
-    //         document.getElementById(curr_post_id +j).classList.remove('selected');
-    //         document.getElementById(curr_post_id +j).classList.add('not_selected');
-    //     }
-    //     option.classList.add('selected');
-    //     answers_ref.doc(post_id).set({answer: curr_num}, {merge: true});
-    // })
-    //
-    //
-
-}
-// function set_challenge_question(question){
-//     question_div = document.createElement('div');
-//     question_div.setAttribute('class', 'question');
-//     question_div.innerHTML = question.question;
-//     return question_div
-// }
-
-// function set_challenge_answer_set(question){
-//     let answer_set_div = document.createElement('div');
-//     answer_set_div.setAttribute('class', 'answers');
-//     for( let i = 0; i < question.answers.length; i++){
-//         let answer_div = document.createElement('p');
-//         if(post_answer == i){
-//             answer_div.setAttribute('class', 'option selected');
-
-//         } else{
-//             answer_div.setAttribute('class', 'option not_selected');
-//         }
-//         answer_div.innerHTML = question.answers[i];
-//         answer_set_div.appendChild(answer_div);
-//     }
-// }
-// function create_feed(question_obj, post_answer){
-
-
-
-//     option.addEventListener('click', function(){
-//         let curr_num = this.getAttribute('id').slice(-1);
-//         let curr_post_id = this.parentElement.parentElement.getAttribute('id');
-//         for (let j = 0; j < 4; j++){
-//             document.getElementById(curr_post_id +j).classList.remove('selected');
-//             document.getElementById(curr_post_id +j).classList.add('not_selected');
-//         }
-//         option.classList.add('selected');
-//         answers_ref.doc(post_id).set({answer: curr_num}, {merge: true});
-//     })
-
-
-//     feed_div.appendChild(question_div);
-//     feed_div.appendChild(answer_div);
-
-//     page.appendChild(feed_div);
-// }
-//function makeVybeChallenge(){};
-// //answers_ref = firestore.collection('users').doc(uid).collection('answers');
-
-//
-// function get_answer_and_make_post(question_obj){
-
-
-//     answers_ref.doc(question_obj.id).get()
-//         .then(result=>{
-//             if (result.exists){
-//                 create_feed(question_obj, result.data().answer)
-
-//             } else {
-//                 create_feed(question_obj, null)
-//             }
-//         }).catch(error=>{
-//         console.log(error.message);
-//         create_feed(question_obj, null)
-//     })
-// }
-
-// BIJESH: Fill out what this does please. (k).
-// function validateQuestion(que, ans, idx){
-//     return true;
-// }
 
 function toggleQuestion(questionObj){
     
@@ -603,13 +447,12 @@ function toggleQuestion(questionObj){
 }
 
 
-// });
-
 /* Adds an eventListenter to every play-btn and manipulates DOM when it pressed */
 var isVybeClick = false;
 var isPlayClick = false;
 var isQuestionAnswered = false;
 
+function toggle(){
 document.querySelectorAll(".play-btn").forEach(function (element) {
     element.addEventListener("click", function () {
     if (isVybeClick === false) {
@@ -617,17 +460,17 @@ document.querySelectorAll(".play-btn").forEach(function (element) {
     var newE = document.createElement('div');
     var submitBtn = document.createElement('button');
     submitBtn.innerHTML = " Submit me "
-    newE.innerHTML = toggleQuestion(userId.question.question)
+    newE.innerHTML = renderQuestions()
     console.log(re)
     var userContent = document.getElementById('userContent');
     console.log(userContent)
     re.replaceChild(newE, userContent)
     newE.appendChild(submitBtn)
-    submitBtn.addEventListener('click',function(){
-        var results = document.createElement('div')
-        results.innerHTML = "results"
-        re.replaceChild(results,newE)
-    })
+    // submitBtn.addEventListener('click',function(){
+    //     var results = document.createElement('div')
+    //     results.innerHTML = "results"
+    //     re.replaceChild(results,newE)
+    // })
 }
 if (isVybeClick === true)
     window.alert("you already clicked dawg")
@@ -635,3 +478,46 @@ isVybeClick = true
 
 });
 });
+
+}
+
+//creates HTML to display Questions, takes only one question for now 
+function renderQuestions(questions){
+    console.log(questions)
+    //for at least one question
+    var question = questions[0];
+    var mainQuestion = question.question;
+    var possibleAnswer = question.answerSet;
+
+    console.log(question)
+    var questionContainer = document.createElement('div')
+    questionContainer.setAttribute('class','question')
+    // might have to create an array of these later
+    var questionAsked = document.createElement('div') 
+    questionAsked.setAttribute('id','question')
+    questionAsked.innerHTML = mainQuestion
+    questionContainer.appendChild(questionAsked)
+
+    var form = document.createElement('form')
+    form.setAttribute('id','questionForm')  
+     
+
+    for(let i =0; i < 4;i++){ // for each answer set, create HTML
+        var radioContainer = document.createElement('div')
+        radioContainer.setAttribute('class','radio')
+        var questionLabel = document.createElement('label')
+        var questionInput = document.createElement('input')
+        questionInput.setAttribute('type','radio')
+        questionInput.setAttribute('name','optradio') 
+        questionLabel.innerHTML = possibleAnswer[i]
+        questionLabel.prepend(questionInput)
+      
+        radioContainer.appendChild(questionLabel)
+        form.appendChild(radioContainer)   
+    }
+
+    questionContainer.appendChild(form)
+
+    return questionContainer
+
+}

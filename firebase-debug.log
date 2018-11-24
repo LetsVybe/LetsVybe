@@ -1,0 +1,27 @@
+[debug] [2018-11-24T15:31:31.980Z] ----------------------------------------------------------------------
+[debug] [2018-11-24T15:31:31.982Z] Command:       /Users/jordeguevara/.nvm/versions/node/v10.5.0/bin/node /Users/jordeguevara/.nvm/versions/node/v10.5.0/bin/firebase serve
+[debug] [2018-11-24T15:31:31.982Z] CLI Version:   5.1.1
+[debug] [2018-11-24T15:31:31.982Z] Platform:      darwin
+[debug] [2018-11-24T15:31:31.982Z] Node Version:  v10.5.0
+[debug] [2018-11-24T15:31:31.983Z] Time:          Sat Nov 24 2018 07:31:31 GMT-0800 (Pacific Standard Time)
+[debug] [2018-11-24T15:31:31.983Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-24T15:31:31.990Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-24T15:31:31.990Z] > authorizing via signed-in user
+[debug] [2018-11-24T15:31:31.990Z] [iam] checking project letsvybe-e4796 for permissions ["firebase.projects.get"]
+[debug] [2018-11-24T15:31:31.991Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796:testIamPermissions  
+
+[debug] [2018-11-24T15:31:32.366Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-24T15:31:32.367Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796  
+ 
+[debug] [2018-11-24T15:31:32.729Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/jordeguevara/Desktop/LetsVybe-master'...
+[info] 
+[debug] [2018-11-24T15:31:32.731Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/527312988709/clients/_:getWebAppConfig  
+ 
+[debug] [2018-11-24T15:31:33.341Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5010
