@@ -268,3 +268,20 @@ img {
 
 #submit {
   margin-right: auto; }
+
+
+.weatherContainer{
+  display: flex;
+  
+  width: 530px;
+  height: 180px;
+  background-color: #fff;
+}
+
+.weatherContainer > div {
+  flex-direction: column;
+  text-align: center;
+  flex: 1;
+  background-color: red;
+  font-size: 30px;
+}

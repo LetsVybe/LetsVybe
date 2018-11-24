@@ -277,6 +277,18 @@ window.onload = function(){
     //     });
     // });
     window.alert("everything loaded")
+
+        // TODO: Jorde Integrate this into the front end.
+    // An example of getting the location data.
+    tempUser = { zipCode: '95134' }; // User object should be constructed with the zipCode.
+    getWeatherInformation(tempUser)
+        .then(weather => {
+            // When the weather information is extracted this function is called
+            // with the information about weather in the variable 'weather'.
+
+            console.log('Weather json', weather);
+
+        })
 }
 
 function parseChallenge(querySnapshot){
@@ -324,7 +336,7 @@ async function  createFeedPost(vybechallenge) {
     var questionsList = vybechallenge.questions;
     let questions = [];
     let user;
-
+    
     // Get the question object.
     await questionsList.forEach(question => {
         questionsRef.doc(question).get().then(querySnapshot => {
@@ -341,10 +353,12 @@ async function  createFeedPost(vybechallenge) {
         })
 
     console.log('user', user);
-    renderFeed(user, questions);
+    renderFeed(user, questions,questionsList);
 }
 
-function renderFeed(user, questions){
+function renderFeed(user, questions,questionsList){
+    console.log(questionsList)
+    var questionID = questionsList[0]; // might have to create loop for multiple questions
     console.log('in  create object is : ')
     console.log(user.name)
     var ul = document.getElementById('feed-list')
@@ -410,7 +424,7 @@ function renderFeed(user, questions){
         var postContainerList = postContainer.children;
         var oldElement = postContainerList[1];
     
-        var newElement = renderQuestions(questions);
+        var newElement = renderQuestions(questions,questionID);
         postContainer.replaceChild(newElement,oldElement);
     }
 
@@ -490,7 +504,7 @@ isVybeClick = true
 }
 
 //creates HTML to display Questions, takes only one question for now 
-function renderQuestions(questions){
+function renderQuestions(questions,questionID){
     console.log(questions)
     //for at least one question
     var question = questions[0];
@@ -507,7 +521,7 @@ function renderQuestions(questions){
     questionContainer.appendChild(questionAsked)
 
     var form = document.createElement('form')
-    form.setAttribute('id','questionForm')  
+    form.setAttribute('id',questionID)  
      
 
     for(let i =0; i < 4;i++){ // for each answer set, create HTML
@@ -516,7 +530,7 @@ function renderQuestions(questions){
         var questionLabel = document.createElement('label')
         var questionInput = document.createElement('input')
         questionInput.setAttribute('type','radio')
-        questionInput.setAttribute('name','optradio') 
+        questionInput.setAttribute('name', 'rad') 
         questionLabel.innerHTML = possibleAnswer[i]
         questionLabel.prepend(questionInput)
       
@@ -524,8 +538,22 @@ function renderQuestions(questions){
         form.appendChild(radioContainer)   
     }
 
+    var submitButton = document.createElement('button')
+    submitButton.setAttribute('class','postChallengeBtn')
+    submitButton.innerHTML = "Submit"
+
+    submitButton.onclick = function(event){
+        // console.log(input[type='radio'][name=questionID]:checked).val()) - 1);
+        // var selected = parseInt($(`input[type='radio'][name=${questionID}]:checked).val()`) - 1;
+        inputString = "input[type='radio'][name=" + questionID + "]checked";
+        var selected = parseInt($(inputString).val()) - 1;
+        window.alert(selected)
+    }
+
     questionContainer.appendChild(form)
+    questionContainer.appendChild(submitButton)
 
     return questionContainer
 
 }
+
