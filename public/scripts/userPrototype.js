@@ -9,6 +9,8 @@ let userPrototype = function(){
     this.email = null;
     this.phoneNumber = null;
     this.gender = null;
+    this.currCity = null;
+    this.zipCode = null;
 }
 
 // Retrieve the user.
@@ -35,6 +37,8 @@ userPrototype.prototype.initializeUser = function(userDoc) {
     this.email = userDoc.email;
     this.phoneNumber = userDoc.phoneNumber;
     this.gender = userDoc.gender;
+    this.currCity = userDoc.city;
+    this.zipCode = userDoc.zipCode;
 }
 
 // Update the displayName in the user state and the collection.
@@ -163,4 +167,30 @@ userPrototype.prototype.updatePhone = function (newPhone) {
         .catch(error => {
             console.log(error.message);
         });
+}
+
+// Update the current city
+userPrototype.prototype.updateCurrCity = function(newCity) {
+    userRef.set({currCity: newCity}, {merge: true})
+        .then(() => {
+            if (debug) console.log('Successfully updated the currCity.');
+            this.currCity = newCity;
+        })
+        .catch(error => {
+            console.log(error.message);
+        }
+    );
+}
+
+// Update the zipCode
+userPrototype.prototype.updateZipCode = function(newZipCode) {
+    userRef.set({zipCode: newZipCode}, {merge: true})
+        .then(() => {
+            if (debug) console.log('Successfully updated the zipCode.');
+            this.zipCode = newZipCode;
+        })
+        .catch(error => {
+            console.log(error.message);
+        }
+    );
 }

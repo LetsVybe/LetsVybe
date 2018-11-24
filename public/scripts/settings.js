@@ -35,7 +35,6 @@ window.onload = function () {
             user = new userPrototype();
             user.retrieveUser(domElements, userRef);  // Also populates all the field in the document.
 
-            console.log('password', user.password);
 
             domElements.setUpOnClickActions(user);
 
