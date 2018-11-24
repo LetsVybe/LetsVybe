@@ -276,6 +276,18 @@ window.onload = function(){
     //     });
     // });
     window.alert("everything loaded")
+
+    // TODO: Jorde Integrate this into the front end.
+    // An example of getting the location data.
+    tempUser = { zipCode: '95134' }; // User object should be constructed with the zipCode.
+    getWeatherInformation(tempUser)
+        .then(weather => {
+            // When the weather information is extracted this function is called
+            // with the information about weather in the variable 'weather'.
+
+            console.log('Weather json', weather);
+
+        })
 }
 
 function parseChallenge(querySnapshot){
@@ -353,13 +365,13 @@ async function  createFeedPost(vybechallenge) {
 
 function renderFeed(user, questions){
     console.log('in  create object is : ')
-    console.log(user.name)
+    console.log(user.displayName)
     var ul = document.getElementById('feed-list')
     var li = document.createElement('li');
 
     var label = document.createElement('label')
     label.setAttribute('class', 'name-title  news__header--title')
-    label.innerHTML = user.name;
+    label.innerHTML = user.displayName;
 
 
     var containerDiv = document.createElement('div')
