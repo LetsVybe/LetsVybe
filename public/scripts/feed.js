@@ -152,7 +152,9 @@ function createVybeChallengePrototype(){
     answer1 = document.getElementById('answerTwo').value
     answer2 = document.getElementById('answerThree').value
     answer3 = document.getElementById('answerFour').value
-    var correctAnswer = parseInt($("input[type='radio'][name='optradio']:checked ").val()) - 1;
+
+    inputString = "input[type='radio'][name=" + questionID + "]checked"
+    var correctAnswer = parseInt($(inputString).val()) - 1;
     
     var vybeChallenge = new VybeChallenge();
     var question = new Question(question, answer0, answer1, answer2, answer3, correctAnswer);
