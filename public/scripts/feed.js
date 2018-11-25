@@ -530,7 +530,8 @@ function renderQuestions(questions,questionID){
         var questionLabel = document.createElement('label')
         var questionInput = document.createElement('input')
         questionInput.setAttribute('type','radio')
-        questionInput.setAttribute('name', 'rad') 
+        questionInput.setAttribute('name', questionID);
+        questionInput.setAttribute('value', i);
         questionLabel.innerHTML = possibleAnswer[i]
         questionLabel.prepend(questionInput)
       
@@ -545,9 +546,11 @@ function renderQuestions(questions,questionID){
     submitButton.onclick = function(event){
         // console.log(input[type='radio'][name=questionID]:checked).val()) - 1);
         // var selected = parseInt($(`input[type='radio'][name=${questionID}]:checked).val()`) - 1;
-        inputString = "input[type='radio'][name=" + questionID + "]checked";
-        var selected = parseInt($(inputString).val()) - 1;
-        window.alert(selected)
+        console.log('questionID', questionID);
+        inputString = $(`input[type='radio'][name='${questionID}']:checked`).val();
+        console.log(inputString);
+        // var selected = parseInt($(inputString).val()) - 1;
+        // window.alert(selected)
     }
 
     questionContainer.appendChild(form)

@@ -25,3 +25,32 @@
 [warn] ⚠  hosting: Port 5000 is not available. Trying another port...
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5010
+[debug] [2018-11-24T23:51:38.165Z] ----------------------------------------------------------------------
+[debug] [2018-11-24T23:51:38.167Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2018-11-24T23:51:38.167Z] CLI Version:   5.1.1
+[debug] [2018-11-24T23:51:38.167Z] Platform:      darwin
+[debug] [2018-11-24T23:51:38.167Z] Node Version:  v8.12.0
+[debug] [2018-11-24T23:51:38.167Z] Time:          Sat Nov 24 2018 15:51:38 GMT-0800 (PST)
+[debug] [2018-11-24T23:51:38.167Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-24T23:51:38.180Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-24T23:51:38.180Z] > authorizing via signed-in user
+[debug] [2018-11-24T23:51:38.180Z] [iam] checking project letsvybe-e4796 for permissions ["firebase.projects.get"]
+[debug] [2018-11-24T23:51:38.182Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-11-24T23:51:38.182Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-11-24T23:51:38.437Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-24T23:51:38.456Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796:testIamPermissions  
+
+[debug] [2018-11-24T23:51:38.758Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-24T23:51:38.760Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796  
+ 
+[debug] [2018-11-24T23:51:39.121Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/bijeshsubedi/Desktop/testMaster/renderQuestion/LetsVybe'...
+[info] 
+[debug] [2018-11-24T23:51:39.123Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/527312988709/clients/_:getWebAppConfig  
+ 
+[debug] [2018-11-24T23:51:39.780Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
