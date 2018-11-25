@@ -8,6 +8,7 @@
       <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <link rel="stylesheet" href="styles/style.css">
+      <link rel="stylesheet" href="styles/setting.css">
 
       <!-- Firebase scripts needed to run api calls-->
       <script defer src="/__/firebase/5.5.8/firebase-app.js"></script>
@@ -52,73 +53,127 @@
           <button id="updatePhoto-btn">Update Display Picture</button>
 
       <!-- Update the username. -->
-      <h3>Change the username</h3>
-          <p>Current username:<p id="usernameField"></p></p>
-          <p>New username:</p>
-          <input id="usernameInput" type="input">
-          <button id="updateUsername-btn">Update Username</button>
+      <div class="userName" onclick="updateUser()">
+            <h3>Change the username</h3>
+            <p>Current username:<p id="usernameField"></p></p>
+      </div>
+          
+      <div class="updateUserName" hidden>
+                <p>New username:</p>
+                <input id="usernameInput" type="input">
+                <button id="updateUsername-btn">Update Username</button>
+          </div>
+        
 
       <!-- Update the display name. -->
-      <h3>Change the display name</h3>
-          <p>Current display name:<p id="displayNameField"></p></p>
-          <p>New display name:</p>
-          <input id="displayNameInput" type="input">
-          <button id="updateDisplayName-btn">Update Display Name</button>
+      <div class="displayName" onclick="updateDisplayName()">
+            <h3>Change the display name</h3>
+            <p>Current display name:<p id="displayNameField"></p></p>
+      </div>
+      
+      <div class="updateDisplayName" hidden>
+            <p>New display name:</p>
+            <input id="displayNameInput" type="input">
+            <button id="updateDisplayName-btn">Update Display Name</button>
+      </div>
+
+
 
       <!-- Update the password -->
-      <h3>Change the password</h3>
-          <p>Current Password:<p id="passwordField"></p></p>
-          <p>New password:</p>
-          <input id="passwordInput" type="password">
-          <button id="updatePassword-btn">Update Password</button>
+      <div class="password" onclick="updatePassword()">
+            <h3>Change the password</h3>
+            <p>Current Password:<p id="passwordField"></p></p>
+      </div>
+      <div class="updatePassword" hidden>
+            <p>New password:</p>
+            <input id="passwordInput" type="password">
+            <button id="updatePassword-btn">Update Password</button>
+      </div>
+   
+
 
       <!-- TODO: Bijesh <h3>Select and change the questions</h3> -->
 
       <!-- Update the age. -->
-      <h3>Change age</h3>
-          <p>Current age:<p id="ageField"></p></p>
-          <p>New age:</p>
-          <input id="ageInput" type="input">
-          <button id="updateAge-btn">Update Age</button> 
+      <div class="age" onclick="updateAge">
+            <h3>Change age</h3>
+            <p>Current age:<p id="ageField"></p></p>
+      </div>
+
+      <div class="updateAge" hidden>
+            <p>New age:</p>
+            <input id="ageInput" type="input">
+            <button id="updateAge-btn">Update Age</button> 
+      </div>
+  
+  
 
       <!-- Update the phone number. -->
-      <h3>Change the phone number</h3>
-          <p>Current phone number:<p id="phoneField"></p></p>
-          <p>New phone number:</p>
-          <input id="phoneInput" type="input">
-          <button id="updatePhone-btn">Update Phone</button>
+      <div class="phoneNumber" onclick="updatePhoneNumber()">
+            <h3>Change the phone number</h3>
+            <p>Current phone number:<p id="phoneField"></p></p>
+      </div>
+      <div class="updatePhoneNumber" hidden>
+            <p>New phone number:</p>
+            <input id="phoneInput" type="input">
+            <button id="updatePhone-btn">Update Phone</button>
+      </div>
+
 
       <!-- Update the email. -->
-      <h3>Update email</h3>
-          <p>Current email:<p id="emailField"></p></p>
-          <p>New email:</p>
-          <input id="emailInput" type="input">
-          <button id="updateEmail-btn">Update Email</button>
+      <div class="email" onclick="updateEmail()">
+            <h3>Update email</h3>
+            <p>Current email:<p id="emailField"></p></p>
+      </div>
 
-      <!-- Update the email. -->
-      <h3>Update gender</h3>
-          <p>Current gender:<p id="genderField"></p></p>
-          <p>New gender:</p>
-          <input id="genderInput" type="input">
-          <button id="updateGender-btn">Update Gender</button>
+      <div class="updateEmail" hidden>
+            <p>New email:</p>
+            <input id="emailInput" type="input">
+            <button id="updateEmail-btn">Update Email</button>
+      </div>
+   
+
+
+      <!-- Update the gender -->
+      <div class="gender" onclick="updateGender()">
+            <h3>Update gender</h3>
+            <p>Current gender:<p id="genderField"></p></p>
+      </div>
+
+      <div class="updateGender" hidden >
+            <p>New gender:</p>
+            <input id="genderInput" type="input">
+            <button id="updateGender-btn">Update Gender</button>
+      </div>
+
+
 
       <!-- Update the curr City and the zipCode -->
-      <h3>Update current city and Zip Code</h3>
-          <p>Current city:<p id="currCityField"></p></p>
-          <p>Current zipCode:<p id="zipCodeField"></p></p>
-          <p>New Current City:</p>
-          <input id="currCityInput" type="input">
-          <button id="updateCurrCity-btn">Update Current City</button>
-          </br>
-          <p>New Zip Code:</p>
-          <input id="zipCodeInput" type="input">
-          <button id="updateZipCode-btn">Update ZipCode</button>
-    </div>
+      <div class="areaCode" onclick="updateAreaCode()">
+            <h3>Update current city and Zip Code</h3>
+            <p>Current city:<p id="currCityField"></p></p>
+            <p>Current zipCode:<p id="zipCodeField"></p></p>
+      </div>
+
+      <div class="updateAreaCode" hidden>
+            <p>New Current City:</p>
+            <input id="currCityInput" type="input">
+            <button id="updateCurrCity-btn">Update Current City</button>
+            <br>
+            <p>New Zip Code:</p>
+            <input id="zipCodeInput" type="input">
+            <button id="updateZipCode-btn">Update ZipCode</button>
+      </div>
+
+      </div>
+     
+    
 
 
       <!-- Javascript file incorporating all the functionalities.-->
       <script src="scripts/userPrototype.js"></script>
       <script src="scripts/SettingsDomElements.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="scripts/settings.js"></script>
   </body>
 </html>

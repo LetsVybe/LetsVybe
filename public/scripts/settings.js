@@ -58,5 +58,57 @@ window.onload = function () {
         }
     });
 
+    
 }
 
+function updateUser(){
+$(".userName").click(function () {
+        $(".updateUserName").toggle()
+        });
+}
+
+
+function updateDisplayName(){
+$(".displayName").click(function () {
+        $(".updateDisplayName").toggle()
+        });
+}
+
+
+function updatePassword(){
+$(".password").click(function () {
+        $(".updatePassword").toggle()
+        });
+}
+
+
+function updateAge(){
+    $(".age").click(function () {
+        $(".updateAge").toggle()
+        });
+}
+
+function updatePhoneNumber(){
+    $(".phoneNumber").click(function () {
+        $(".updatePhoneNumber").toggle()
+        });
+
+}
+
+function updateEmail() {
+    $(".email").click(function () {
+        $(".updateEmail").toggle()
+        });
+}
+
+function updateGender(){
+    $(".gender").click(function () {
+        $(".updateGender").toggle()
+        });
+}
+
+function updateAreaCode(){
+    $(".areaCode").click(function () {
+        $(".updateAreaCode").toggle()
+        });
+}

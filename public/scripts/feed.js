@@ -6,6 +6,7 @@ let vybeChallengesRef;
 let userRef;
 let add_vybe_challenge = document.querySelector('.add-vybe-challenge');
 let users_ref;
+let user;
 let firestore;
 
 
@@ -213,6 +214,7 @@ window.onload = function(){
     // Else redirect them to the login/register page, which is the landing page, index.html.
     firebase.auth().onAuthStateChanged(user => {
         if (user){
+            console.log('first',user)
             var navPhoto = document.getElementById("navPhoto")
             var navName = document.getElementById("nav-name")
             var postAreaPhoto = document.getElementById("postarea-photo")
@@ -223,8 +225,25 @@ window.onload = function(){
             navName.setAttribute('style', 'color: #fff;')
             console.log(navPhoto)
 
-            
             uid = user.uid;  // This is taking up unnecessary space.  We always have user and can always reference user.uid in constant time (k).
+            
+            // userRef.doc(uid).get()
+            //     .then(function(onSnapshot){
+            //          user = onSnapshot.data()
+            //         console.log(user)
+            //         console.log('in userRef',user)
+            //         // getWeatherInformation(userData)
+            //         //  .then(weather => {
+            //         //     // When the weather information is extracted this function is called
+            //         //     // with the information about weather in the variable 'weather'.
+            
+            //         //     console.log('Weather json', weather);
+            
+            //         // })
+            //     })
+
+            
+         
         } else {
             document.location.href = "index.html";
         }
@@ -331,10 +350,10 @@ takes a user Object as parameter and extracts properties
 */
 async function  createFeedPost(vybechallenge) {
     // Get the required attributes from the vybechallenge.
-    let uid = vybechallenge.uid;
+    let userID = vybechallenge.uid;
     var questionsList = vybechallenge.questions;
     let questions = [];
-    let user;
+    let currentUser;
     
     // Get the question object.
     await questionsList.forEach(question => {
@@ -344,16 +363,24 @@ async function  createFeedPost(vybechallenge) {
     })
 
     // Get the user to populate name and the photo
-    await userRef.doc(uid).get()
+    if(userID !== uid )
+    {
+        await userRef.doc(userID).get()
         .then(doc => {
-            user = doc.data()
+            currentUser = doc.data()
         }).catch(error => {
             console.log(error.message);
         })
-    console.log('THE USER AND QUESTIONS');
-    console.log('user', user);
-    console.log('question',questionsList, questions);
-    renderFeed(user, questions, questionsList);
+        
+    }
+    else
+     {
+        userID = uid;
+        currentUser = user;
+        }
+
+
+    renderFeed(currentUser, questions,questionsList);
 }
 
 function renderFeed(user, questions,questionsList){
