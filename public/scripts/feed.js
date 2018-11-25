@@ -222,20 +222,6 @@ window.onload = function(){
             navName.innerHTML = user.displayName
             navName.setAttribute('style', 'color: #fff;')
             console.log(navPhoto)
-            
-            userRef.doc(user.uid).get()
-                .then(function(onSnapshot){
-                    user = onSnapshot.data()
-
-                    getWeatherInformation(user)
-                     .then(weather => {
-                        // When the weather information is extracted this function is called
-                        // with the information about weather in the variable 'weather'.
-            
-                        console.log('Weather json', weather);
-            
-                    })
-                })
 
             
             uid = user.uid;  // This is taking up unnecessary space.  We always have user and can always reference user.uid in constant time (k).
@@ -293,15 +279,15 @@ window.onload = function(){
         // TODO: Jorde Integrate this into the front end.
     // An example of getting the location data.
     // user= { zipCode: '95134' }; // User object should be constructed with the zipCode.
-    console.log(user)
-    getWeatherInformation(user)
-        .then(weather => {
-            // When the weather information is extracted this function is called
-            // with the information about weather in the variable 'weather'.
+    // console.log(user)
+    // getWeatherInformation(user)
+    //     .then(weather => {
+    //         // When the weather information is extracted this function is called
+    //         // with the information about weather in the variable 'weather'.
 
-            alert('Weather json', weather);
+    //         alert('Weather json', weather);
 
-        })
+    //     })
 }
 
 function parseChallenge(querySnapshot){
@@ -364,10 +350,10 @@ async function  createFeedPost(vybechallenge) {
         }).catch(error => {
             console.log(error.message);
         })
-
+    console.log('THE USER AND QUESTIONS');
     console.log('user', user);
-    console.log('question',questions);
-    renderFeed(user, questions,questionsList);
+    console.log('question',questionsList, questions);
+    renderFeed(user, questions, questionsList);
 }
 
 function renderFeed(user, questions,questionsList){
