@@ -152,9 +152,7 @@ function createVybeChallengePrototype(){
     answer1 = document.getElementById('answerTwo').value
     answer2 = document.getElementById('answerThree').value
     answer3 = document.getElementById('answerFour').value
-
-    inputString = "input[type='radio'][name=" + questionID + "]checked"
-    var correctAnswer = parseInt($(inputString).val()) - 1;
+    var correctAnswer = parseInt($("input[type='radio'][name='optradio']:checked ").val()) - 1;
     
     var vybeChallenge = new VybeChallenge();
     var question = new Question(question, answer0, answer1, answer2, answer3, correctAnswer);
@@ -201,6 +199,7 @@ window.onload = function(){
     console.log(vybeChallengesRef)
     userRef = database_ref.collection('users');
     questionsRef = database_ref.collection('questions');
+    
 
     // Create a listner for vybeChallenges
     vybeChallengesRef
@@ -223,7 +222,20 @@ window.onload = function(){
             navName.innerHTML = user.displayName
             navName.setAttribute('style', 'color: #fff;')
             console.log(navPhoto)
+            
+            userRef.doc(user.uid).get()
+                .then(function(onSnapshot){
+                    user = onSnapshot.data()
 
+                    getWeatherInformation(user)
+                     .then(weather => {
+                        // When the weather information is extracted this function is called
+                        // with the information about weather in the variable 'weather'.
+            
+                        console.log('Weather json', weather);
+            
+                    })
+                })
 
             
             uid = user.uid;  // This is taking up unnecessary space.  We always have user and can always reference user.uid in constant time (k).
@@ -280,13 +292,14 @@ window.onload = function(){
 
         // TODO: Jorde Integrate this into the front end.
     // An example of getting the location data.
-    tempUser = { zipCode: '95134' }; // User object should be constructed with the zipCode.
-    getWeatherInformation(tempUser)
+    // user= { zipCode: '95134' }; // User object should be constructed with the zipCode.
+    console.log(user)
+    getWeatherInformation(user)
         .then(weather => {
             // When the weather information is extracted this function is called
             // with the information about weather in the variable 'weather'.
 
-            console.log('Weather json', weather);
+            alert('Weather json', weather);
 
         })
 }
@@ -353,6 +366,7 @@ async function  createFeedPost(vybechallenge) {
         })
 
     console.log('user', user);
+    console.log('question',questions);
     renderFeed(user, questions,questionsList);
 }
 
@@ -360,13 +374,13 @@ function renderFeed(user, questions,questionsList){
     console.log(questionsList)
     var questionID = questionsList[0]; // might have to create loop for multiple questions
     console.log('in  create object is : ')
-    console.log(user.name)
+    console.log(user.displayName)
     var ul = document.getElementById('feed-list')
     var li = document.createElement('li');
 
     var label = document.createElement('label')
     label.setAttribute('class', 'name-title  news__header--title')
-    label.innerHTML = user.name;
+    label.innerHTML = user.displayName;
 
 
     var containerDiv = document.createElement('div')
@@ -521,7 +535,7 @@ function renderQuestions(questions,questionID){
     questionContainer.appendChild(questionAsked)
 
     var form = document.createElement('form')
-    form.setAttribute('id',questionID)  
+    // form.setAttribute('id',questionID)  
      
 
     for(let i =0; i < 4;i++){ // for each answer set, create HTML
@@ -544,13 +558,14 @@ function renderQuestions(questions,questionID){
     submitButton.innerHTML = "Submit"
 
     submitButton.onclick = function(event){
-        // console.log(input[type='radio'][name=questionID]:checked).val()) - 1);
-        // var selected = parseInt($(`input[type='radio'][name=${questionID}]:checked).val()`) - 1;
         console.log('questionID', questionID);
         inputString = $(`input[type='radio'][name='${questionID}']:checked`).val();
         console.log(inputString);
-        // var selected = parseInt($(inputString).val()) - 1;
-        // window.alert(selected)
+        var selected = parseInt(inputString)
+        window.alert(selected)
+       
+ 
+
     }
 
     questionContainer.appendChild(form)
