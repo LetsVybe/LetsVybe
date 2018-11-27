@@ -504,7 +504,7 @@ function renderQuestions(questions, questionID) {
     submitButton.innerHTML = "Submit"
 
     submitButton.onclick = function (event) {
-        verifyUserInput();
+        //verifyUserInput();
         inputString = $(`input[type='radio'][name='${questionID}']:checked`).val();
         var userAnswer = parseInt(inputString);
         postAnswerFireBase(questionID,userAnswer);
@@ -523,7 +523,11 @@ function renderQuestions(questions, questionID) {
 
 }
 
-function postAnswerFireBase(questionID,userAnswer){
+function postAnswerFireBase(questionID, userAnswer){
     console.log(questionID , userAnswer)
-    // return nothing
+    
+    // Upload answer to the sub-collection.
+    questionsRef.doc(questionID).collection('users').doc(uid).set({
+        answer: userAnswer
+    });
 }
