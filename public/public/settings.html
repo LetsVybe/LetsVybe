@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Settings</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+      <!--         Google Foonts Open Sans -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="styles/style.css">
+      <link rel="stylesheet" href="styles/setting.css">
+
+      <!-- Firebase scripts needed to run api calls-->
+      <script defer src="/__/firebase/5.5.8/firebase-app.js"></script>
+      <!-- include only the Firebase features as you need -->
+      <script defer src="/__/firebase/5.5.8/firebase-auth.js"></script>
+      <script defer src="/__/firebase/5.5.8/firebase-firestore.js"></script>
+      <script defer src="/__/firebase/5.5.8/firebase-storage.js"></script>
+
+      <!-- initialize the SDK after all desired features are loaded -->
+      <script defer src="/__/firebase/init.js"></script>
+  </head>
+  <body>
+
+        <header class="header">
+                <a href="home.html"><img src="images/pulse.svg" class="logo"></a>
+                <!-- Search navigation that may need to be implemented later -->
+                <form action="#" class="search">
+                        <input type="text" class="search__input">
+                        <button class="search__button">
+                                <svg class="search__icon">
+                                        <use xlink:href="images/sprite.svg#icon-magnifying-glass"></use>
+                                </svg>
+                        </button>
+                </form>
+
+                <nav class="user-nav">
+                        <!-- awaiting implementations of nav  -->
+                        <div class="user-nav_profile-box">
+                                <div class="user-nav__icon-box">
+                                        <img src="images/userjorde.png" class="user-nav__user-photo" id="navPhoto">
+                                        <span class="user-nav__user-name" id="nav-name"></span>
+                                </div>
+                        </div>
+                </nav>
+        </header>
+      <div class="container text-center">
+      <!-- Update the display picture. -->
+      <h3>Change the display picture</h3>
+          <p>Current Pic:<img id="photoField" src='#'></p>
+          <p>New Pic:</p>
+          <input id="photoInput" type="file" accept="image/*">
+          <button id="updatePhoto-btn">Update Display Picture</button>
+
+      <!-- Update the username. -->
+      <div class="userName" onclick="updateUser()">
+            <h3>Change the username</h3>
+            <p>Current username:<p id="usernameField"></p></p>
+      </div>
+          
+      <div class="updateUserName" hidden>
+                <p>New username:</p>
+                <input id="usernameInput" type="input">
+                <button id="updateUsername-btn">Update Username</button>
+          </div>
+        
+
+      <!-- Update the display name. -->
+      <div class="displayName" onclick="updateDisplayName()">
+            <h3>Change the display name</h3>
+            <p>Current display name:<p id="displayNameField"></p></p>
+      </div>
+      
+      <div class="updateDisplayName" hidden>
+            <p>New display name:</p>
+            <input id="displayNameInput" type="input">
+            <button id="updateDisplayName-btn">Update Display Name</button>
+      </div>
+
+
+
+      <!-- Update the password -->
+      <div class="password" onclick="updatePassword()">
+            <h3>Change the password</h3>
+            <p>Current Password:<p id="passwordField"></p></p>
+      </div>
+      <div class="updatePassword" hidden>
+            <p>New password:</p>
+            <input id="passwordInput" type="password">
+            <button id="updatePassword-btn">Update Password</button>
+      </div>
+   
+
+
+      <!-- TODO: Bijesh <h3>Select and change the questions</h3> -->
+
+      <!-- Update the age. -->
+      <div class="age" onclick="updateAge">
+            <h3>Change age</h3>
+            <p>Current age:<p id="ageField"></p></p>
+      </div>
+
+      <div class="updateAge" hidden>
+            <p>New age:</p>
+            <input id="ageInput" type="input">
+            <button id="updateAge-btn">Update Age</button> 
+      </div>
+  
+  
+
+      <!-- Update the phone number. -->
+      <div class="phoneNumber" onclick="updatePhoneNumber()">
+            <h3>Change the phone number</h3>
+            <p>Current phone number:<p id="phoneField"></p></p>
+      </div>
+      <div class="updatePhoneNumber" hidden>
+            <p>New phone number:</p>
+            <input id="phoneInput" type="input">
+            <button id="updatePhone-btn">Update Phone</button>
+      </div>
+
+
+      <!-- Update the email. -->
+      <div class="email" onclick="updateEmail()">
+            <h3>Update email</h3>
+            <p>Current email:<p id="emailField"></p></p>
+      </div>
+
+      <div class="updateEmail" hidden>
+            <p>New email:</p>
+            <input id="emailInput" type="input">
+            <button id="updateEmail-btn">Update Email</button>
+      </div>
+   
+
+
+      <!-- Update the gender -->
+      <div class="gender" onclick="updateGender()">
+            <h3>Update gender</h3>
+            <p>Current gender:<p id="genderField"></p></p>
+      </div>
+
+      <div class="updateGender" hidden >
+            <p>New gender:</p>
+            <input id="genderInput" type="input">
+            <button id="updateGender-btn">Update Gender</button>
+      </div>
+
+
+
+      <!-- Update the curr City and the zipCode -->
+      <div class="areaCode" onclick="updateAreaCode()">
+            <h3>Update current city and Zip Code</h3>
+            <p>Current city:<p id="currCityField"></p></p>
+            <p>Current zipCode:<p id="zipCodeField"></p></p>
+      </div>
+
+      <div class="updateAreaCode" hidden>
+            <p>New Current City:</p>
+            <input id="currCityInput" type="input">
+            <button id="updateCurrCity-btn">Update Current City</button>
+            <br>
+            <p>New Zip Code:</p>
+            <input id="zipCodeInput" type="input">
+            <button id="updateZipCode-btn">Update ZipCode</button>
+      </div>
+
+      </div>
+     
+    
+
+
+      <!-- Javascript file incorporating all the functionalities.-->
+      <script src="scripts/userPrototype.js"></script>
+      <script src="scripts/SettingsDomElements.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="scripts/settings.js"></script>
+  </body>
+</html>
