@@ -30,7 +30,7 @@ let firestore;
  * @uploadChallenge
  *   - uploads the VybeChallenge object to firestore
  */
-function VybeChallenge(){
+function VybeChallenge() {
     this.questions = [];
     this.date = Date.now();
     this.dislikes = 0;
@@ -40,11 +40,11 @@ function VybeChallenge(){
     this.uid = uid;
 }
 
-VybeChallenge.prototype.addQuestion = function(questionID, validated){
-    if(validated) {
+VybeChallenge.prototype.addQuestion = function (questionID, validated) {
+    if (validated) {
         console.log("Pushing question: ", questionID);
         this.questions.push(questionID);
-    } else{
+    } else {
         console.log("Question not pushed to Vybe Challenge.")
     }
 }
@@ -58,7 +58,7 @@ VybeChallenge.prototype.addQuestion = function(questionID, validated){
 //     }
 // }
 
-VybeChallenge.prototype.uploadChallenge = function(){
+VybeChallenge.prototype.uploadChallenge = function () {
     vybeChallengesRef.add({
         questions: this.questions,
         date: this.date,
@@ -67,7 +67,7 @@ VybeChallenge.prototype.uploadChallenge = function(){
         private: this.private,
         tags: this.tags,
         uid: this.uid
-    }).then(result => {console.log('successfully uploaded challenge')}).catch(error => {console.log(error.message)});
+    }).then(result => { console.log('successfully uploaded challenge') }).catch(error => { console.log(error.message) });
 }
 
 /**
@@ -83,7 +83,7 @@ VybeChallenge.prototype.uploadChallenge = function(){
  *@uploadQuestion
  *   - inputs a vybeChallenge object and an upload indicator
  */
-function Question(question, answer0, answer1, answer2, answer3, answerCorrect){
+function Question(question, answer0, answer1, answer2, answer3, answerCorrect) {
     this.question = question;
     this.answerSet = [answer0, answer1, answer2, answer3];
     this.answerCorrect = answerCorrect;
@@ -94,7 +94,7 @@ function Question(question, answer0, answer1, answer2, answer3, answerCorrect){
     this.answerUsers3 = [];
 }
 
-Question.prototype.uploadQuestion = function(vybeChallenge, upload){
+Question.prototype.uploadQuestion = function (vybeChallenge, upload) {
     questionsRef.add({
         question: this.question,
         answerSet: this.answerSet,
@@ -109,9 +109,9 @@ Question.prototype.uploadQuestion = function(vybeChallenge, upload){
         // get the id of the question object from result and call the function to update the question id in the challenge
         console.log(result.id);
         vybeChallenge.addQuestion(result.id, true);
-        if (upload){
+        if (upload) {
             vybeChallenge.uploadChallenge();
-            var modal= document.getElementById('myModal')
+            var modal = document.getElementById('myModal')
             modal.setAttribute
         }
     }).catch(error => {
@@ -144,7 +144,7 @@ Question.prototype.uploadQuestion = function(vybeChallenge, upload){
 
 
 
-function createVybeChallengePrototype(){
+function createVybeChallengePrototype() {
     console.log("oy")
     var question = document.getElementById('vybeQuestion').value;
     console.log(question)
@@ -154,36 +154,23 @@ function createVybeChallengePrototype(){
     answer2 = document.getElementById('answerThree').value
     answer3 = document.getElementById('answerFour').value
     var correctAnswer = parseInt($("input[type='radio'][name='optradio']:checked ").val()) - 1;
-    
+
     var vybeChallenge = new VybeChallenge();
     var question = new Question(question, answer0, answer1, answer2, answer3, correctAnswer);
     question.uploadQuestion(vybeChallenge, true);
-   var modalId = 'myModal'
-//    console.log(modalId)
-//    closeOneModal(modalId)
-   //function to clear data here
-    
-   //reload pages but need a better solution 
+    //    var modalID = '#myModal'
+    //    console.log(modalId)
+    closeOneModal()
+    //function to clear data here
+
+    //reload pages but need a better solution 
 
 
 }
 
-function closeOneModal(modalId) {
-
-    // get modal
-    const modal = document.getElementById(modalId);
-    console.log(modal)
-    // change state like in hidden modal
-    modal.classList.remove('show');
-    modal.setAttribute('aria-hidden', 'true');
-    modal.setAttribute('style', 'display: none');
-
-     // get modal backdrop
-     const modalBackdrops = document.getElementsByClassName('modal-backdrop');
-
-     // remove opened modal backdrop
-      document.body.removeChild(modalBackdrops[0]);
-  }
+function closeOneModal() {
+    $('#myModal').modal('hide');
+}
 
 
 window.onload = function(){
@@ -200,7 +187,6 @@ window.onload = function(){
     console.log(vybeChallengesRef)
     userRef = database_ref.collection('users');
     questionsRef = database_ref.collection('questions');
-    
 
     // Create a listner for vybeChallenges
     vybeChallengesRef
@@ -214,7 +200,6 @@ window.onload = function(){
     // Else redirect them to the login/register page, which is the landing page, index.html.
     firebase.auth().onAuthStateChanged(user => {
         if (user){
-            console.log('first',user)
             var navPhoto = document.getElementById("navPhoto")
             var navName = document.getElementById("nav-name")
             var postAreaPhoto = document.getElementById("postarea-photo")
@@ -225,25 +210,9 @@ window.onload = function(){
             navName.setAttribute('style', 'color: #fff;')
             console.log(navPhoto)
 
-            uid = user.uid;  // This is taking up unnecessary space.  We always have user and can always reference user.uid in constant time (k).
-            
-            // userRef.doc(uid).get()
-            //     .then(function(onSnapshot){
-            //          user = onSnapshot.data()
-            //         console.log(user)
-            //         console.log('in userRef',user)
-            //         // getWeatherInformation(userData)
-            //         //  .then(weather => {
-            //         //     // When the weather information is extracted this function is called
-            //         //     // with the information about weather in the variable 'weather'.
-            
-            //         //     console.log('Weather json', weather);
-            
-            //         // })
-            //     })
 
             
-         
+            uid = user.uid;  // This is taking up unnecessary space.  We always have user and can always reference user.uid in constant time (k).
         } else {
             document.location.href = "index.html";
         }
@@ -295,66 +264,41 @@ window.onload = function(){
     // });
     window.alert("everything loaded")
 
-        // TODO: Jorde Integrate this into the front end.
+    // TODO: Jorde Integrate this into the front end.
     // An example of getting the location data.
-    // user= { zipCode: '95134' }; // User object should be constructed with the zipCode.
-    // console.log(user)
-    // getWeatherInformation(user)
-    //     .then(weather => {
-    //         // When the weather information is extracted this function is called
-    //         // with the information about weather in the variable 'weather'.
+    tempUser = { zipCode: '95134' }; // User object should be constructed with the zipCode.
+    getWeatherInformation(tempUser)
+        .then(weather => {
+            // When the weather information is extracted this function is called
+            // with the information about weather in the variable 'weather'.
 
-    //         alert('Weather json', weather);
+            console.log('Weather json', weather);
 
-    //     })
+        })
 }
 
-function parseChallenge(querySnapshot){
-    querySnapshot.forEach(function(doc) {
+function parseChallenge(querySnapshot) {
+    querySnapshot.forEach(function (doc) {
         createFeedPost(doc.data())
     })
 }
 
-function getQuestion(questionsRef, qid){
+function getQuestion(questionsRef, qid) {
     let question = questionsRef.doc(qid).get();
     return question
 }
-
-function getGlobalVybeChallenges(vybeChallengesRef){
-    let allGlobalVybeChallenges = vybeChallengesRef
-        .get()
-        .then(function(querySnapshot){
-            console.log("... grabbing global challenges ...");
-
-            querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshot
-                console.log(doc.id, '=>', doc.data());
-                console.log(" - creating challenge div");
-                createFeedPost(doc.data())
-              
-            });
-            console.log("... done grabbing global challenges ...")
-        })
-        .catch(function(error){
-            console.log("Error getting global vybe challenge: ", error);
-        });
-    
-}
-
-
-
 
 /*
 Create Feed Post to populate feed (vybeView is container for the feed)
 takes a user Object as parameter and extracts properties 
 */
-async function  createFeedPost(vybechallenge) {
+async function createFeedPost(vybechallenge) {
     // Get the required attributes from the vybechallenge.
     let userID = vybechallenge.uid;
     var questionsList = vybechallenge.questions;
     let questions = [];
     let currentUser;
-    
+
     // Get the question object.
     await questionsList.forEach(question => {
         questionsRef.doc(question).get().then(querySnapshot => {
@@ -363,31 +307,20 @@ async function  createFeedPost(vybechallenge) {
     })
 
     // Get the user to populate name and the photo
-    if(userID !== uid )
-    {
-        await userRef.doc(userID).get()
+    await userRef.doc(userID).get()
         .then(doc => {
             currentUser = doc.data()
         }).catch(error => {
             console.log(error.message);
-        })
-        
-    }
-    else
-     {
-        userID = uid;
-        currentUser = user;
-        }
-
-
-    renderFeed(currentUser, questions,questionsList);
+    });
+    renderFeed(currentUser, questions, questionsList);
 }
 
-function renderFeed(user, questions,questionsList){
-    console.log(questionsList)
+function renderFeed(user, questions, questionsList) {
+    // console.log(questionsList)
     var questionID = questionsList[0]; // might have to create loop for multiple questions
-    console.log('in  create object is : ')
-    console.log(user.displayName)
+    // console.log('in  create object is : ')
+    // console.log(user.displayName)
     var ul = document.getElementById('feed-list')
     var li = document.createElement('li');
 
@@ -417,32 +350,32 @@ function renderFeed(user, questions,questionsList){
     var optionButton = document.createElement("button")
     optionButton.setAttribute('class', 'news__activity__btn option-btn')
     var newsActivity = document.createElement('div')
-    newsActivity.setAttribute('class', 'news__activity');   
-    
+    newsActivity.setAttribute('class', 'news__activity');
+
     var vybeSpan = document.createElement('span')
     vybeSpan.setAttribute('class', 'news__activity--icon')
     vybeImage = document.createElement('img')
     vybeImage.setAttribute('src', '../images/vybe.png')
-    vybeImage.setAttribute('class','user-nav__icon')
+    vybeImage.setAttribute('class', 'user-nav__icon')
     vybeSpan.appendChild(vybeImage)
     vybeButton.appendChild(vybeSpan)
 
     var playSpan = document.createElement('span')
-    playSpan.setAttribute('class','news__activity--icon')
+    playSpan.setAttribute('class', 'news__activity--icon')
     playImage = document.createElement('img')
     playImage.setAttribute('src', '../images/play.png')
-    playImage.setAttribute('class','user-nav__icon')
+    playImage.setAttribute('class', 'user-nav__icon')
     playSpan.appendChild(playImage)
     playButton.appendChild(playSpan)
 
 
     //prevents playSpan HTML Element from firing events from Parent playButton
-    playSpan.onclick = function(event) {
+    playSpan.onclick = function (event) {
         event.stopPropagation();
     }
 
     //replaces DOM with question and possible answers when the playButton is clicked
-    playButton.onclick = function (event ){
+    playButton.onclick = function (event) {
         console.log(event)
         var currentElement = event.target;
         var parentElement = currentElement.parentElement;
@@ -450,16 +383,16 @@ function renderFeed(user, questions,questionsList){
         var postContainer = parentElement.parentElement;
         var postContainerList = postContainer.children;
         var oldElement = postContainerList[1];
-    
-        var newElement = renderQuestions(questions,questionID);
-        postContainer.replaceChild(newElement,oldElement);
+
+        var newElement = renderQuestions(questions, questionID);
+        postContainer.replaceChild(newElement, oldElement);
     }
 
     var optionSpan = document.createElement('span')
-    optionSpan.setAttribute('class','news__activity--icon')
+    optionSpan.setAttribute('class', 'news__activity--icon')
     optionImage = document.createElement('img')
     optionImage.setAttribute('src', '../images/option.png')
-    optionImage.setAttribute('class','user-nav__icon')
+    optionImage.setAttribute('class', 'user-nav__icon')
     optionSpan.appendChild(optionImage)
     optionButton.appendChild(optionSpan)
 
@@ -476,24 +409,24 @@ function renderFeed(user, questions,questionsList){
     ul.insertBefore(li, ul.firstChild)
 }
 
-function toggleQuestion(questionObj){
-    
-    var questionDiv = document.createElement('div')
-    questionDiv.setAttribute('style','text-align:center;')
-    var questionAsked = document.createElement('div')
-    questionAsked.innerHTML = questionObj.question
+// function toggleQuestion(questionObj) {
 
-    var form = document.createElement('form')
-    var radio = document.createElement('div')
-    radio.setAttribute('class','radio')
+//     var questionDiv = document.createElement('div')
+//     questionDiv.setAttribute('style', 'text-align:center;')
+//     var questionAsked = document.createElement('div')
+//     questionAsked.innerHTML = questionObj.question
 
-    questionDiv.appendChild(questionAsked)
-    questionDiv.appendChild(form)
-    form.appendChild(radio)
+//     var form = document.createElement('form')
+//     var radio = document.createElement('div')
+//     radio.setAttribute('class', 'radio')
 
-    return questionDiv
+//     questionDiv.appendChild(questionAsked)
+//     questionDiv.appendChild(form)
+//     form.appendChild(radio)
 
-}
+//     return questionDiv
+
+// }
 
 
 /* Adds an eventListenter to every play-btn and manipulates DOM when it pressed */
@@ -501,37 +434,37 @@ var isVybeClick = false;
 var isPlayClick = false;
 var isQuestionAnswered = false;
 
-function toggle(){
-document.querySelectorAll(".play-btn").forEach(function (element) {
-    element.addEventListener("click", function () {
-    if (isVybeClick === false) {
-    var re = element.parentNode.parentNode
-    var newE = document.createElement('div');
-    var submitBtn = document.createElement('button');
-    submitBtn.innerHTML = " Submit me "
-    newE.innerHTML = renderQuestions()
-    console.log(re)
-    var userContent = document.getElementById('userContent');
-    console.log(userContent)
-    re.replaceChild(newE, userContent)
-    newE.appendChild(submitBtn)
-    // submitBtn.addEventListener('click',function(){
-    //     var results = document.createElement('div')
-    //     results.innerHTML = "results"
-    //     re.replaceChild(results,newE)
-    // })
-}
-if (isVybeClick === true)
-    window.alert("you already clicked dawg")
-isVybeClick = true
+function toggle() {
+    document.querySelectorAll(".play-btn").forEach(function (element) {
+        element.addEventListener("click", function () {
+            if (isVybeClick === false) {
+                var re = element.parentNode.parentNode
+                var newE = document.createElement('div');
+                var submitBtn = document.createElement('button');
+                submitBtn.innerHTML = " Submit me "
+                newE.innerHTML = renderQuestions()
+                console.log(re)
+                var userContent = document.getElementById('userContent');
+                console.log(userContent)
+                re.replaceChild(newE, userContent)
+                newE.appendChild(submitBtn)
+                // submitBtn.addEventListener('click',function(){
+                //     var results = document.createElement('div')
+                //     results.innerHTML = "results"
+                //     re.replaceChild(results,newE)
+                // })
+            }
+            if (isVybeClick === true)
+                window.alert("you already clicked dawg")
+            isVybeClick = true
 
-});
-});
+        });
+    });
 
 }
 
 //creates HTML to display Questions, takes only one question for now 
-function renderQuestions(questions,questionID){
+function renderQuestions(questions, questionID) {
     console.log(questions)
     //for at least one question
     var question = questions[0];
@@ -540,44 +473,46 @@ function renderQuestions(questions,questionID){
 
     console.log(question)
     var questionContainer = document.createElement('div')
-    questionContainer.setAttribute('class','question')
+    questionContainer.setAttribute('class', 'question')
     // might have to create an array of these later
-    var questionAsked = document.createElement('div') 
-    questionAsked.setAttribute('id','question')
+    var questionAsked = document.createElement('div')
+    questionAsked.setAttribute('id', 'question')
     questionAsked.innerHTML = mainQuestion
     questionContainer.appendChild(questionAsked)
 
     var form = document.createElement('form')
     // form.setAttribute('id',questionID)  
-     
 
-    for(let i =0; i < 4;i++){ // for each answer set, create HTML
+
+    for (let i = 0; i < 4; i++) { // for each answer set, create HTML
         var radioContainer = document.createElement('div')
-        radioContainer.setAttribute('class','radio')
+        radioContainer.setAttribute('class', 'radio')
         var questionLabel = document.createElement('label')
         var questionInput = document.createElement('input')
-        questionInput.setAttribute('type','radio')
+        questionInput.setAttribute('type', 'radio')
         questionInput.setAttribute('name', questionID);
         questionInput.setAttribute('value', i);
         questionLabel.innerHTML = possibleAnswer[i]
         questionLabel.prepend(questionInput)
-      
+
         radioContainer.appendChild(questionLabel)
-        form.appendChild(radioContainer)   
+        form.appendChild(radioContainer)
     }
 
     var submitButton = document.createElement('button')
-    submitButton.setAttribute('class','postChallengeBtn')
+    submitButton.setAttribute('class', 'postChallengeBtn')
     submitButton.innerHTML = "Submit"
 
-    submitButton.onclick = function(event){
-        console.log('questionID', questionID);
+    submitButton.onclick = function (event) {
+        verifyUserInput();
         inputString = $(`input[type='radio'][name='${questionID}']:checked`).val();
-        console.log(inputString);
-        var selected = parseInt(inputString)
-        window.alert(selected)
+        var userAnswer = parseInt(inputString);
+        postAnswerFireBase(questionID,userAnswer);
        
- 
+
+        
+
+
 
     }
 
@@ -588,3 +523,7 @@ function renderQuestions(questions,questionID){
 
 }
 
+function postAnswerFireBase(questionID,userAnswer){
+    console.log(questionID , userAnswer)
+    // return nothing
+}
