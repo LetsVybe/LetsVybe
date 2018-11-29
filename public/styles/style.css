@@ -252,7 +252,16 @@ img {
   height: 36px;
   border-radius: 8px;
   background-color: #4a148c;
-  color: #fff; }
+  border: none;
+  
+  color: #fff; 
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+}
+
+.postChallengeBtn:active{
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
 .news__activity__btn {
   background-color: transparent; }

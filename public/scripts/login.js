@@ -219,11 +219,23 @@ function initApp() {
         // end exclude
     });
     // end authstatelistener
-    document.getElementById('quickstart-sign-in').addEventListener('click', toggleLoginWithLetsVybe, false);
-    document.getElementById('quickstart-sign-up').addEventListener('click', registerWithLetsVybe, false);
-    document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
-    document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
+    // document.getElementById('quickstart-sign-in').addEventListener('click', toggleLoginWithLetsVybe, false);
+    // document.getElementById('quickstart-sign-up').addEventListener('click', registerWithLetsVybe, false);
+    // document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
+    // document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
 }
 window.onload = function() {
     initApp();
+
+  
+    $("#signUpForm").hide();
+    $(".signUp").click(function(){
+        $('#signInForm').hide()
+        $('#signUpForm').show()
+    })
+    $('.signInBtn').click(function(){
+        $('#signInForm').show()
+        $('#signUpForm').hide()
+    })
 };
+

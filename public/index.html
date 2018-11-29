@@ -6,23 +6,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <head>
   <!-- Bootstrap CSS -->
-  <link type="text/css" rel="stylesheet" href="styles/login.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="styles/login.css" />
+  <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
 </head>
 
 <body>
+
+    <audio controls  autoplay hidden>
+        <source src="vybe.mp3" type="audio/mpeg" >
+      </audio> 
 
   <div class="bg-image">
     <!-- <h1 class="title blinking">LETSVYBE</h1> -->
   </div>
 
-  <div class="content">
-    <div class="title blinking">LETSVYBE</div>
-    <input type="text" placeholder="E-mail" />
-    <input type="password" placeholder="Password" />
+  <div class="content" id="signInForm">
+    <div class="title">LETSVYBE</div>
+    <input class="email" type="text" placeholder="E-mail" style="border: 1px solid #ccc;" />
+    <input class="password" type="password" placeholder="Password" style="border: 1px solid #ccc;" />
     <input type="checkbox" id="rememberMe" />
-    <label for="rememberMe"></label><span>I have read and agree to the <a href="#">Terms of Use </a>and <a href="#">Privacy Policy</a></span>
-    <button>Log In</button>
+    <!-- <label for="rememberMe"></label><span>I have read and agree to the <a href="#">Terms of Use </a>and <a href="#">Privacy Policy</a></span> -->
+    <button class="signIn">Log In</button>
     <div class="social"> <span>or sign up with social media</span></div>
     <div class="buttons">
       <button class="facebook" onclick="twitterLogin()"><i class="fa fa-facebook"></i>Facebook</button>
@@ -30,11 +35,29 @@
       <button class="google" onclick="toggleLoginWithGoogle()"><i class="fa fa-google-plus"></i>Google</button>
     </div>
 
-    <br>
-    <br>
-    <br>
-    <div class="noaccount"><center>Do not have an account? <a href="#">Sign Up</a></center></div>
+  
+    <div class="noaccount">
+      <center>Do not have an account? </center> 
+        <button class="signUp"><a href="#">Sign Up</a></button>
     </div>
+  </div>
+
+
+    <div class="content" id="signUpForm">
+        <div class="title">Sign Up</div>
+        <input class="email" type="text" placeholder="E-mail" style="border: 1px solid #ccc;" />
+        <input class="password" type="password" placeholder="Password" style="border: 1px solid #ccc;" />
+        <input type="checkbox" id="Male" id="Female" />
+        <input type="checkbox" id="rememberMe" />
+        <label for="rememberMe"></label><span style="color: #000;">I have read and agree to the Terms of Use and Privacy Policy</span>
+        <button class="signMeUp"><a style=" color: #6a11cb;">Sign Me Up</a></button>
+
+        <div class="already"style="color: #000;"></div>Already have an account? <button class="signInBtn"> <a href="#">Sign In</a>   </button> 
+        </div>
+      </div>
+
+    
+     
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/5.5.8/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -46,7 +69,9 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
+   
     <script src="scripts/login.js"></script>
 </body>
 
