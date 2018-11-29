@@ -1,78 +1,67 @@
-[debug] [2018-11-27T22:59:10.556Z] ----------------------------------------------------------------------
-[debug] [2018-11-27T22:59:10.557Z] Command:       /Users/jordeguevara/.nvm/versions/node/v10.5.0/bin/node /Users/jordeguevara/.nvm/versions/node/v10.5.0/bin/firebase serve
-[debug] [2018-11-27T22:59:10.557Z] CLI Version:   5.1.1
-[debug] [2018-11-27T22:59:10.557Z] Platform:      darwin
-[debug] [2018-11-27T22:59:10.557Z] Node Version:  v10.5.0
-[debug] [2018-11-27T22:59:10.558Z] Time:          Tue Nov 27 2018 14:59:10 GMT-0800 (Pacific Standard Time)
-[debug] [2018-11-27T22:59:10.558Z] ----------------------------------------------------------------------
+[debug] [2018-11-29T00:17:59.805Z] ----------------------------------------------------------------------
+[debug] [2018-11-29T00:17:59.807Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2018-11-29T00:17:59.807Z] CLI Version:   5.1.1
+[debug] [2018-11-29T00:17:59.807Z] Platform:      darwin
+[debug] [2018-11-29T00:17:59.807Z] Node Version:  v8.12.0
+[debug] [2018-11-29T00:17:59.808Z] Time:          Wed Nov 28 2018 16:17:59 GMT-0800 (PST)
+[debug] [2018-11-29T00:17:59.808Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-11-27T22:59:10.567Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-11-27T22:59:10.567Z] > authorizing via signed-in user
-[debug] [2018-11-27T22:59:10.567Z] [iam] checking project letsvybe-e4796 for permissions ["firebase.projects.get"]
-[debug] [2018-11-27T22:59:10.568Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-11-27T22:59:10.569Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- <request body omitted>
-[debug] [2018-11-27T22:59:10.703Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-27T22:59:10.713Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796:testIamPermissions  
+[debug] [2018-11-29T00:17:59.818Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-29T00:17:59.819Z] > authorizing via signed-in user
+[debug] [2018-11-29T00:17:59.819Z] [iam] checking project letsvybe-e4796 for permissions ["firebase.projects.get"]
+[debug] [2018-11-29T00:17:59.821Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796:testIamPermissions  
 
-[debug] [2018-11-27T22:59:10.838Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-27T22:59:10.839Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796  
+[debug] [2018-11-29T00:18:00.113Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-29T00:18:00.114Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796  
  
-[debug] [2018-11-27T22:59:11.079Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-29T00:18:00.358Z] <<< HTTP RESPONSE 200
 [info] 
-[info] === Serving from '/Users/jordeguevara/Desktop/LetsVybe-master'...
+[info] === Serving from '/Users/bijeshsubedi/Desktop/testMaster/Modular Feeds'...
 [info] 
-[debug] [2018-11-27T22:59:11.081Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/527312988709/clients/_:getWebAppConfig  
+[debug] [2018-11-29T00:18:00.361Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/527312988709/clients/_:getWebAppConfig  
  
-[debug] [2018-11-27T22:59:11.370Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-29T00:18:00.920Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
 [info] i  hosting: Serving hosting files from: public
-[info] ✔  hosting: Local server: http://localhost:5000
-[debug] [2018-11-28T17:11:30.857Z] Error: getaddrinfo ENOTFOUND www.gstatic.com www.gstatic.com:443
-    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:50:26)
+[info] ✔  hosting: Local server: http://localhost:5010
+[debug] [2018-11-29T00:43:15.036Z] Error: connect ETIMEDOUT 216.58.194.163:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1191:14)
 [error] 
 [error] Error: An unexpected error has occurred.
-[debug] [2018-11-28T17:11:30.865Z] Error: getaddrinfo ENOTFOUND www.gstatic.com www.gstatic.com:443
-    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:50:26)
+[debug] [2018-11-29T00:43:15.038Z] Error: socket hang up
+    at createHangUpError (_http_client.js:331:15)
+    at TLSSocket.socketCloseListener (_http_client.js:363:23)
+    at emitOne (events.js:121:20)
+    at TLSSocket.emit (events.js:211:7)
+    at _handle.close (net.js:561:12)
+    at TCP.done [as _onclose] (_tls_wrap.js:360:7)
 [error] 
 [error] Error: An unexpected error has occurred.
-[debug] [2018-11-28T17:11:30.866Z] Error: getaddrinfo ENOTFOUND www.gstatic.com www.gstatic.com:443
-    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:50:26)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2018-11-28T17:11:30.873Z] Error: getaddrinfo ENOTFOUND www.gstatic.com www.gstatic.com:443
-    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:50:26)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2018-11-28T17:11:30.874Z] Error: getaddrinfo ENOTFOUND www.gstatic.com www.gstatic.com:443
-    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:50:26)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2018-11-28T18:44:47.688Z] ----------------------------------------------------------------------
-[debug] [2018-11-28T18:44:47.690Z] Command:       /Users/jordeguevara/.nvm/versions/node/v10.5.0/bin/node /Users/jordeguevara/.nvm/versions/node/v10.5.0/bin/firebase serve
-[debug] [2018-11-28T18:44:47.690Z] CLI Version:   5.1.1
-[debug] [2018-11-28T18:44:47.690Z] Platform:      darwin
-[debug] [2018-11-28T18:44:47.690Z] Node Version:  v10.5.0
-[debug] [2018-11-28T18:44:47.694Z] Time:          Wed Nov 28 2018 10:44:47 GMT-0800 (Pacific Standard Time)
-[debug] [2018-11-28T18:44:47.694Z] ----------------------------------------------------------------------
+[debug] [2018-11-29T00:43:27.243Z] ----------------------------------------------------------------------
+[debug] [2018-11-29T00:43:27.245Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2018-11-29T00:43:27.245Z] CLI Version:   5.1.1
+[debug] [2018-11-29T00:43:27.245Z] Platform:      darwin
+[debug] [2018-11-29T00:43:27.245Z] Node Version:  v8.12.0
+[debug] [2018-11-29T00:43:27.246Z] Time:          Wed Nov 28 2018 16:43:27 GMT-0800 (PST)
+[debug] [2018-11-29T00:43:27.246Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-11-28T18:44:47.705Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-11-28T18:44:47.706Z] > authorizing via signed-in user
-[debug] [2018-11-28T18:44:47.706Z] [iam] checking project letsvybe-e4796 for permissions ["firebase.projects.get"]
-[debug] [2018-11-28T18:44:47.707Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-11-28T18:44:47.707Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- <request body omitted>
-[debug] [2018-11-28T18:44:47.852Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-28T18:44:47.861Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796:testIamPermissions  
+[debug] [2018-11-29T00:43:27.257Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-29T00:43:27.258Z] > authorizing via signed-in user
+[debug] [2018-11-29T00:43:27.258Z] [iam] checking project letsvybe-e4796 for permissions ["firebase.projects.get"]
+[debug] [2018-11-29T00:43:27.260Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796:testIamPermissions  
 
-[debug] [2018-11-28T18:44:48.086Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-28T18:44:48.087Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796  
+[debug] [2018-11-29T00:43:27.801Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-29T00:43:27.802Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796  
  
-[debug] [2018-11-28T18:44:48.711Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-29T00:43:28.054Z] <<< HTTP RESPONSE 200
 [info] 
-[info] === Serving from '/Users/jordeguevara/Desktop/LetsVybe-master'...
+[info] === Serving from '/Users/bijeshsubedi/Desktop/testMaster/Modular Feeds'...
 [info] 
-[debug] [2018-11-28T18:44:48.714Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/527312988709/clients/_:getWebAppConfig  
+[debug] [2018-11-29T00:43:28.056Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/527312988709/clients/_:getWebAppConfig  
  
-[debug] [2018-11-28T18:44:49.023Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-29T00:43:28.626Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
 [info] i  hosting: Serving hosting files from: public
-[info] ✔  hosting: Local server: http://localhost:5000
+[info] ✔  hosting: Local server: http://localhost:5010

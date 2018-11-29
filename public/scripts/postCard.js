@@ -1,3 +1,5 @@
+let vybeChallenge1;
+
 // Element to render all functionality of the question
 let PostCard = function() {
 	// Create the references for dom elements here.
@@ -14,27 +16,27 @@ let UserHeader = function(img, displayName) {
 	this.userImage = img; 		 // Hold the display picture.
 	this.userDisplayName = displayName; // Hold the user display name.
 
-    this.element = this.initializeElement();
     this.profileImage = null;
+    this.element = this.initializeElement();
 }
 
 // Element to show the description.
 let Description = function(descirption) {
 	this.description = descirption;	// Hold the description.
 
-    this.element = this.initializeElement();
     this.paragraph = null;
+    this.element = this.initializeElement();
 }
 
 // Elements to show the questios.
 let Questions = function(questions, answers) {
 	this.questions = questions;
-	this.answers = answers;
-	this.childQuestions = [];
-	this.element = this.initializeElement();
-	this.submitButton = null;
-
+    this.answers = answers;
+    
+    this.childQuestions = [];
+    this.submitButton = null;
 	this.selectedAnswers = null;
+	this.element = this.initializeElement();
 }
 
 // An individual question.
@@ -42,11 +44,11 @@ let Question = function(question) {
 	this.question = question;
 	this.selectedAnswer = null;
 
-	// DOM Elements
-	this.element = this.initializeElement();
-	this.questionAsked = null;		// Div to show the question.
+    // DOM Elements
+    this.questionAsked = null;		        // Div to show the question.
     this.answersForm = null;			    // Form to show the answers.
     this.form = null;
+	this.element = this.initializeElement();
     
 }
 
@@ -55,10 +57,10 @@ let ActionBar = function(liked, played) {
 	this.liked = liked;			// If the post is liked.
 	this.played = played;		// If the post is already played.
 
-	this.element = this.initializeElement();
-	this.likeButton = null;
+    this.likeButton = null;
 	this.playButton = null;
 	this.optionsButton = null;
+	this.element = this.initializeElement();
 }
 
 
@@ -85,9 +87,9 @@ UserHeader.prototype.initializeElement = function() {
     this.profileImage.setAttribute('class', 'user-nav__user-photo news__header--img')
     
     // Define user name label.
-    this. userNameLabel = document.createElement('label')
-    label.setAttribute('class', 'name-title  news__header--title')
-    label.innerHTML = this.userDisplayName;
+    this.userNameLabel = document.createElement('label')
+    this.userNameLabel.setAttribute('class', 'name-title  news__header--title')
+    this.userNameLabel.innerHTML = this.userDisplayName;
 
     userHeader.appendChild(this.profileImage);
     userHeader.appendChild(this.userNameLabel);
@@ -101,16 +103,6 @@ UserHeader.prototype.getElement = function() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 Description.prototype.initializeElement = function() {
     let description = document.createElement('div');
     description.setAttribute('class', 'news__userContent');
@@ -119,22 +111,12 @@ Description.prototype.initializeElement = function() {
     // Append other files to it.
     description.appendChild(this.paragraph);
 
-	return descirption;
+	return description;
 }
 
 Description.prototype.getElement = function() {
 	return this.element;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -149,9 +131,8 @@ Questions.prototype.initializeElement = function() {
     this.submitButton= document.createElement('button');
     this.submitButton.setAttribute('class', 'postChallengeBtn');
     this.submitButton.innerHTML = "Submit";
-    questionsDiv.appendChild(this.submitButton)
-
-	return questions;
+    questionsDiv.appendChild(this.submitButton);
+	return questionsDiv;
 }
 
 Questions.prototype.getElement = function() {
@@ -195,19 +176,20 @@ Question.prototype.initializeElement = function() {
     this.questionAsked.innerHTML = this.question.question;
 
     // Append the question to the div.
-    question.appendChild(questionAsked)
+    question.appendChild(this.questionAsked)
 
     // Render the answers with radio button.
     this.form = document.createElement('form');
-    for (let i = 0; i < question.answerSet.length; i++){
-        this.renderAnswerHTML(question.answerSet[i], i);
+    for (let i = 0; i < this.question.answerSet.length; i++){
+        this.renderAnswerHTML(this.question.answerSet[i], i);
     }
 
+    question.appendChild(this.form);
 	return question;
 }
 
 Question.prototype.getElement = function() {
-	return this.submit;
+	return this.element;
 }
 
 // Depending on the number of answers, this function will create the raido button 
@@ -294,9 +276,9 @@ ActionBar.prototype.getElement = function() {
 	return this.element;
 }
 
-ActionBar.prototype.onLike = function(callback, challengeID) {
+ActionBar.prototype.onLike = function(callback) {
 	this.likeButton.onclick = function() {
-		callback(challengeID); // will both like and unlike
+		callback(); // will both like and unlike
 	}
 }
 
@@ -338,16 +320,25 @@ PostCard.prototype.initialize = function(vybeChallenge) {
 	this.userHeader = new UserHeader(vybeChallenge.user.img, vybeChallenge.user.displayName);
 	this.description = new Description(vybeChallenge.description);
 	this.questions = new Questions(vybeChallenge.questions, vybeChallenge.answers);
-	this.actionBar = new ActionBar(liked, answers !== null);
+	this.actionBar = new ActionBar(vybeChallenge.liked, vybeChallenge.answers !== null);
 
 	// Actions for action Bar
 	this.actionBar.onLike(vybeChallenge.likePost);
-	this.actionBar.onPlay(this.onPlay);
+    this.actionBar.onPlay(this.onPlay);
+    
+    console.log(this.actionBar.playButton);
 
 	// Action for clicking the submit button.
 	this.questions.onSubmit(vybeChallenge.submit);
 
-	// Style all of them together maybe under the main li.
+    // Style all of them together maybe under the main li.
+    this.element = document.createElement('div');
+    this.element.setAttribute('class', 'news');
+
+    this.element.appendChild(this.userHeader.getElement());
+    this.element.appendChild(this.questions.getElement());
+    this.element.appendChild(this.actionBar.getElement());
+
 }
 
 PostCard.prototype.getElement = function() {
@@ -355,5 +346,44 @@ PostCard.prototype.getElement = function() {
 }
 
 PostCard.prototype.onPlay = function() {
-	// TODO: vFigure out which one is showing and hide or show.
+	console.log('play the game?');
+}
+
+
+window.onload = function(){
+    console.log('Window loaded');
+    let vybeChallenge = function(){
+        this.description = 'This is a description';
+        this.questions = [{
+            question: 'What is love?',
+            answerSet: ['Nothing', 'Really', 'Matters.', 'oooo!'],
+            correctAnswer: 0,
+            answerCounts: [0, 0, 0, 0]
+        }];
+        this.likes = []
+        this.answerSet = null;
+        this.liked = false;
+        this.user = {
+            img: 'https://firebasestorage.googleapis.com/v0/b/letsvybe-e4796.appspot.com/o/photos%2F6camYcS3oyQYTidszB3qXeuL9TT2%2Fimages.png?alt=media&token=a67b3720-f659-450d-98f4-5bac461a3660',
+            displayName: 'Bijesh Subedi'
+        }
+    }
+
+    vybeChallenge.prototype.likePost = function(){
+        console.log('Trying to like?');
+    }
+
+    vybeChallenge.prototype.submit = function(selectedAnswers){
+        console.log('Answers')
+    }
+
+    vybeChallenge1 = new vybeChallenge();
+
+    console.log(vybeChallenge1);
+    aPost = new PostCard();
+    aPost.initialize(vybeChallenge1);
+    let ul = document.getElementById('feed-list');
+    var li = document.createElement('li');
+    li.appendChild(aPost.element);
+    ul.insertBefore(li, ul.firstChild);
 }

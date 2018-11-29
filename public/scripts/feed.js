@@ -206,7 +206,8 @@ window.onload = function(){
         this.answers = null;
         this.liked = false;
         this.user = {
-            img: ''
+            img: 'https://firebasestorage.googleapis.com/v0/b/letsvybe-e4796.appspot.com/o/photos%2F6camYcS3oyQYTidszB3qXeuL9TT2%2Fimages.png?alt=media&token=a67b3720-f659-450d-98f4-5bac461a3660',
+            displayName: 'Bijesh Subedi'
         }
     }
 
@@ -217,6 +218,8 @@ window.onload = function(){
     vybeChallenge.prototype.submit = function(selectedAnswers){
         console.log('Answers')
     }
+
+
 
     // // get firestore
     // //    We want this inside because firebase takes time to load
