@@ -1,180 +1,218 @@
+let databaseRef;
+let vybeChallengesRef;
+let usersRef;
+let userInfo;
+let debug = true;
+let challengesRendered = [];
 
-const page = document.querySelector("#feed-container");
-let uid;
-let answers_ref;
-let questions_ref;
-let submit_question = document.querySelector('#submit-question');
-let users_ref;
+function VybeQuestion(question, answers, correctAnswer) {
+    this.question = question;
+    this.answerSet = answers;
+    this.correctAnswer = correctAnswer;
+}
+
+VybeQuestion.prototype.getObject = function(){
+    return {
+        question: this.question,
+        answerSet: this.answerSet,
+        correctAnswer: this.correctAnswer
+    }
+}
+
+function VybeChallenge() {
+    this.challengeID = null;
+    this.user = null;               // The dispaly name and picture.
+
+    this.description = null;        // The description of the challenge.
+    
+    this.questions = [];            // Array of questions.
+
+    this.likes = [];                 // Likes for the vybeChallenge/
+    this.private = false;           // Privacy.
+    this.answers = null;
+
+    this.tags = [];                 // Related tags.
+}
+
+VybeChallenge.prototype.initializeFromDOM = function(question) {
+    this.user = userInfo;
+    this.description = question.question;
+    this.questions = [question];
+    this.likes = 0;
+}
+
+VybeChallenge.prototype.retrieveChallenge = function(challengeID) {
+    // Retrieve tha challenge first.
+    vybeChallengesRef.doc(challengeID).get()
+        .then(snapshot => {
+            this.parseChallenge(snapshot.data());
+        })
+        .catch(error => {
+            console.log(error.message);
+        }
+    );
+
+    // Retrive the user and questions at the same time.
+}
+
+VybeChallenge.prototype.parseChallenge = async function(challenge) {
+    this.user = challenge.user;
+    this.description = challenge.description;
+    this.questions = challenge.questions;
+    this.likes = challenge.likes;
+    this.private = challenge.private;
+    this.tags = challenge.tags;
+    await this.getAnswers();
+}
+
+VybeChallenge.prototype.getAnswers = async function() {
+    await vybeChallengesRef.doc(this.challengeID).collection('answers').doc(userInfo.uid)
+        .get()
+        .then(result => {
+            if (result.exists) {
+                this.answers = result.data().answers;
+            } else {
+                this.answers = null;
+            }
+        })
+}
+
+VybeChallenge.prototype.uploadChallenge = function() {
+    // First check the validity of the questions.
+    thisChallenge = this;
+    uploadDoc = {
+        user: this.user,
+        description: this.description,
+        questions: this.questions,
+        likes: this.likes,
+        private: this.private,
+        tags: this.tags
+    };
+    console.log(uploadDoc);
+    vybeChallengesRef.add(uploadDoc)
+        .then((result) => {
+            if (debug) console.log('Challenge successfully uploaded.');
+        })
+        .catch(error => {
+            console.log(error.message);
+        });
+}
+
+// This function is called from other function so we cannot use this keyword.
+VybeChallenge.prototype.likePost = function(challengeRef) {
+    // TODONOW: Add the users to the likes array.
+    if (challengeRef.likes.includes(userInfo.uid)) {
+        // The user has already liked the post. Now remove him.
+        vybeChallengesRef.doc(challengeRef.challengeID).update({
+            likes: firebase.firestore.FieldValue.arrayRemove(userInfo.uid)
+        });
+        console.log('liked');
+        // TODONOW: Remove the user from the array in the ofline object.
+    } else {
+        // Add the user to the list of liked uids.
+        vybeChallengesRef.doc(challengeRef.challengeID).update({
+            likes: firebase.firestore.FieldValue.arrayUnion(userInfo.uid)
+        });
+        console.log('disliked');
+        // TODONOW: Add the user to the array in the ofline object.
+    }
+}
+
+// Function to submit the answers for the vybe challenge.
+// This function will be called by a callback function do now use 'this'.
+VybeChallenge.prototype.submitPost = function(challengeRef, userAnswers) {
+    // Upload answers under the subcollectino answer of the original challenge.
+    vybeChallengesRef.doc(challengeRef.challengeID).collection('answers').doc(userInfo.uid)
+        .set({
+            answers: userAnswers
+        })
+        .then(() => {
+            console.log('Successfully uploaded the answer');
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+    
+}
 
 
-window.onload = function(){
-    let firestore = firebase.firestore();
-    firestore.settings({/* your settings... */ timestampsInSnapshots: true});
+window.onload = function() {
+
+    // While firebase finished loading.
+    databaseRef = firebase.firestore();
+    databaseRef.settings({timestampsInSnapshots: true});
+
+    // Get the reference for vybeChallenge.
+    vybeChallengesRef = databaseRef.collection('dummyChallenges');
+    usersRef = databaseRef.collection('users');
 
     firebase.auth().onAuthStateChanged(user => {
-        if (user){
-            uid = user.uid;
-            answers_ref = firestore.collection('users').doc(uid).collection('answers');
+        if (user) {
+        // When the user is already logged in.
+            userInfo = {
+                uid: user.uid,
+                img: user.photoURL,
+                displayName: user.displayName
+            }
         } else {
-        //    document.location.href = "index.html";
+        // Otherwise direct user to the login page.
+
         }
     });
 
-
-    questions_ref = firestore.collection('questions');
-    users_ref = firestore.collection('users');
-
-    questions_ref.onSnapshot(snapshot => {
-        let changes = snapshot.docChanges();
-        changes.forEach(change => {
-            if(change.type === 'added'){
-                get_answer_and_make_post(change.doc);
+    // Create a listener to the vybeChallenges: Get it from firebase functions later.
+    vybeChallengesRef.onSnapshot(snapshot => {
+        snapshot.forEach(challenge => {
+            if (! challengesRendered.includes(challenge.id)){
+                createPostCard(challenge);
+                challengesRendered.push(challenge.id);
             }
         });
-    });
-
-}
-
-
-function create_feed(question_obj, post_answer){
-
-    console.log(question_obj.data());
-
-    let question = question_obj.data();
-    let post_id = question_obj.id;
-
-
-    // Create a div to house the question
-    let feed_div = document.createElement('div');
-    feed_div.setAttribute('class', 'feed');
-    feed_div.setAttribute('id', post_id);
-
-    // Create a div to get the image and name of the posting user
-    let user_info = document.createElement('div');
-    user_info.setAttribute('class', 'posting-user-info');
-
-    let user_img = document.createElement('img');
-    user_img.setAttribute('class', 'posting-user-img');
-
-    let user_name = document.createElement('p');
-    user_name.setAttribute('class', 'posting-user-name');
-
-    user_info.appendChild(user_img);
-    user_info.appendChild(user_name);
-
-    get_posting_user_profile(user_img, user_name, question.uid);
-
-    feed_div.appendChild(user_info);
-
-    // Create a question element
-    let question_div = document.createElement('div');
-    question_div.setAttribute('class', 'question');
-    question_div.innerHTML = question.question;
-
-    // Create answer div
-    let answer_div = document.createElement('div');
-    answer_div.setAttribute('class', 'answers');
-
-    // Create different options
-    for (let i = 0; i < question.answers.length; i++){
-        // Create an option
-
-
-        let option = document.createElement('p');
-        option.setAttribute('id', post_id + i);
-
-
-        if (post_answer == i){
-            option.setAttribute('class', 'option selected');
-        } else {
-
-            option.setAttribute('class', 'option not_selected');
-        }
-
-        option.innerHTML = question.answers[i];
-        answer_div.appendChild(option);
-
-
-        option.addEventListener('click', function(){
-            let curr_num = this.getAttribute('id').slice(-1);
-            let curr_post_id = this.parentElement.parentElement.getAttribute('id');
-            for (let j = 0; j < 4; j++){
-                document.getElementById(curr_post_id +j).classList.remove('selected');
-                document.getElementById(curr_post_id +j).classList.add('not_selected');
-            }
-            option.classList.add('selected');
-            answers_ref.doc(post_id).set({answer: curr_num}, {merge: true});
-        })
-    }
-
-    feed_div.appendChild(question_div);
-    feed_div.appendChild(answer_div);
-
-    page.appendChild(feed_div);
-}
-
-
-function get_answer_and_make_post(question_obj){
-    let answer = -1;
-    answers_ref.doc(question_obj.id).get()
-        .then(result=>{
-            if (result.exists){
-                create_feed(question_obj, result.data().answer)
-
-            } else {
-                create_feed(question_obj, null)
-            }
-        }).catch(error=>{
-            console.log(error.message);
-            create_feed(question_obj, null)
     })
 }
 
-function validate_question(que, ans, idx){
-    return que && ans[0] && ans[1] && ans[2] && ans[3] && idx !== 0;
-}
-
-
-submit_question.addEventListener('click', function(){
-    let question = document.querySelector('#upload');
-    let option0 = document.querySelector('#option0');
-    let option1 = document.querySelector('#option1');
-    let option2 = document.querySelector('#option2');
-    let option3 = document.querySelector('#option3');
-    let correct = document.querySelector('#answer');
-    let answers = [option0.value, option1.value, option2.value, option3.value];
-
-
-    if (validate_question(question.value, answers, correct.selectedIndex)){
-        questions_ref.add({
-            question: question.value,
-            answers: answers,
-            correct: (correct.selectedIndex + 1).toString(),
-            uid: uid
+// Create and render the post in the DOM.
+function createPostCard(challenge){
+    // Create a challenge first and initialize it.
+    let currChallenge = new VybeChallenge();
+    currChallenge.challengeID = challenge.id;
+    currChallenge.parseChallenge(challenge.data())
+        .then(() => {
+            // Create a postCard element to push to the dom.
+            let currPost = new PostCard();
+            currPost.initialize(currChallenge);
+            
+            // Upload the postCard to the DOM.
+            var ul = document.getElementById('feed-list')
+            var li = document.createElement('li');
+            li.appendChild(currPost.element);
+            ul.insertBefore(li, ul.firstChild);
         })
-
-        // Reset all the fields
-        question.value = '';
-        option0.value = '';
-        option1.value = '';
-        option2.value = '';
-        option3.value = '';
-        correct.selectedIndex = 0;
-    } else {
-        window.alert('One or more fields are invalid');
-    }
-
-});
-
-
-function get_posting_user_profile(user_img, user_name, uid){
-    users_ref.doc(uid).get()
-        .then(result => {
-            user_img.src = result.data().photoURL;
-            user_name.innerHTML = result.data().name;
-        }).catch(error => {
+        .catch(error => {
             console.log(error.message);
-    })
+        });
 }
 
+// Create a vybeChallenge object from the user input.
+// TODO: Make it able to accepet multiple questions.
+function createVybeChallengePrototype() {
+    let question = document.getElementById('vybeQuestion').value;
+    let answers0, answer1, answer2, answer3;
+    answer0 = document.getElementById('answerOne').value;
+    answer1 = document.getElementById('answerTwo').value;
+    answer2 = document.getElementById('answerThree').value;
+    answer3 = document.getElementById('answerFour').value;
+    let answers = [answer0, answer1, answer2, answer3];
+    let correctAnswer = 0;
 
+    let vybeChallenge = new VybeChallenge();
+    let vybeQuestion = new VybeQuestion(question, answers, correctAnswer);
+    vybeChallenge.initializeFromDOM(vybeQuestion.getObject());
+    vybeChallenge.uploadChallenge();
+    
+    closeOneModal();
+}
+
+function closeOneModal() {
+    $('#myModal').modal('hide');
+}

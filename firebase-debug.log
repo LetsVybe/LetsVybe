@@ -65,3 +65,133 @@
 [warn] ⚠  hosting: Port 5000 is not available. Trying another port...
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5010
+[debug] [2018-11-30T01:05:14.177Z] Error: connect ETIMEDOUT 216.58.195.67:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1191:14)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-11-30T01:05:14.181Z] Error: connect ETIMEDOUT 216.58.195.67:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1191:14)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-11-30T01:05:14.182Z] Error: socket hang up
+    at createHangUpError (_http_client.js:331:15)
+    at TLSSocket.socketCloseListener (_http_client.js:363:23)
+    at emitOne (events.js:121:20)
+    at TLSSocket.emit (events.js:211:7)
+    at _handle.close (net.js:561:12)
+    at TCP.done [as _onclose] (_tls_wrap.js:360:7)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-11-30T01:05:14.183Z] Error: socket hang up
+    at createHangUpError (_http_client.js:331:15)
+    at TLSSocket.socketCloseListener (_http_client.js:363:23)
+    at emitOne (events.js:121:20)
+    at TLSSocket.emit (events.js:211:7)
+    at _handle.close (net.js:561:12)
+    at TCP.done [as _onclose] (_tls_wrap.js:360:7)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-11-30T01:05:59.805Z] ----------------------------------------------------------------------
+[debug] [2018-11-30T01:05:59.807Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2018-11-30T01:05:59.807Z] CLI Version:   5.1.1
+[debug] [2018-11-30T01:05:59.807Z] Platform:      darwin
+[debug] [2018-11-30T01:05:59.807Z] Node Version:  v8.12.0
+[debug] [2018-11-30T01:05:59.808Z] Time:          Thu Nov 29 2018 17:05:59 GMT-0800 (PST)
+[debug] [2018-11-30T01:05:59.808Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-30T01:05:59.863Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-30T01:05:59.864Z] > authorizing via signed-in user
+[debug] [2018-11-30T01:05:59.864Z] [iam] checking project letsvybe-e4796 for permissions ["firebase.projects.get"]
+[debug] [2018-11-30T01:05:59.866Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-11-30T01:05:59.866Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-11-30T01:06:00.087Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-30T01:06:00.101Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796:testIamPermissions  
+
+[debug] [2018-11-30T01:06:00.492Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-30T01:06:00.494Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796  
+ 
+[debug] [2018-11-30T01:06:00.735Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/bijeshsubedi/Desktop/testMaster/Modular Feeds'...
+[info] 
+[debug] [2018-11-30T01:06:00.737Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/527312988709/clients/_:getWebAppConfig  
+ 
+[debug] [2018-11-30T01:06:01.264Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5010
+[debug] [2018-11-30T03:25:35.060Z] Error: connect ETIMEDOUT 216.58.194.163:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1191:14)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-11-30T03:25:35.061Z] Error: socket hang up
+    at createHangUpError (_http_client.js:331:15)
+    at TLSSocket.socketCloseListener (_http_client.js:363:23)
+    at emitOne (events.js:121:20)
+    at TLSSocket.emit (events.js:211:7)
+    at _handle.close (net.js:561:12)
+    at TCP.done [as _onclose] (_tls_wrap.js:360:7)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-11-30T03:28:50.313Z] ----------------------------------------------------------------------
+[debug] [2018-11-30T03:28:50.315Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2018-11-30T03:28:50.315Z] CLI Version:   5.1.1
+[debug] [2018-11-30T03:28:50.315Z] Platform:      darwin
+[debug] [2018-11-30T03:28:50.315Z] Node Version:  v8.12.0
+[debug] [2018-11-30T03:28:50.316Z] Time:          Thu Nov 29 2018 19:28:50 GMT-0800 (PST)
+[debug] [2018-11-30T03:28:50.316Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-30T03:28:50.407Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-30T03:28:50.408Z] > authorizing via signed-in user
+[debug] [2018-11-30T03:28:50.408Z] [iam] checking project letsvybe-e4796 for permissions ["firebase.projects.get"]
+[debug] [2018-11-30T03:28:50.410Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-11-30T03:28:50.410Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-11-30T03:28:50.651Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-30T03:28:50.675Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796:testIamPermissions  
+
+[debug] [2018-11-30T03:28:50.935Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-30T03:28:50.937Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796  
+ 
+[debug] [2018-11-30T03:28:51.166Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/bijeshsubedi/Desktop/testMaster/Modular Feeds'...
+[info] 
+[debug] [2018-11-30T03:28:51.168Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/527312988709/clients/_:getWebAppConfig  
+ 
+[debug] [2018-11-30T03:28:51.483Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5010
+[debug] [2018-11-30T21:30:02.127Z] ----------------------------------------------------------------------
+[debug] [2018-11-30T21:30:02.129Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2018-11-30T21:30:02.129Z] CLI Version:   5.1.1
+[debug] [2018-11-30T21:30:02.129Z] Platform:      darwin
+[debug] [2018-11-30T21:30:02.129Z] Node Version:  v8.12.0
+[debug] [2018-11-30T21:30:02.130Z] Time:          Fri Nov 30 2018 13:30:02 GMT-0800 (PST)
+[debug] [2018-11-30T21:30:02.130Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-30T21:30:02.142Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-30T21:30:02.142Z] > authorizing via signed-in user
+[debug] [2018-11-30T21:30:02.143Z] [iam] checking project letsvybe-e4796 for permissions ["firebase.projects.get"]
+[debug] [2018-11-30T21:30:02.144Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-11-30T21:30:02.144Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-11-30T21:30:02.451Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-30T21:30:02.471Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796:testIamPermissions  
+
+[debug] [2018-11-30T21:30:02.759Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-30T21:30:02.760Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796  
+ 
+[debug] [2018-11-30T21:30:03.036Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/bijeshsubedi/Desktop/testMaster/Modular Feeds'...
+[info] 
+[debug] [2018-11-30T21:30:03.038Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/527312988709/clients/_:getWebAppConfig  
+ 
+[debug] [2018-11-30T21:30:03.542Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
