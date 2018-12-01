@@ -28,6 +28,7 @@ function VybeChallenge() {
     this.questions = [];            // Array of questions.
 
     this.likes = [];                 // Likes for the vybeChallenge/
+    this.liked = null;
     this.private = false;           // Privacy.
     this.answers = null;
 
@@ -38,7 +39,7 @@ VybeChallenge.prototype.initializeFromDOM = function(question) {
     this.user = userInfo;
     this.description = question.question;
     this.questions = [question];
-    this.likes = 0;
+    this.likes = [];
 }
 
 VybeChallenge.prototype.retrieveChallenge = function(challengeID) {
@@ -60,6 +61,7 @@ VybeChallenge.prototype.parseChallenge = async function(challenge) {
     this.description = challenge.description;
     this.questions = challenge.questions;
     this.likes = challenge.likes;
+    this.liked = this.likes.includes(userInfo.uid);
     this.private = challenge.private;
     this.tags = challenge.tags;
     await this.getAnswers();
@@ -106,32 +108,35 @@ VybeChallenge.prototype.likePost = function(challengeRef) {
         vybeChallengesRef.doc(challengeRef.challengeID).update({
             likes: firebase.firestore.FieldValue.arrayRemove(userInfo.uid)
         });
-        console.log('liked');
+        console.log('unliked');
         // TODONOW: Remove the user from the array in the ofline object.
     } else {
         // Add the user to the list of liked uids.
         vybeChallengesRef.doc(challengeRef.challengeID).update({
             likes: firebase.firestore.FieldValue.arrayUnion(userInfo.uid)
         });
-        console.log('disliked');
+        console.log('liked');
         // TODONOW: Add the user to the array in the ofline object.
     }
 }
 
 // Function to submit the answers for the vybe challenge.
 // This function will be called by a callback function do now use 'this'.
-VybeChallenge.prototype.submitPost = function(challengeRef, userAnswers) {
+VybeChallenge.prototype.submitPost = async function(challengeRef, userAnswers) {
     // Upload answers under the subcollectino answer of the original challenge.
-    vybeChallengesRef.doc(challengeRef.challengeID).collection('answers').doc(userInfo.uid)
+    return new Promise((resolve, reject) => {
+        vybeChallengesRef.doc(challengeRef.challengeID).collection('answers').doc(userInfo.uid)
         .set({
             answers: userAnswers
         })
         .then(() => {
-            console.log('Successfully uploaded the answer');
+            if (debug) console.log('Successfully uploaded the answer');
+            resolve(true);
         })
         .catch(error => {
             console.log(error.message);
         })
+    })
     
 }
 
