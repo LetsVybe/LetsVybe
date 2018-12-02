@@ -253,7 +253,7 @@ img {
   border-radius: 8px;
   background-color: #4a148c;
   border: none;
-  
+  display: inherit;
   color: #fff; 
   box-shadow: 0 14px 28px rgba(0,0,0,0.25);
 }
@@ -307,31 +307,149 @@ img {
     height: auto;
   }
 
-
-
-  /* <div class="friendsContainer">
-  <div class="friendsContainer__header">
-          Jesus Ong
-  </div>
-  <div class="friendsContainer__grid"></div>
-  <div class="friendsContainer__actionBar">Add me Fam</div>
-</div> */
-
-.friendsContainer{
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  .friendsContainer{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 530px;
+    background: #fff;
+  }
+  
+  .friendsContainer__gridContainer{
   width: 530px;
-  background: #fff;
-}
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  }
+  
+  .item {
+    padding: 30px;
+  }
 
-.friendsContainer__gridContainer{
-width: 530px;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-}
 
-.item {
-  padding: 30px;
+  @media screen and (max-width: 668px){
+
+    .weatherContainer{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      width: 325px;
+      height: 180px;
+      background-color: #fff;
+      margin: 0 auto;
+    }
+
+    .friendsContainer{
+
+      text-align: center;
+      width: 325px;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+     
+    }
+    .friendsContainer__gridContainer{
+      width: 325px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      }
+      
+      .item {
+        padding: 30px;
+      }
+    
+
+  }
+
+  @media screen and (max-width: 568px){
+
+    .weatherContainer{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      width: 325px;
+      height: 180px;
+      background-color: #fff;
+      margin: 0 auto;
+    }
+
+    .friendsContainer{
+
+      text-align: center;
+      display: flex;
+      width: 325px;
+      flex-direction: column;
+      background: #fff;
+      display: none;
+    }
+    
+
+
+  }
+
+
+
+/* 320px and under */
+@media screen and (max-width: 370px){
+  .weatherContainer{
+    display: flex;
+    width: 240px;
+    height: 90px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #fff;
+    margin: 0 auto;
+
+  }
+  
+  .weatherContainer__imgContainer {
+
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .weatherContainer__weatherData{
+    padding: 20px;
+  
+    text-align: center;
+    font-size: 10px;
+  }
+
+  .weatherContainer__imgContainer__photo{
+    width: 50%;
+    height: auto;
+  }
+
+  .friendsContainer{
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    display: none;
+  }
+  
+  .friendsContainer__gridContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  }
+  
+  .item {
+    padding: 30px;
+  }
+
+  .news{
+    width: 240px;
+  }
+  
+  .post {
+    width: 240px;
+  }
+
+
+  .postChallengeBtn {
+    width: 100px;
+  }
 }
