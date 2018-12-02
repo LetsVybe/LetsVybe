@@ -21,18 +21,14 @@
                         <!-- Search navigation that may need to be implemented later -->
                         <form action="#" class="search">
                                 <input type="text" class="search__input">
-                                <button class="search__button">
-                                        <svg class="search__icon">
-                                                <use xlink:href="images/sprite.svg#icon-magnifying-glass"></use>
-                                        </svg>
-                                </button>
+
                         </form>
 
                         <nav class="user-nav">
                                 <!-- awaiting implementations of nav  -->
                                 <div class="user-nav_profile-box">
                                         <div class="user-nav__icon-box">
-                                               <a href="settings.html"> <img src="images/userjorde.png" class="user-nav__user-photo" id="navPhoto"></a>
+                                               <a href="settings.html"> <img src="#" class="user-nav__user-photo" id="navPhoto"></a>
                                                 <span class="user-nav__user-name" id="nav-name"></span>
                                         </div>
                                 </div>
@@ -49,6 +45,20 @@
                                 <div class="streaks" hidden>
                                         Streaks:
                                 </div>
+
+                                          <!-- // TODO:  Jorde make this Dynamic in JS. -->
+                        <!-- <div class="weatherContainer">
+                                 <div class="weatherContainer__imgContainer">
+                                        <img class="weatherContainer__imgContainer__photo " src="images/sunny.jpg" >
+                                 </div>
+                                 <div class="weatherContainer__weatherData">
+                                               <p> <span> Thursday</span></p>
+                                               <p>  <span> 70   &#8457;</span></p>
+                                               <p>  <span> Santa Clara, CA</span></p>
+                                           
+                                              
+                                 </div>
+                        </div> -->
 
                                 <main class="vybeView" id="vybeView">
                                         <!-- modal that we take in user input to form Challenge object -->
@@ -68,33 +78,33 @@
                                                                                         <label for="vybeQuestion">Vybe Question</label>
                                                                                         <input type="text" class="form-control" id="vybeQuestion" aria-describedby="question" placeholder="Insert Question here">
                                                                         </div>
-                                                                        <label for="formGroupExampleInput">Possible Answer:</label>
+                                                                <label for="formGroupExampleInput">Correct Answer:</label>
                                                                 <div class="form-group">
                                                                         <div class="radio">
-                                                                                <input type="radio" name="optradio" checked value="1">
-                                                                                <input type="text" class="form-control" id="answerOne" placeholder="Possible Question Here">
+                                                                               
+                                                                                <input type="text" class="form-control" id="answerOne" placeholder="Correct Answer Here">
                                                                         </div>
                                                                 </div>
-                                                                             
+                                                                <label for="formGroupExampleInput">Possible Answer:</label>
                                                                 <div class="form-group">
                                                                         <div class="radio">
-                                                                                <input type="radio" name="optradio" checked value="2">
-                                                                                <input type="text" class="form-control" id="answerTwo" placeholder="Possible Question Here">
+                                                                      
+                                                                                <input type="text" class="form-control" id="answerTwo" placeholder="Possible Answer Here">
                                                                         </div>
                                                                 </div>
                                                                         
                                          
                                                                 <div class="form-group">
                                                                         <div class="radio">
-                                                                                <input type="radio" name="optradio" checked value="3">
-                                                                                <input type="text" class="form-control" id="answerThree" placeholder="Possible Question Here">
+                                                                                
+                                                                                <input type="text" class="form-control" id="answerThree" placeholder="Possible Answer Here">
                                                                         </div>
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                         <div class="radio">
-                                                                                <input type="radio" name="optradio" checked value="4">
-                                                                                <input type="text" class="form-control" id="answerFour" placeholder="Possible Question Here">
+                                                                              
+                                                                                <input type="text" class="form-control" id="answerFour" placeholder="Possible Answer Here">
                                                                         </div>
                                                                 </div>
                                                                 </form>
@@ -108,15 +118,17 @@
                                         </div>
                         </div>
                         
-
+                        <!-- // TODO:  Jorde make this Dynamic in JS. -->
                         <div class="weatherContainer">
-                                 <div class="">
-                                        1
+                                 <div class="weatherContainer__imgContainer">
+                                        <img class="weatherContainer__imgContainer__photo " src="images/sunny.jpg" >
                                  </div>
-                                 <div id="2">
-                                                <span> Current Day</span>
-                                                <span> 70 </span>
-                                                <span> Current City</span>
+                                 <div class="weatherContainer__weatherData">
+                                               <p> <span> Thursday</span></p>
+                                               <p>  <span> 70   &#8457;</span></p>
+                                               <p>  <span> Santa Clara, CA</span></p>
+                                           
+                                              
                                  </div>
                         </div>
 
@@ -124,7 +136,7 @@
                         <div class="post">
                                 <div class="postarea">
                                         <a class="postarea__img">
-                                                <img src="images/userjorde.png" class="postarea__img--pic" id="postarea-photo">
+                                                <img src="#" class="postarea__img--pic" id="postarea-photo">
                                         </a>
 
                                 </div>
@@ -133,13 +145,45 @@
                                 <!-- <button name="submitPost" class="postChallengeBtn">Post Challenge</button> -->
 
                         </div>
+                        <!-- area for the Friends Component   -->
+                        <div class="friendsContainer">
+                                <!-- container for name of the user and Friends count (Vybe) -->
+                                <div class="friendsContainer__header">
+                                        Jesus Ong
+                                </div>
+                                <!-- container for the flex grid  -->
+                                <div class="friendsContainer__gridContainer">
+                                        <!-- each is a users Circle component ::: userName/UserImage -->
+                                        <div class="item">1</div>
+                                        <div class="item">2</div>
+                                        <div class="item">3</div>
+                                        <div class="item">4</div>
+                                        <div class="item">5</div>
+                                        <div class="item">6</div>
+                                        <div class="item">7</div>
+                                        <div class="item">8</div>
+                                        <div class="item">9</div>
+                                        <div class="item">10</div>
+                                        <div class="item">11</div>
+                                        <div class="item">12</div>
+                                </div>
+                                <!-- container for adding other users -->
+                                <div class="friendsContainer__actionBar"><button >Add me Fam</button></div>
+                        </div>
+
+
+
+
+
+
+
                         <div class="feed">
                                 <ul id="feed-list">
                                         <li>
                                                 <!-- for testing, code below this line to be deleted -->
                                                 <div class="news">
                                                         <div class="news__header">
-                                                                <img src="images/user-3.jpg" class="user-nav__user-photo news__header--img">
+                                                                <img src="#" class="user-nav__user-photo news__header--img">
                                                                 <label class="name-title  news__header--title">First Last Name</label>
                                                         </div>
                                                         <div class="news__userContent" id="userContent">
@@ -186,7 +230,7 @@
                                         <li>
                                                 <div class="news--opened">
                                                         <div class="news__header">
-                                                                <img src="images/user-1.jpg" class="user-nav__user-photo news__header--img">
+                                                                <img src="#" class="user-nav__user-photo news__header--img">
                                                                 <label class="name-title  news__header--title">First Last Name</label>
                                                                 <div class="news__line"></div>
                                                         </div>
@@ -194,6 +238,7 @@
 
 
                                                         <div class="question">
+                                                                <div>
                                                                 <div class="questionAsked" id="question"> What is love?</div>
                                                                 <form id='questionForm'>
                                                                         <div class="radio">
@@ -208,6 +253,7 @@
                                                                                         <input type="radio" name="optradio">Option 3</label>
                                                                         </div>
                                                                 </form>
+                                                                </div>
 
                                                                 <div class="questionAsked" id="question"> What is love?</div>
                                                                 <form id='questionForm'>
@@ -345,21 +391,20 @@
 
         <!-- initialize the SDK after all desired features are loaded -->
         <script defer src="/__/firebase/init.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
-        <script src="scripts/weatherAPI.js"></script>
+        <!-- <script src="scripts/weatherAPI.js"></script> -->
         <script src="scripts/feed.js"></script>
+        <script src="scripts/postCard.js"></script>
 
         <!-- <script src="home-front.js" type="module "></script> -->
         <!-- <script src="dummy.js" type="module"></script> -->
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 
 </html>
-
-
-<form>
