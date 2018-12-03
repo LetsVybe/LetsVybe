@@ -165,6 +165,8 @@ window.onload = function() {
         }
     });
 
+
+
     // Create a listener to the vybeChallenges: Get it from firebase functions later.
     vybeChallengesRef.onSnapshot(snapshot => {
         snapshot.forEach(challenge => {
@@ -174,6 +176,35 @@ window.onload = function() {
             }
         });
     })
+
+        tempUser = { zipCode: '95134' }; // User object should be constructed with the zipCode.
+        getWeatherInformation(tempUser)
+        .then(weather => {
+            // When the weather information is extracted this function is called
+            // with the information about weather in the variable 'weather'.
+            let currentDay = new Date();
+            let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            console.log('Weather json', weather);
+            let dayOftheWeek = document.getElementById("weatherContainer__day");
+            dayOftheWeek.innerHTML = days[currentDay.getDay()]; //returns day String from day array i.e days[0] = Sunday
+
+            let averageTemp = temperatureConverter(weather.temp); 
+
+            let currentTemp = this.document.getElementById("weatherContainer__temp");
+            currentTemp.innerHTML = averageTemp.toPrecision(2);
+            
+            let city = document.getElementById("weatherContainer__city");
+            city.innerHTML  = weather.city;
+  
+        })
+
+        function temperatureConverter(averageTemp) {
+         
+           return ((averageTemp-273.15)*1.8)+32;
+          }
+
+
+
 }
 
 // Create and render the post in the DOM.

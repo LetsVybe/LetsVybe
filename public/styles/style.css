@@ -43,7 +43,8 @@ li {
 
 .content {
   display: flex;
-  position: relative; }
+  position: relative; 
+}
 
 .vybeView {
   margin: 2.5rem auto;
@@ -235,16 +236,12 @@ img {
     .sidebar__side .sidebar__side:last-child {
       margin-bottom: 100px; }
 
-.streaks {
-  position: absolute;
-  width: 209px;
+.streaksContainer {
+  width: 530px;
   height: 372px;
-  background-color: #ffffff;
-  top: 45px;
-  left: 20px; }
-  @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-    .streaks {
-      display: none; } }
+  background-color: #ffffff; 
+}
+  
 
 .postChallengeBtn {
   margin: 4rem auto;
@@ -285,6 +282,7 @@ img {
     width: 530px;
     height: 180px;
     background-color: #fff;
+    margin: 5rem auto;
   }
   
   .weatherContainer__imgContainer {
@@ -327,6 +325,20 @@ img {
   }
 
 
+  .mobileWeatherContainer{
+    display: none;
+  }
+
+  .vybeView-left{
+    display: flex;
+    flex-direction: column;
+
+  }
+
+
+  /* ================EVERYTHING ABOVE IS DESKTOP VIEW========== */
+
+  /* 668px and under */
   @media screen and (max-width: 668px){
 
     .weatherContainer{
@@ -358,13 +370,28 @@ img {
       .item {
         padding: 30px;
       }
+
+      .weatherContainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 325px;
+        height: 180px;
+        background-color: #fff;
+        margin: 5rem auto;
+      }
     
 
   }
 
+  /* 568px and under */
   @media screen and (max-width: 568px){
 
     .weatherContainer{
+      display: none;
+    }
+
+    .mobileWeatherContainer{
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
