@@ -153,6 +153,15 @@ window.onload = function() {
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
+            var navPhoto = document.getElementById("navPhoto")
+            var navName = document.getElementById("nav-name")
+            var postAreaPhoto = document.getElementById("postarea-photo")
+            navPhoto.setAttribute('src', user.photoURL);
+            postAreaPhoto.setAttribute('src', user.photoURL)
+
+            navName.innerHTML = user.displayName
+            navName.setAttribute('style', 'color: #fff;')
+            console.log(navPhoto)
         // When the user is already logged in.
             userInfo = {
                 uid: user.uid,
@@ -160,6 +169,7 @@ window.onload = function() {
                 displayName: user.displayName
             }
         } else {
+            document.location.href = "index.html";
         // Otherwise direct user to the login page.
 
         }
