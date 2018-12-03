@@ -1,4 +1,4 @@
-window.alert('heloo');
+
 document.addEventListener("DOMContentLoaded", event => {
 	const firestore = firebase.firestore();
 	const settings = {/* your settings... */ timestampsInSnapshots: true};
@@ -76,8 +76,9 @@ function toggleLoginWithLetsVybe() {
     } else {
 
         // start login field validation
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
+        var email = document.getElementById('email')
+        var password = document.getElementById('password');
+        console.log(email, password);
         if (email.length < 4) {
             alert('Please enter an email address.');
             return;
@@ -108,7 +109,7 @@ function toggleLoginWithLetsVybe() {
         // --- end auth with email and password
         // end login
     }
-    document.getElementById('quickstart-sign-in').disabled = true;
+    // document.getElementById('quickstart-sign-in').disabled = true; ??
 }
 /**
  * Handles the sign up button press.
@@ -241,5 +242,11 @@ window.onload = function() {
         $('#signInForm').show()
         $('#signUpForm').hide()
     })
+
+    const login = document.getElementById('logIn');
+    login.addEventListener('click', () => {
+        window.alert("login in button clicked");
+        toggleLoginWithLetsVybe();
+    });
 };
 

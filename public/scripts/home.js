@@ -165,8 +165,6 @@ window.onload = function() {
         }
     });
 
-
-
     // Create a listener to the vybeChallenges: Get it from firebase functions later.
     vybeChallengesRef.onSnapshot(snapshot => {
         snapshot.forEach(challenge => {
@@ -182,29 +180,83 @@ window.onload = function() {
         .then(weather => {
             // When the weather information is extracted this function is called
             // with the information about weather in the variable 'weather'.
-            let currentDay = new Date();
-            let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            console.log('Weather json', weather);
-            let dayOftheWeek = document.getElementById("weatherContainer__day");
-            dayOftheWeek.innerHTML = days[currentDay.getDay()]; //returns day String from day array i.e days[0] = Sunday
+            renderWeatherContainer(weather);
 
-            let averageTemp = temperatureConverter(weather.temp); 
 
-            let currentTemp = this.document.getElementById("weatherContainer__temp");
-            currentTemp.innerHTML = averageTemp.toPrecision(2);
-            
-            let city = document.getElementById("weatherContainer__city");
-            city.innerHTML  = weather.city;
+
   
         })
 
-        function temperatureConverter(averageTemp) {
-         
-           return ((averageTemp-273.15)*1.8)+32;
-          }
 
 
 
+}
+
+function renderWeatherContainer(weather){
+
+    const contentDiv = document.querySelector('.content');
+    const vybeViewLeft = document.createElement('div');
+    vybeViewLeft.setAttribute('class','vybeView-left');
+
+    const weatherContainer = document.createElement('div');
+    weatherContainer.setAttribute('class','weatherContainer');
+    
+
+    const weatherContainerImgContainer = document.createElement('div');
+    weatherContainerImgContainer.setAttribute('class','weatherContainer__imgContainer');
+    
+
+    const weatherContainerImgContainerPhoto = document.createElement('img');
+    weatherContainerImgContainerPhoto.setAttribute('class','weatherContainer__imgContainer__photo');
+    weatherContainerImgContainerPhoto.setAttribute('src','images/sunny.jpg');
+
+    weatherContainerImgContainer.appendChild(weatherContainerImgContainerPhoto);
+    weatherContainer.appendChild(weatherContainerImgContainer);
+
+    const weatherContainerWeatherData = document.createElement('div');
+    weatherContainerWeatherData.setAttribute('class','weatherContainer__weatherData');
+
+    let data = ['day','temp','city'];
+
+    for (let i = 0; i < data.length; i++)
+    {
+        const paraElement = document.createElement('p');
+        const span = document.createElement('span');
+        let id = "weatherContainer__" + data[i];
+        span.setAttribute('id', id );
+
+        paraElement.appendChild(span);
+        weatherContainerWeatherData.appendChild(paraElement);
+        
+    }
+
+    weatherContainer.appendChild(weatherContainerWeatherData);
+
+    vybeViewLeft.appendChild(weatherContainer);
+
+    contentDiv.appendChild(vybeViewLeft);
+
+    let currentDay = new Date();
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    console.log('Weather json', weather);
+    let dayOftheWeek = document.getElementById("weatherContainer__day");
+    dayOftheWeek.innerHTML = days[currentDay.getDay()]; //returns day String from day array i.e days[0] = Sunday
+
+    let averageTemp = temperatureConverter(weather.temp); 
+
+    let currentTemp = this.document.getElementById("weatherContainer__temp");
+    currentTemp.innerHTML = averageTemp.toPrecision(2) + "  &#8457;";
+    
+    let city = document.getElementById("weatherContainer__city");
+    city.innerHTML  = weather.city;
+
+
+}
+
+// Convert Kelvin to Farenheit
+function temperatureConverter(averageTemp)
+{
+     return ((averageTemp-273.15)*1.8)+32;
 }
 
 // Create and render the post in the DOM.
