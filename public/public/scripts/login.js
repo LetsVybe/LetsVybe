@@ -1,3 +1,4 @@
+window.alert('heloo');
 document.addEventListener("DOMContentLoaded", event => {
 	const firestore = firebase.firestore();
 	const settings = {/* your settings... */ timestampsInSnapshots: true};
@@ -31,7 +32,7 @@ function toggleLoginWithGoogle(){
  *  FACEBOOK LOGIN
  */
 function loginWithFacebook(){                    // CHANGE TO TOGGLE AFTER SEEING IT WORKS
-    console.log("We here")
+   
     window.fbAsyncInit = function() {
         FB.init({
             appId      : '244309806262108',
@@ -44,6 +45,7 @@ function loginWithFacebook(){                    // CHANGE TO TOGGLE AFTER SEEIN
 
     };
 
+
     (function(d, s, id){
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {return;}
@@ -53,7 +55,9 @@ function loginWithFacebook(){                    // CHANGE TO TOGGLE AFTER SEEIN
     }(document, 'script', 'facebook-jssdk'));
 }
 
-
+function twitterLogin(){
+    console.log("tweet tweet")
+}
 
 /**
  *  LETS VYBE LOGIN
@@ -219,11 +223,23 @@ function initApp() {
         // end exclude
     });
     // end authstatelistener
-    document.getElementById('quickstart-sign-in').addEventListener('click', toggleLoginWithLetsVybe, false);
-    document.getElementById('quickstart-sign-up').addEventListener('click', registerWithLetsVybe, false);
-    document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
-    document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
+    // document.getElementById('quickstart-sign-in').addEventListener('click', toggleLoginWithLetsVybe, false);
+    // document.getElementById('quickstart-sign-up').addEventListener('click', registerWithLetsVybe, false);
+    // document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
+    // document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
 }
 window.onload = function() {
     initApp();
+
+  
+    $("#signUpForm").hide();
+    $(".signUp").click(function(){
+        $('#signInForm').hide()
+        $('#signUpForm').show()
+    })
+    $('.signInBtn').click(function(){
+        $('#signInForm').show()
+        $('#signUpForm').hide()
+    })
 };
+

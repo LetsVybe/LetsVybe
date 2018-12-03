@@ -173,108 +173,152 @@ function closeOneModal() {
 }
 
 
+/*
+ vybeChallenge {
+	description	= ''	// Description
+	questions = [question0, question1, ... ] // See question type.
+	likes = []			// Uids of users who liked.
+	answers: null if not answered otherwise [ans0, ...] // Array of users who answered the question.
+	user: {
+		img:
+		displayName:
+	}
+	liked: true/false
+ }
+ question {
+	question: 					// The question string
+	answerSet: [] 				// array of strings
+	correctAnswer: 0 			// An integer
+	answerCounts: [0, 0, ...] 	// Array of counts of the answers.
+ }
+*/
 window.onload = function(){
+    
+    console.log('Window loaded');
+    let vybeChallenge = function(){
+        this.description = 'This is a description';
+        this.questions = [{
+            question: 'What is love?',
+            answerSet: ['Nothing', 'Really', 'Matters.', 'oooo!'],
+            correctAnswer: 0,
+            answerCounts: [0, 0, 0, 0]
+        }];
+        this.likes = []
+        this.answers = null;
+        this.liked = false;
+        this.user = {
+            img: ''
+        }
+    }
 
-    // get firestore
-    //    We want this inside because firebase takes time to load
-    database_ref = firebase.firestore();
+    vybeChallenge.prototype.likePost = function(){
+        console.log('Trying to like?');
+    }
 
-    // this is so because firebase recommends doing this
-    database_ref.settings({/* your settings... */ timestampsInSnapshots: true});
+    vybeChallenge.prototype.submit = function(selectedAnswers){
+        console.log('Answers')
+    }
 
-    // more database refs
-    vybeChallengesRef = database_ref.collection('vybeChallenges');
-    console.log(vybeChallengesRef)
-    userRef = database_ref.collection('users');
-    questionsRef = database_ref.collection('questions');
+    // // get firestore
+    // //    We want this inside because firebase takes time to load
+    // database_ref = firebase.firestore();
 
-    // Create a listner for vybeChallenges
-    vybeChallengesRef
-        .onSnapshot(
-            function(querySnapshot){
-                parseChallenge(querySnapshot)
-            });
+    // // this is so because firebase recommends doing this
+    // database_ref.settings({/* your settings... */ timestampsInSnapshots: true});
+
+    // // more database refs
+    // vybeChallengesRef = database_ref.collection('vybeChallenges');
+    // console.log(vybeChallengesRef)
+    // userRef = database_ref.collection('users');
+    // questionsRef = database_ref.collection('questions');
+
+    // // Create a listner for vybeChallenges
+    // vybeChallengesRef
+    //     .onSnapshot(
+    //         function(querySnapshot){
+    //             parseChallenge(querySnapshot)
+    //         });
     
 
-    // If a user is logged in, load their information
-    // Else redirect them to the login/register page, which is the landing page, index.html.
-    firebase.auth().onAuthStateChanged(user => {
-        if (user){
-            var navPhoto = document.getElementById("navPhoto")
-            var navName = document.getElementById("nav-name")
-            var postAreaPhoto = document.getElementById("postarea-photo")
-            navPhoto.setAttribute('src', user.photoURL);
-            postAreaPhoto.setAttribute('src', user.photoURL)
+    // // If a user is logged in, load their information
+    // // Else redirect them to the login/register page, which is the landing page, index.html.
+    // firebase.auth().onAuthStateChanged(user => {
+    //     if (user){
+    //         var navPhoto = document.getElementById("navPhoto")
+    //         var navName = document.getElementById("nav-name")
+    //         var postAreaPhoto = document.getElementById("postarea-photo")
+    //         navPhoto.setAttribute('src', user.photoURL);
+    //         postAreaPhoto.setAttribute('src', user.photoURL)
 
-            navName.innerHTML = user.displayName
-            navName.setAttribute('style', 'color: #fff;')
-            console.log(navPhoto)
+    //         navName.innerHTML = user.displayName
+    //         navName.setAttribute('style', 'color: #fff;')
+    //         console.log(navPhoto)
 
 
             
-            uid = user.uid;  // This is taking up unnecessary space.  We always have user and can always reference user.uid in constant time (k).
-        } else {
-            document.location.href = "index.html";
-        }
-    });
+    //         uid = user.uid;  // This is taking up unnecessary space.  We always have user and can always reference user.uid in constant time (k).
+    //     } else {
+    //         document.location.href = "index.html";
+    //     }
+    // });
 
 
  
-    // Create Global Feed
-    //    1. Grab All Vybe Challenges
-    //    2. For each Vybe Challenge:
-    //         a. Create a Vybe Challenge div
-    //         b. Get all questions associated with the Vybe Challenge and place in question_set
-    //         c. For each question in the question_set:
-    //                   i. Create/Fill a question div (child of Vybe Challenge)
-    //                  ii. Create answer_set div (child of Vybe Challenge)
-    //                 iii. Grab all answers associated with the question and place in answer_set
-    //                 iii. For each answer in answer_set do the following:
-    //                            a. Create/Fill answer div
-    //
-
-    // 1. Grab All Vybe Challenges
-    console.log("START:  grab all vybe challenges");
-
-    // To grab all global vybe challenges, we can go to our vybe challenges collection (vybeChallengesRef) and
-    // find the set of vybe challenges where for each vybe challenge, the privacy is set to global.
-    // querySnapshot is then used to...
-
-
-    // TODO: let allGlobalVybeChallenges = getGlobalVybeChallenges(vybeChallengesRef);
-
-    // let allGlobalVybeChallenges = getGlobalVybeChallenges(userRef);
-    // console.log(userRef)
-    console.log("END:  grab all vybe challenges");
-
-    // REST OF CODE NOT GONE OVER YET; hence, commented out
-    // questions_ref = firestore.collection('questions');
-    // console.log(questions_ref);
-    // users_ref = firestore.collection('users');
-    //
-    // // Change listener.  Anytime something changes in the db we get that change back.
+    // // Create Global Feed
+    // //    1. Grab All Vybe Challenges
+    // //    2. For each Vybe Challenge:
+    // //         a. Create a Vybe Challenge div
+    // //         b. Get all questions associated with the Vybe Challenge and place in question_set
+    // //         c. For each question in the question_set:
+    // //                   i. Create/Fill a question div (child of Vybe Challenge)
+    // //                  ii. Create answer_set div (child of Vybe Challenge)
+    // //                 iii. Grab all answers associated with the question and place in answer_set
+    // //                 iii. For each answer in answer_set do the following:
+    // //                            a. Create/Fill answer div
     // //
-    // questions_ref.onSnapshot(snapshot => {
-    //     let changes = snapshot.docChanges();
-    //     changes.forEach(change => {
-    //         if(change.type === 'added'){
-    //             get_answer_and_make_post(change.doc);
-    //         }
-    //     });
-    // });
-    window.alert("everything loaded")
 
-    // TODO: Jorde Integrate this into the front end.
-    // An example of getting the location data.
-    tempUser = { zipCode: '95134' }; // User object should be constructed with the zipCode.
-    getWeatherInformation(tempUser)
-        .then(weather => {
-            // When the weather information is extracted this function is called
-            // with the information about weather in the variable 'weather'.
+    // // 1. Grab All Vybe Challenges
+    // // console.log("START:  grab all vybe challenges");
 
-            console.log('Weather json', weather);
+    // // To grab all global vybe challenges, we can go to our vybe challenges collection (vybeChallengesRef) and
+    // // find the set of vybe challenges where for each vybe challenge, the privacy is set to global.
+    // // querySnapshot is then used to...
 
-        })
+
+    // // TODO: let allGlobalVybeChallenges = getGlobalVybeChallenges(vybeChallengesRef);
+
+    // // let allGlobalVybeChallenges = getGlobalVybeChallenges(userRef);
+    // // console.log(userRef)
+    // // console.log("END:  grab all vybe challenges");
+
+    // // REST OF CODE NOT GONE OVER YET; hence, commented out
+    // // questions_ref = firestore.collection('questions');
+    // // console.log(questions_ref);
+    // // users_ref = firestore.collection('users');
+    // //
+    // // // Change listener.  Anytime something changes in the db we get that change back.
+    // // //
+    // // questions_ref.onSnapshot(snapshot => {
+    // //     let changes = snapshot.docChanges();
+    // //     changes.forEach(change => {
+    // //         if(change.type === 'added'){
+    // //             get_answer_and_make_post(change.doc);
+    // //         }
+    // //     });
+    // // });
+    // // window.alert("everything loaded")
+
+    // // TODO: Jorde Integrate this into the front end.
+    // // An example of getting the location data.
+    // tempUser = { zipCode: '95134' }; // User object should be constructed with the zipCode.
+    // getWeatherInformation(tempUser)
+    //     .then(weather => {
+    //         // When the weather information is extracted this function is called
+    //         // with the information about weather in the variable 'weather'.
+
+    //         console.log('Weather json', weather);
+
+    //     })
 }
 
 function parseChallenge(querySnapshot) {
@@ -317,6 +361,7 @@ async function createFeedPost(vybechallenge) {
 }
 
 function renderFeed(user, questions, questionsList) {
+    // var userAnsweredSet =  firestore.collection.doc(user)
     // console.log(questionsList)
     var questionID = questionsList[0]; // might have to create loop for multiple questions
     // console.log('in  create object is : ')
@@ -324,49 +369,49 @@ function renderFeed(user, questions, questionsList) {
     var ul = document.getElementById('feed-list')
     var li = document.createElement('li');
 
-    var label = document.createElement('label')
-    label.setAttribute('class', 'name-title  news__header--title')
-    label.innerHTML = user.displayName;
+    // var label = document.createElement('label')
+    // label.setAttribute('class', 'name-title  news__header--title')
+    // label.innerHTML = user.displayName;
 
 
     var containerDiv = document.createElement('div')
     containerDiv.setAttribute('class', 'news')
-    var feed = document.createElement('div')
-    feed.setAttribute('class', 'news__header')
-    var profileImage = document.createElement('img')
-    profileImage.setAttribute('src', user.photoURL)
 
-    profileImage.setAttribute('class', 'user-nav__user-photo news__header--img')
-    var userContent = document.createElement('div');
-    userContent.setAttribute('class', 'news__userContent')
-    console.log(typeof questions, questions)
-    userContent.innerHTML = '<p> ' + questions[0].question + '</p>'
-    var vybeButton = document.createElement("button")
-    vybeButton.setAttribute('class', 'news__activity__btn vybe-btn')
+    // var feed = document.createElement('div')
+    // feed.setAttribute('class', 'news__header')
+    // var profileImage = document.createElement('img')
+    // profileImage.setAttribute('src', user.photoURL)
+    // profileImage.setAttribute('class', 'user-nav__user-photo news__header--img')
+
+    // var userContent = document.createElement('div');
+    // userContent.setAttribute('class', 'news__userContent')
+    // userContent.innerHTML = '<p> ' + questions[0].question + '</p>'
+    // var vybeButton = document.createElement("button")
+    // vybeButton.setAttribute('class', 'news__activity__btn vybe-btn')
     // var span = document.createElement('span')
     // span.setAttribute('class', 'news__activity--icon')
-    var playButton = document.createElement("button")
-    playButton.setAttribute('class', 'news__activity__btn play-btn')
-    var optionButton = document.createElement("button")
-    optionButton.setAttribute('class', 'news__activity__btn option-btn')
-    var newsActivity = document.createElement('div')
-    newsActivity.setAttribute('class', 'news__activity');
+    // var playButton = document.createElement("button")
+    // playButton.setAttribute('class', 'news__activity__btn play-btn')
+    // var optionButton = document.createElement("button")
+    // optionButton.setAttribute('class', 'news__activity__btn option-btn')
+    // var newsActivity = document.createElement('div')
+    // newsActivity.setAttribute('class', 'news__activity');
 
-    var vybeSpan = document.createElement('span')
-    vybeSpan.setAttribute('class', 'news__activity--icon')
-    vybeImage = document.createElement('img')
-    vybeImage.setAttribute('src', '../images/vybe.png')
-    vybeImage.setAttribute('class', 'user-nav__icon')
-    vybeSpan.appendChild(vybeImage)
-    vybeButton.appendChild(vybeSpan)
+    // var vybeSpan = document.createElement('span')
+    // vybeSpan.setAttribute('class', 'news__activity--icon')
+    // vybeImage = document.createElement('img')
+    // vybeImage.setAttribute('src', '../images/vybe.png')
+    // vybeImage.setAttribute('class', 'user-nav__icon')
+    // vybeSpan.appendChild(vybeImage)
+    // vybeButton.appendChild(vybeSpan)
 
-    var playSpan = document.createElement('span')
-    playSpan.setAttribute('class', 'news__activity--icon')
-    playImage = document.createElement('img')
-    playImage.setAttribute('src', '../images/play.png')
-    playImage.setAttribute('class', 'user-nav__icon')
-    playSpan.appendChild(playImage)
-    playButton.appendChild(playSpan)
+    // var playSpan = document.createElement('span')
+    // playSpan.setAttribute('class', 'news__activity--icon')
+    // playImage = document.createElement('img')
+    // playImage.setAttribute('src', '../images/play.png')
+    // playImage.setAttribute('class', 'user-nav__icon')
+    // playSpan.appendChild(playImage)
+    // playButton.appendChild(playSpan)
 
 
     //prevents playSpan HTML Element from firing events from Parent playButton
@@ -396,9 +441,9 @@ function renderFeed(user, questions, questionsList) {
     optionSpan.appendChild(optionImage)
     optionButton.appendChild(optionSpan)
 
-    newsActivity.appendChild(vybeButton)
-    newsActivity.appendChild(playButton)
-    newsActivity.appendChild(optionButton)
+    // newsActivity.appendChild(vybeButton)
+    // newsActivity.appendChild(playButton)
+    // newsActivity.appendChild(optionButton)
     containerDiv.appendChild(feed)
     containerDiv.appendChild(userContent)
     containerDiv.appendChild(newsActivity)
@@ -409,24 +454,24 @@ function renderFeed(user, questions, questionsList) {
     ul.insertBefore(li, ul.firstChild)
 }
 
-function toggleQuestion(questionObj) {
+// function toggleQuestion(questionObj) {
 
-    var questionDiv = document.createElement('div')
-    questionDiv.setAttribute('style', 'text-align:center;')
-    var questionAsked = document.createElement('div')
-    questionAsked.innerHTML = questionObj.question
+//     var questionDiv = document.createElement('div')
+//     questionDiv.setAttribute('style', 'text-align:center;')
+//     var questionAsked = document.createElement('div')
+//     questionAsked.innerHTML = questionObj.question
 
-    var form = document.createElement('form')
-    var radio = document.createElement('div')
-    radio.setAttribute('class', 'radio')
+//     var form = document.createElement('form')
+//     var radio = document.createElement('div')
+//     radio.setAttribute('class', 'radio')
 
-    questionDiv.appendChild(questionAsked)
-    questionDiv.appendChild(form)
-    form.appendChild(radio)
+//     questionDiv.appendChild(questionAsked)
+//     questionDiv.appendChild(form)
+//     form.appendChild(radio)
 
-    return questionDiv
+//     return questionDiv
 
-}
+// }
 
 
 /* Adds an eventListenter to every play-btn and manipulates DOM when it pressed */
@@ -467,47 +512,57 @@ function toggle() {
 function renderQuestions(questions, questionID) {
     console.log(questions)
     //for at least one question
-    var question = questions[0];
-    var mainQuestion = question.question;
-    var possibleAnswer = question.answerSet;
+    // var question = questions[0];
+    // var mainQuestion = question.question;
+    // var possibleAnswer = question.answerSet;
 
     console.log(question)
-    var questionContainer = document.createElement('div')
-    questionContainer.setAttribute('class', 'question')
-    // might have to create an array of these later
-    var questionAsked = document.createElement('div')
-    questionAsked.setAttribute('id', 'question')
-    questionAsked.innerHTML = mainQuestion
-    questionContainer.appendChild(questionAsked)
+    // var questionContainer = document.createElement('div')
+    // questionContainer.setAttribute('class', 'question')
+    // // might have to create an array of these later
+    // var questionAsked = document.createElement('div')
+    // questionAsked.setAttribute('id', 'question')
+    // questionAsked.innerHTML = mainQuestion
+    // questionContainer.appendChild(questionAsked)
 
     var form = document.createElement('form')
     // form.setAttribute('id',questionID)  
 
 
-    for (let i = 0; i < 4; i++) { // for each answer set, create HTML
-        var radioContainer = document.createElement('div')
-        radioContainer.setAttribute('class', 'radio')
-        var questionLabel = document.createElement('label')
-        var questionInput = document.createElement('input')
-        questionInput.setAttribute('type', 'radio')
-        questionInput.setAttribute('name', questionID);
-        questionInput.setAttribute('value', i);
-        questionLabel.innerHTML = possibleAnswer[i]
-        questionLabel.prepend(questionInput)
+    // for (let i = 0; i < 4; i++) { // for each answer set, create HTML
+    //     var radioContainer = document.createElement('div')
+    //     radioContainer.setAttribute('class', 'radio')
+    //     var questionLabel = document.createElement('label')
+    //     var questionInput = document.createElement('input')
+    //     questionInput.setAttribute('type', 'radio')
+    //     questionInput.setAttribute('name', questionID);
+    //     questionInput.setAttribute('value', i);
+    //     questionLabel.innerHTML = possibleAnswer[i]
+    //     questionLabel.prepend(questionInput)
 
-        radioContainer.appendChild(questionLabel)
-        form.appendChild(radioContainer)
-    }
+    //     radioContainer.appendChild(questionLabel)
+    //     form.appendChild(radioContainer)
+    // }
 
-    var submitButton = document.createElement('button')
-    submitButton.setAttribute('class', 'postChallengeBtn')
-    submitButton.innerHTML = "Submit"
+    // var submitButton = document.createElement('button')
+    // submitButton.setAttribute('class', 'postChallengeBtn')
+    // submitButton.innerHTML = "Submit"
 
     submitButton.onclick = function (event) {
+        userAnswerInput = $(`input[type='radio'][name='${questionID}']:checked`).val();
+        console.log(userAnswerInput)
+        var verifyUserAnswer = verifyUserInput(userAnswerInput);
+        console.log(verifyUserAnswer)
+        if(verifyUserAnswer != null)
+        {
+        var userAnswer = parseInt(verifyUserAnswer );
+        // postAnswerFireBase(questionID,userAnswer);
+        }
+        else
+        {
+            window.alert("You must select Valid Input.")
+        }
 
-        inputString = $(`input[type='radio'][name='${questionID}']:checked`).val();
-        var userAnswer = parseInt(inputString);
-        postAnswerFireBase(questionID,userAnswer);
        
 
         
@@ -516,14 +571,39 @@ function renderQuestions(questions, questionID) {
 
     }
 
-    questionContainer.appendChild(form)
-    questionContainer.appendChild(submitButton)
+    // questionContainer.appendChild(form)
+    // questionContainer.appendChild(submitButton)
 
     return questionContainer
 
 }
 
 function postAnswerFireBase(questionID,userAnswer){
-    console.log(questionID , userAnswer)
+    // console.log(questionID , userAnswer)
     // return nothing
+}
+
+function verifyUserInput(userAnswerInput){
+    if(typeof userAnswerInput != 'undefined' )
+        return userAnswerInput
+    else
+        return null;
+}
+
+
+// Creates the Containers for the weather API
+
+function renderWeatherElement(){
+    var weatherContainer = document.createElement('div');
+    weatherContainer.setAttribute('class','weatherContainer');
+    var weatherContainerImgContainer =  document.createElement('div');
+    weatherContainerImgContainer.setAttribute('class','weatherContainer__imgContainer');
+    var weatherContainerImgContainerPhoto = document.createElement('img');
+    weatherContainerImgContainerPhoto.setAttribute('class','weatherContainer__imgContainer__photo ');
+    var weatherContainerWeatherData =  document.createElement('div');
+    weatherContainerWeatherData.setAttribute('class','weatherContainer__weatherData');
+
+    // TODO: Create <P> and <Span> elements for day degrees and city
+
+
 }
