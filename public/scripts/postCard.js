@@ -17,9 +17,10 @@ function PostCard() {
 // Element to show the challenge posting user information in the postCard.
 function UserHeaderContainer(img, displayName) {
 	this.userImage = img; 		 // Hold the display picture.
-	this.userDisplayName = displayName; // Hold the user display name.
+    this.userDisplayName = displayName; // Hold the user display name.
 
     this.profileImage = null;
+    this.deleteButton = null;
     this.element = this.initializeElement();
 }
 
@@ -181,7 +182,6 @@ QuestionsContainer.prototype.getSelectedAnswers = function() {
 	this.childQuestionsContainer.forEach(childQuestion => {
 		selectedAnswers.push(childQuestion.getSelectedIndex());
 	});
-
 	return selectedAnswers;
 }
 
