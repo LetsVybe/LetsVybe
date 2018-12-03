@@ -13,50 +13,76 @@
 
 <body>
 
-    <audio controls  autoplay hidden>
-        <source src="vybe.mp3" type="audio/mpeg" >
-      </audio> 
+  <audio controls  autoplay hidden>
+    <source src="vybe.mp3" type="audio/mpeg" >
+  </audio>
 
   <div class="bg-image">
     <!-- <h1 class="title blinking">LETSVYBE</h1> -->
+  </div
+
+  <div id="top-nav">
+     <!-- Container where we'll display the user details -->
+     <div class="quickstart-user-details-container">
+        LetsVybe sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+        <div>LetsVybe auth <code>currentUser</code> object value:</div>
+        <pre><code id="quickstart-account-details">null</code></pre>
+     </div>
+
   </div>
 
+
   <div class="content" id="signInForm">
-    <div class="title">LETSVYBE</div>
-    <input id="email" class="email" type="text" placeholder="E-mail" style="border: 1px solid #ccc;" />
-    <input id="password" class="password" type="password" placeholder="Password" style="border: 1px solid #ccc;" />
+    <div class="title">LetsVybe</div>
+    <input class="email login_text_input" id="email" type="text" placeholder="E-mail" style="border: 1px solid #ccc;" />
+    <input class="password login_pw__input" id="password" type="password" placeholder="Password" style="border: 1px solid #ccc;" />
     <input type="checkbox" id="rememberMe" />
     <!-- <label for="rememberMe"></label><span>I have read and agree to the <a href="#">Terms of Use </a>and <a href="#">Privacy Policy</a></span> -->
-    <button class="signIn" id="logIn">Log In</button>
-    <div class="social"> or sign up with social media</div>
+    <button class="signIn login_button" onclick="toggleLoginWithLetsVybe()" id="quickstart-sign-in" >Log In</button>
+    <div class="social"> <span>or sign up with social media</span></div>
     <div class="buttons">
       <button class="facebook" onclick="loginWithFacebook()"><i class="fa fa-facebook"></i>Facebook</button>
+      <button class="twitter" onclick="#"><i class="fa fa-twitter"></i>Twitter</button>
       <button class="google" onclick="toggleLoginWithGoogle()"><i class="fa fa-google-plus"></i>Google</button>
     </div>
 
-  
+
     <div class="noaccount">
-      <center>Do not have an account? </center> 
-        <button class="signUp"><a href="#">Sign Up</a></button>
+      <center>Do not have an account? </center>
+        <button class="signUp login_button" onclick="registerWithLetsVybe" id="quickstart-sign-up" name="signup"><a href="#">Sign Up</a></button>
     </div>
   </div>
 
 
     <div class="content" id="signUpForm">
         <div class="title">Sign Up</div>
-        <input class="email" type="text" placeholder="E-mail" style="border: 1px solid #ccc;" />
-        <input class="password" type="password" placeholder="Password" style="border: 1px solid #ccc;" />
+        <input class="email" id="newEmail" type="text" placeholder="E-mail" style="border: 1px solid #ccc;" />
+        <input class="password" id="newPassword" type="password" placeholder="Password" style="border: 1px solid #ccc;" />
         <input type="checkbox" id="Male" id="Female" />
         <input type="checkbox" id="rememberMe" />
-        <label for="rememberMe"></label><span style="color: #000;">I have read and agree to the Terms of Use and Privacy Policy</span>
-        <button class="signMeUp"><a style=" color: #6a11cb;">Sign Me Up</a></button>
 
-        <div class="already"style="color: #000;"></div>Already have an account? <button class="signInBtn"> <a href="#">Sign In</a>   </button> 
+        <!--<label for="rememberMe"></label><span style="color: #000;">I have read and agree to the Terms of Use and Privacy Policy</span>-->
+        <div class="buttons">
+          <button class="facebook" onclick="twitterLogin()"><i class="fa fa-facebook"></i>Facebook</button>
+          <button class="twitter" onclick="loginWithFacebook()"><i class="fa fa-twitter"></i>Twitter</button>
+          <button class="google" onclick="toggleLoginWithGoogle()"><i class="fa fa-google-plus"></i>Google</button>
         </div>
-      </div>
+        <button class="signMeUp " onclick="registerWithLetsVybe()" id="quickstart-sign-up"><a style=" color: #6a11cb;">Sign Me Up</a></button>
+         <!--
+        <button disabled onclick="sendEmailVerification()" id="quickstart-verify-email" name="verify-email">Send Email Verification</button>
+        &nbsp;&nbsp;&nbsp;
+        <button onclick="sendPasswordReset()" id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>-->
+        <div class="already"style="color: #000;"></div>Already have an account? <button class="signInBtn"> <a href="#">Sign In</a>   </button>
 
-    
-     
+        </div>
+      </div
+
+
+
+
+
+
+
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/5.5.8/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -70,7 +96,7 @@
     <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
-   
+
     <script src="scripts/login.js"></script>
 </body>
 
