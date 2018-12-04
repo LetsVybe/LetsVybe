@@ -50,6 +50,8 @@ function QuestionContainer(question, questionID, answer) {
     this.questionID = questionID;
     this.question = question;
     this.answer = answer;
+    this.correctResultImageURL = '../images/correct.png';
+    this.incorrectResultImageURL = '../images/incorrect.png';
 
     // DOM Elements
     this.questionAsked = null;		        // Div to show the question.
@@ -73,6 +75,7 @@ function ActionBarContainer(liked, played) {
     this.notLikedImageURL = '../images/like.png';
     this.playedImageURL = '../images/played.png';
     this.notPlayedImageURL = '../images/play.png';
+ 
 
     // Intialize the dom Elements.
     this.likeButton = null;
@@ -164,11 +167,26 @@ QuestionsContainer.prototype.initializeElement = function() {
         questionsDiv.appendChild(this.submitButton);
     } else {
         this.scoreDiv = document.createElement('div');
-        this.scoreDiv.style.background = 'cyan';
-        this.scoreDiv.innerHTML = 'Score: ' + this.score;
+        this.scoreDiv.setAttribute('style','margin: 0 auto;')
+        this.scoreDiv.innerHTML =   `  <div class="scoreContainer">
+                                        <h3 class="scoreHeader">
+                                            Vybe Score
+                                        </h3>
+                                        <div class"score"> 
+                                     <div class="c100 p${this.score} green">
+                                        <span>${this.score}%</span>
+                                        <div class="slice">
+                                            <div class="bar"></div>
+                                            <div class="fill"></div>
+                                        </div>
+                                        </div>
+                                    </div> 
+                                    </div> `
+        
+        // 'Score: ' + this.score;
         questionsDiv.appendChild(this.scoreDiv);
     }
-	return questionsDiv;
+    return questionsDiv;
 }
 
 QuestionsContainer.prototype.getElement = function() {
@@ -269,11 +287,32 @@ QuestionContainer.prototype.renderUnattemptedAnswers = function(possibleAnswer, 
 
 QuestionContainer.prototype.renderAttemptedAnswers = function(possibleAnswer, answerNum) {
     let placeholder = document.createElement('p');
+    placeholder.setAttribute('style','margin-top:0.5rem;')
     placeholder.innerHTML = possibleAnswer;
     // Check if the correct answer is equal to the answer user selected.
+
     if (answerNum === this.answer) {
-        placeholder.style.color = (this.answer == this.question.correctAnswer? 'green' : 'red');
+        if(this.answer == this.question.correctAnswer)
+        {
+            placeholder.style.color = 'green';
+            const resultUI = document.createElement('img');
+            resultUI.setAttribute('style','width:18px;height:18px; padding-left:0.75rem;');
+            resultUI.setAttribute('src', this.correctResultImageURL);
+    
+            placeholder.appendChild(resultUI);
+        }
+        else
+        {
+            placeholder.style.color = 'red';
+            const resultUI = document.createElement('img');
+            resultUI.setAttribute('style','width:18px;height:18px; padding-left:0.75rem;');
+            resultUI.setAttribute('src', this.incorrectResultImageURL);
+            placeholder.appendChild(resultUI);
+        }
+     
     }
+
+
     this.form.append(placeholder);
 }
 

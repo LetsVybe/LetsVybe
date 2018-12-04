@@ -202,7 +202,12 @@ window.onload = function() {
 
 }
 
+
+
+
 function renderWeatherContainer(weather){
+
+    
 
     const contentDiv = document.querySelector('.content');
     const vybeViewLeft = document.createElement('div');

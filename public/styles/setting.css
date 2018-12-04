@@ -3,6 +3,11 @@ main {
 
 }
 
+*{
+    box-sizing: border-box;
+}
+
+
 .container{
     padding: 5rem;
     
@@ -11,6 +16,7 @@ main {
 h3{
     font-family: 'Black Han Sans', sans-serif;
     padding-top: 2rem;
+    margin-left: 2.5rem
 }
 
 .btn {
@@ -50,14 +56,16 @@ h3{
 
 .sideSettings{
   width: 240px;
-  background-image: linear-gradient(to top, #6a11cb 0%, #2575fc 100%);
+  /* background-image: linear-gradient(to top, #6a11cb 0%, #2575fc 100%); */
+  background: #1E2749;
 }
 
 .settingsOptions{
-text-align: center;
+/* text-align: center; */
 margin: 0 auto;
-width: 500px;
-background: #fff
+flex-grow: 1;
+background: #fff;
+height: 100vh;
 }
 
 .setting{
@@ -70,7 +78,20 @@ background: #fff
 }
 
 .box{
-    display: none;
+    margin: 0.1em;
+    display: flex;
+    border-bottom: 1px solid #D3D3D3;
+   
+}
+
+.left{
+    flex-basis: 50%;
+    /* background: yellow; */
+
+}
+.right{
+  flex-basis: 50%;
+  /* background: green; */
 }
 
 .profile-photoSection{
@@ -83,6 +104,37 @@ background: #fff
 
 .container{margin: 0;
     padding: 0;}
+
+
+.general{
+        width: 100%;
+}
+
+.edit{
+    padding: 10px;
+    margin: 1.2rem auto;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+#photoField{
+    margin-left: 2.5rem;
+}
+    
+.option{
+    padding: 0.5rem;
+    margin-left: 2.5rem;
+    
+}
+
+.option-updateDropDown{
+    /* display: block; */
+    text-align: center;
+    background: lightgray;
+    padding: 1rem;
+}
+    
 
 /* No greater than 900px, no less than 400px */
 @media screen and (min-width:765px) and (max-width:992px){
@@ -187,20 +239,20 @@ background: #fff
       margin: 0;
   }
 
-  .box{
+  /* .box{
       display: flex;
      
   }
 
   .left{
       flex-basis: 50%;
-      /* background: yellow; */
+      background: yellow;
 
   }
   .right{
     flex-basis: 50%;
-    /* background: green; */
-  }
+    background: green;
+  } */
 
   .profile-photoSection{
     display: block;

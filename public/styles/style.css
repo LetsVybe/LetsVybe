@@ -336,28 +336,66 @@ img {
   }
 
 
+  input[type="radio"] {
+    vertical-align: baseline;
+  }
+
+  .radio{
+    display:flex;
+    flex-wrap: wrap;
+    text-align: center;
+    position: relative;
+    left: 45%;
+    width: 50%;
+  }
+
+  .radioContainer{
+
+  }
+
+  .radio > label {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+
+
+
+
   /* ================EVERYTHING ABOVE IS DESKTOP VIEW========== */
+
+  @media screen and (max-width: 1163px){
+    .weatherContainer{
+      display: none;
+
+    }
+  }
 
   /* 668px and under */
   @media screen and (max-width: 668px){
 
-    .weatherContainer{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      width: 325px;
-      height: 180px;
-      background-color: #fff;
-      margin: 0 auto;
+    .post {
+      width: 300px;
+    }
+    
+    .news {
+      width: 300px;
     }
 
-    .friendsContainer{
+    .weatherContainer{
+      display: none;
+      
+    }
 
+
+    .friendsContainer{
+      
       text-align: center;
       width: 325px;
       display: flex;
       flex-direction: column;
       background: #fff;
+      display: none;
      
     }
     .friendsContainer__gridContainer{
@@ -371,21 +409,15 @@ img {
         padding: 30px;
       }
 
-      .weatherContainer{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        width: 325px;
-        height: 180px;
-        background-color: #fff;
-        margin: 5rem auto;
-      }
-    
-
   }
 
   /* 568px and under */
   @media screen and (max-width: 568px){
+
+    .container{
+      margin: 0;
+      padding: 0;
+    }
 
     .weatherContainer{
       display: none;
@@ -395,7 +427,7 @@ img {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
-      width: 325px;
+      width: 300px;
       height: 180px;
       background-color: #fff;
       margin: 0 auto;
@@ -419,7 +451,7 @@ img {
 
 /* 320px and under */
 @media screen and (max-width: 370px){
-  .weatherContainer{
+  .mobileWeatherContainer {
     display: flex;
     width: 240px;
     height: 90px;
