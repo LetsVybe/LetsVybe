@@ -158,7 +158,8 @@ img {
   margin-right: 340px;
   margin-left: 740px;
 padding: 5px;
-  width: 540px;
+  width: 40%;
+  height:80%;
 
 }
 .search {
@@ -201,7 +202,7 @@ padding: 5px;
       display: flex;
       align-items: center;
     }
-    .user-nav > *:hover {
+    .user-nav > :hover {
       background: var(--color-primary-light);
     }
     .user-nav__icon-box {
@@ -254,57 +255,6 @@ padding: 5px;
 border: solid 2px rgb(229, 211, 233);
 }
 
-.vyberfChallenge
-{
-
-}
-.news {
-  display: grid;
-  width: 530px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 2.5px;
-  background-color: #fff;
-  margin: 2.5rem auto;
-  grid-column-gap: 100px;
-  grid-template-rows: 75px 75px 50px;
-  grid-row-gap: 25px; }
-  .news__header {
-    border-bottom: 1px solid lightgrey;
-    margin: 0 1rem;
-    display: grid;
-    grid-template-rows: 75px;
-    grid-template-columns: 1fr 1fr;
-    align-items: center; }
-    .news__header--img {
-      margin: 4rem auto; }
-    .news__header--title {
-      color: #000; }
-    .news__header__line {
-      height: 2px;
-      width: 100%;
-      margin: 2px auto; }
-  .news__userContent {
-    margin: 1rem 4rem; }
-  .news__activity {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; }
-    .news__activity--icon {
-      display: block;
-      margin: auto; }
-
-.postChallenge{
-  height:140px;
-  width:570px;
-  background-color: #f2edf6;
-  margin: 20px;
-  margin-right: 340px;
-  display:inline-block;
-  float: right;
-  padding: 5px;
-  border: solid 2px rgb(229, 211, 233);
-
-}
-
 .vyberFeed
 .circularProfileImage
 {
@@ -343,7 +293,7 @@ border: solid 2px rgb(229, 211, 233);
 }
 .commentPost
 {
-    border: solid 2px rgb(229, 211, 233);;
+    border: solid 2px rgb(229, 211, 233);;=
 }
 
 .post {
@@ -393,54 +343,6 @@ border: solid 2px rgb(229, 211, 233);
     grid-template-rows: 50px; }
     .sidebar__side .sidebar__side:last-child {
       margin-bottom: 100px; }
-
-.streaks {
-  position: absolute;
-  width: 209px;
-  height: 372px;
-  background-color: #ffffff;
-  top: 45px;
-  left: 20px; }
-
-.postChallengeBtn {
-  width: 126px;
-  height: 36px;
-  border-radius: 8px;
-  background-color: #4a148c;
-  color: #fff;
-  margin-left: 440px;
-}
-
-textarea
-{
-  margin-left: 80px;
-}
-/* PlaceHolder Color */
-.postChallenge textarea::-webkit-input-placeholder {
-color: #f09ce2;
-padding:5px 0 0 5px;
-}
-
-.postChallenge textarea:-moz-placeholder { /* Firefox 18- */
-color: #f09ce2;
-padding:5px 0 0 5px;
-}
-
-.postChallenge textarea::-moz-placeholder {  /* Firefox 19+ */
-color: #f09ce2;
-padding:5px 0 0 5px;
-}
-
-.postChallenge textarea:-ms-input-placeholder {
-color: #f09ce2;
-padding:5px 0 0 5px;
-}
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
-      position: relative;
-      display: inline-block;
-  }
-
   /* Dropdown Content (Hidden by Default) */
   .dropdown-content {
       display: none;
@@ -470,10 +372,11 @@ padding:5px 0 0 5px;
       padding: 10px 6px;
       text-decoration: none;
       display: block;
+      background-color: #f2edf6;
   }
 
   Change color of dropdown links on hover
-  .dropdown-content a:hover {background-color: #5f13b5;}
+  .dropdown-content a:hover {background-color: ;}
 
   /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {display: block;
