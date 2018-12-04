@@ -1,32 +1,43 @@
 @import url(http://fonts.googleapis.com/css?family=Dosis:300|Lato:300,400,600,700|Roboto+Condensed:300,700|Open+Sans+Condensed:300,600|Open+Sans:400,300,600,700|Maven+Pro:400,700);
- @import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
- * {
+@import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+* {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-span{
-  color: #000;
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
 }
 
 h1 {
   color: #FFFFFF;
 }
 .bg-image {
-  /* background-color: black;
-  background-image: url(../images/login2.jpg); */
-  background-image: linear-gradient(to top, #6a11cb 0%, #2575fc 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-color: lightgrey;
+  background-image: url(../images/login2.jpg);
   width: 100%;
   height: 100%;
   background-size: cover;
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -o-filter: blur(2px);
-  -ms-filter: blur(2px);
-  filter: blur(2px);
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
 }
 body {
   font-family:"Open Sans";
@@ -34,30 +45,17 @@ body {
   font-smoothing: antialiased;
   font-weight: 600;
   height:100vh;
-  color: #000;
-
 }
 a {
-  color: #fff;
+  color: #782dff;
 }
 
-.neon {
- font-family: 'Black Han Sans', sans-serif;
-  font-size: 3em;
-  text-shadow: 0 0 20px #6a11cb;
-}
-
-.neon::after{
-  color: #2575fc;
-  filter: blur(15px);
-}
-
-/* .blinking {
-  animation:blinkingText 0.25s infinite;
+.blinking {
+  animation:blinkingText 1.8s infinite;
   text-align: center;
   font-size: 125px;
   color: #FFFFFF;
-} */
+}
 @keyframes blinkingText {
   0% {
     color: whirgb(252, 30, 184)te;
@@ -76,8 +74,6 @@ a {
   }
 }
 .content:before {
-  content:"";
-  position: fixed;
   left: 0;
   right: 0;
   top: 0;
@@ -85,38 +81,32 @@ a {
   z-index: -1;
   display: block;
 }
+.container{
+  background-color: rgba(10, 10, 10, 0.666);
+
+
+}
 .content {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 540px;
-  height: 560px;
-  background-color: rgba(255, 255, 255, 1.0);
-  margin: auto auto;
   padding: 40px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
   -moz-box-shadow: 0 0 10px black;
   -webkit-box-shadow: 0 0 10px black;
-  /* box-shadow: 0 0 10px black; */
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 15px 10px rgba(0,0,0,0.7);
+  box-shadow: 0 0 10px black;
 }
-.content .title {
-  letter-spacing: 0.8rem;
+.title {
   text-align: center;
-  font-size: 45px;
+  font-size: 30px;
+  font-size: 6.66vw;
   font-weight: 600;
   padding-bottom: 10px;
-  color: #6a11cb;
+  color: #FFFFFF;
 }
-.content .noaccount {
+.noaccount {
   color: white;
 }
 .content input {
-  width: 100%;
   font-size: 1.2rem;
   font-family:"Open Sans";
   margin: 10px 0px;
@@ -131,7 +121,7 @@ a {
 }
 .content label {
   display: inline-block;
-  background-color: #bbb;
+  background-color: #FFFFFF;
   width: 20px;
   height: 20px;
   cursor: pointer;
@@ -158,7 +148,9 @@ a {
   font-size: 1.1rem;
   padding: 10px;
   margin: 20px 0px;
-  color: #FFFFFF;
+  background-color: #FFFFFF;
+  color: #000000;
+  border: none;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
@@ -202,165 +194,11 @@ a {
 }
 .content .buttons button.facebook {
   background-color: #4464B2;
-  border: none;
   /* background-color: #5C5CFF; */
 }
 .content .buttons button.twitter {
   background-color: #28A9E0;
-  border: none;
 }
 .content .buttons button.google {
   background-color: #DA4735;
-  border: none;
-}
-
-.email{
-  border: 1px solid #ccc;
-}
-
-.password{
-  border: 1px solid #ccc;
-}
-
-center{
-  color: #000
-}
-
-.social span{
-  color: #000;
-}
-
-.signUp{
-  border: 2px solid #6a11cb;
-  background: transparent;
-}
-
-.signUp:active{
-  box-shadow: 0 2px #666;
-  transform: translateY(4px);
-}
-
-.signUp a{
-color: #6a11cb;
-
-}
-
-.signIn{
-  background: rgb( 106, 17, 203, .9);
-  border: none;
-}
-
-.signIn:active{
-  box-shadow: 0 2px #666;
-  transform: translateY(4px);
-}
-
-.login{
-  background: rgb( 106, 17, 203, .9);
-}
-
-.login:active{
-  box-shadow: 0 2px #666;
-  transform: translateY(4px);
-}
-
-.signMeUp{
-  border: 2px solid #6a11cb;
-  background: transparent;
-
-}
-
-.signMeUp:active{
-  box-shadow: 0 2px #666;
-  transform: translateY(4px);
-}
-
-.signMeUp a{
-  color: #6a11cb;
-
-
-}
-
-.signInBtn{
-  border: none;
-  background: rgb( 106, 17, 203, .9);
-}
-
-.signInBtn:active{
-  box-shadow: 0 2px #666;
-  transform: translateY(4px);
-}
-
-.signInBtn a{
-  color:  #fff;
- 
-}
-/* 570px and under  */
-@media screen and (max-width: 570px) {
-  .content {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto auto;
-    width: 350px;
-    padding: 40px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    -moz-box-shadow: 0 0 10px black;
-    -webkit-box-shadow: 0 0 10px black;
-    /* box-shadow: 0 0 10px black; */
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 15px 10px rgba(0,0,0,0.7);
-  }
-
-  .content .title {
-    letter-spacing: 0.3rem;
-    text-align: center;
-    font-size: 45px;
-    font-weight: 600;
-    padding-bottom: 10px;
-    color: #6a11cb;
-  }
-
-.fa .fa-facebook{
-  display: none;
-}
-}
-
-/* 320px and under */
-@media screen and (max-width: 320px){
-
-
-  .content {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto auto;
-    width: 290px;
-    padding: 20px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    -moz-box-shadow: 0 0 10px black;
-    -webkit-box-shadow: 0 0 10px black;
-    /* box-shadow: 0 0 10px black; */
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 15px 10px rgba(0,0,0,0.7);
-  }
-
-  .content .title {
-    letter-spacing: 0.1rem;
-    text-align: center;
-    font-size: 45px;
-    font-weight: 600;
-    padding-bottom: 10px;
-    color: #6a11cb;
-  }
-
-.fa .fa-facebook{
-  display: none;
-}
 }
