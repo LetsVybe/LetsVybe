@@ -21,6 +21,14 @@ window.onload = function () {
     firebase.auth().onAuthStateChanged(user => {
         // If user exists continue with the rest of the retrieval.
         if (user){
+
+            var navPhoto = document.getElementById("navPhoto")
+            var navName = document.getElementById("nav-name")
+            navPhoto.setAttribute('src', user.photoURL);
+
+            navName.innerHTML = user.displayName
+            navName.setAttribute('style', 'color: #fff;')
+            console.log(navPhoto)
             if (debug) console.log('User: ', user);
 
 
@@ -38,6 +46,11 @@ window.onload = function () {
 
             domElements.setUpOnClickActions(user);
 
+
+            
+            uid = user.uid;  // This is taking up unnecessary space.  We always have user and can always reference user.uid in constant time (k).
+
+
         } 
         // Otherwise redirect to the login page.
         else {
@@ -45,5 +58,57 @@ window.onload = function () {
         }
     });
 
+    
 }
 
+function updateUser(){
+$(".userName").click(function () {
+        $(".updateUserName").toggle()
+        });
+}
+
+
+function updateDisplayName(){
+$(".displayName").click(function () {
+        $(".updateDisplayName").toggle()
+        });
+}
+
+
+function updatePassword(){
+$(".password").click(function () {
+        $(".updatePassword").toggle()
+        });
+}
+
+
+function updateAge(){
+    $(".age").click(function () {
+        $(".updateAge").toggle()
+        });
+}
+
+function updatePhoneNumber(){
+    $(".phoneNumber").click(function () {
+        $(".updatePhoneNumber").toggle()
+        });
+
+}
+
+function updateEmail() {
+    $(".email").click(function () {
+        $(".updateEmail").toggle()
+        });
+}
+
+function updateGender(){
+    $(".gender").click(function () {
+        $(".updateGender").toggle()
+        });
+}
+
+function updateAreaCode(){
+    $(".areaCode").click(function () {
+        $(".updateAreaCode").toggle()
+        });
+}

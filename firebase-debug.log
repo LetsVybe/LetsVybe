@@ -1,0 +1,25 @@
+[debug] [2018-12-03T21:47:04.520Z] ----------------------------------------------------------------------
+[debug] [2018-12-03T21:47:04.522Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2018-12-03T21:47:04.522Z] CLI Version:   5.1.1
+[debug] [2018-12-03T21:47:04.522Z] Platform:      darwin
+[debug] [2018-12-03T21:47:04.522Z] Node Version:  v8.12.0
+[debug] [2018-12-03T21:47:04.523Z] Time:          Mon Dec 03 2018 13:47:04 GMT-0800 (PST)
+[debug] [2018-12-03T21:47:04.523Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-12-03T21:47:04.531Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-03T21:47:04.532Z] > authorizing via signed-in user
+[debug] [2018-12-03T21:47:04.532Z] [iam] checking project letsvybe-e4796 for permissions ["firebase.projects.get"]
+[debug] [2018-12-03T21:47:04.533Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796:testIamPermissions  
+
+[debug] [2018-12-03T21:47:04.814Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-03T21:47:04.815Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/letsvybe-e4796  
+ 
+[debug] [2018-12-03T21:47:05.069Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/bijeshsubedi/Desktop/testMaster/NewModularFeed/LetsVybe'...
+[info] 
+[debug] [2018-12-03T21:47:05.071Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/527312988709/clients/_:getWebAppConfig  
+ 
+[debug] [2018-12-03T21:47:05.257Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
