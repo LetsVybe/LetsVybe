@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LetsVybe</title>
+    <link type="text/css" rel="stylesheet" href="styles/login.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.5.4/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.5.4/firebase-auth.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <script src="scripts/login.js"></script>
+    <!-- Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="styles/login.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body class="bg-image">
+<nav>
+    <div id="top-nav">
+        <!-- Container where we'll display the user details -->
+        <div class="quickstart-user-details-container">
+            LetsVybe sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+            <div>LetsVybe auth <code>currentUser</code> object value:</div>
+            <pre><code id="quickstart-account-details">null</code></pre>
+        </div>
+
+    </div>
+</nav>
+
+<main>
+    <div class="row">
+        <div class="col-6 container">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="title blinking">LetsVybe</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12"
+                    <div class="login-form">
+                        <div class="row">
+                            <input class="login_text_input" type="text" id="email" name="email" placeholder="E-mail"/>
+                            &nbsp;&nbsp;&nbsp;
+                            <input class="login_pw__input" type="password" id="password" name="password"
+                                   placeholder="Password"/>
+                        </div>
+                        <div class="row">
+
+
+
+                            <input type="checkbox" id="rememberMe"/>
+                            <label for="rememberMe"></label><span>I have read and agree to the <a href="#">Terms of Use </a>and <a
+                                href="#">Privacy Policy</a></span>
+                            <button disabled onclick="toggleLoginWithLetsVybe()" class="login_button"
+                                    id="quickstart-sign-in" name="signin">Sign In
+                            </button><!-- K Removed disabled, might be a bad idea -->
+                        </div>
+                        &nbsp;&nbsp;&nbsp;
+                        <div class="row">
+                            <div class="social"><span>or sign up with social media</span></div>
+                        </div>
+
+                        <!-- Leaving just in case the pieces do not connect correctly
+                        <h2>LetsVybe Email &amp; Password Authentication</h2>
+                        <input class="login_text_input" style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email"/>
+                        &nbsp;&nbsp;&nbsp;
+                        <input class="login_pw__input" style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password"/>
+                        <br/><br/>
+                        -->
+
+
+                        <!-- THIS PART CAN BE INCORPORATED AT A LATER DATE AFTER THE SEMESTER IS OVER
+                        <button disabled onclick="sendEmailVerification()" id="quickstart-verify-email" name="verify-email">Send Email Verification</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button onclick="sendPasswordReset()" id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
+                        -->
+                        <div class="row">
+                            <div class="buttons">
+                                <button class="google" onclick="toggleLoginWithGoogle()"><i class="fa fa-google-plus"></i>Google
+                                </button>
+                                <button class="facebook" onclick="twitterLogin()"><i class="fa fa-facebook"></i>Facebook
+                                </button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="noaccount">
+                                <center>Do not have an account?
+                                    <button onclick="registerWithLetsVybe()" class="login_button" id="quickstart-sign-up"
+                                            name="signup">Register with LetsVybe
+                                    </button>
+                                    &nbsp;&nbsp;&nbsp;
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>
